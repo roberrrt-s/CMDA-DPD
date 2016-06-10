@@ -5,13 +5,45 @@
         <meta name="viewport" content="width=device-width">
         <meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
         <meta name="author" content="Robert Spier">
-		<link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/style.css">
         <title>Prototype - Admin</title>
     </head>
 
     <body>
-    	<main>
+        <main>
 
-    	</main>
+            <aside id="sidebar">
+                <section class="logo-picture">
+                    <a href="/"><img src="../media/logo.jpeg"></a>
+                </section>
+
+                <nav>
+                    <ul>
+                        <li><a href="/screen/">Manage screens</a></li>
+                        <li><a href="/slideshow/">Manage slideshows</a></li>
+                        <li><a href="/content/">Manage content</a></li>
+                        <li><a href="/settings/">Settings</a></li>
+                    </ul>
+                </nav>
+
+            </aside>
+
+            <section class="content-wrapper">
+                <section class="content-options">
+                    <h1>Editing image "Golden Dot Awards 2016"</h1>
+
+                    <figure class="preview-image">
+                    <figcaption>Preview</figcaption>
+                        <img src="../media/poster.jpg">
+                    </figure>
+
+                    <label>Name
+                        <input type="text"></input>
+                    </label>
+
+                </section>
+            </section>
+
+        </main>
    </body>
 </html>

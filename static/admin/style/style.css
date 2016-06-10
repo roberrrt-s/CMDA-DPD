@@ -98,7 +98,7 @@ nav li:hover {
 	max-width: 9.4em;
 }
 
-.content-introduction {
+.content-introduction, .content-options {
 	background-color: #FFF;
 	box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
 	padding: .5em;
@@ -120,6 +120,11 @@ nav li:hover {
 
 .content-divider {
 	min-width: 100%;
+}
+
+.preview-image {
+	max-width: 20em;
+	height: auto;
 }
 
 .content-item {
