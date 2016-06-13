@@ -6,7 +6,7 @@
         <meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
         <meta name="author" content="Robert Spier">
         <link rel="stylesheet" href="../style/style.css">
-        <title>Prototype - Admin</title>
+        <title>Prototype - Edit</title>
     </head>
 
     <body>
@@ -30,22 +30,14 @@
 
             <section class="content-wrapper">
                 <section class="content-options">
-                    <h1>Editing screen "1e etage TTH naast de lift"</h1>
+                    <h1>Edit screen</h1>
 
                     <section class="flex-container">
-                        <fieldset>
-                        <legend>Preview</legend>
-
-                            <figure class="preview-image">
-                                <img src="../media/poster.jpg">
-                            </figure>
-
-                        </fieldset>
 
                         <fieldset>
-                        <legend>Options</legend>
+                        <legend>Screen options</legend>
 
-                            <label>Content name:
+                            <label>Screen name:
                                 <input type="text" placeholder="Name"></input>
                             </label>
 
@@ -53,24 +45,23 @@
                                 <input type="text" placeholder="Description"></input>
                             </label>
 
-                            <label>Display for x seconds:
-                                <input type="text" placeholder="Enter time in seconds"></input>
+                            <label>Location:
+                                <input type="text" placeholder="Location"></input>
                             </label>
 
-                            <label>New image:
-                                <input type="file"></input>
+                            <label>Assign slideshow to screen
+                                <select>
+                                    <option>Do not assign</option>
+                                    <option selected>Open dag 7 juni</option>
+                                    <option>Activiteiten IAM Core</option>
+                                </select>
                             </label>
 
-                            <button>Save changes</button>
                         </fieldset>
 
                     </section>
 
-                    <fieldset>
-                    <legend>Delete</legend>
-                        <p>Do you wish to delete this item??</p>
-                        <a href="delete.html"><button>Delete item</button></a>
-                    </fieldset>
+                    <button>Save changes</button>
 
                 </section>
             </section>
