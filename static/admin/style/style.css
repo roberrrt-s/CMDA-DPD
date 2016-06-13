@@ -26,6 +26,10 @@ body {
 	font-family: "Open Sans";
 }
 
+.flex-container {
+	display: flex;
+}
+
 .active {
 	background-color: #CCC;
 }
@@ -116,6 +120,12 @@ nav li:hover {
 
 .content-wrapper:last-child {
 	padding-bottom: 8em;
+}
+
+.content-options fieldset {
+	margin: .5em;
+	padding: 1em;
+	max-width: 20em;
 }
 
 .content-divider {
@@ -252,6 +262,20 @@ button {
 	#sidebar {
 		min-width: 100vw;
 		height: auto;
+	}
+
+	.flex-container {
+		justify-content: center;
+	}
+
+	.content-options fieldset {
+		max-width: 100%;
+		min-width: 50%;
+		margin: 0;
+	}
+
+	.content-options input, .content-options label {
+		float: left;
 	}
 
 	.settings-wrapper, .block-wrapper, .content-wrapper {

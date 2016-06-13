@@ -5,13 +5,76 @@
         <meta name="viewport" content="width=device-width">
         <meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
         <meta name="author" content="Robert Spier">
-		<link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/style.css">
         <title>Prototype - Admin</title>
     </head>
 
     <body>
-    	<main>
+        <main>
 
-    	</main>
+            <aside id="sidebar">
+                <section class="logo-picture">
+                    <a href="/"><img src="../media/logo.jpeg"></a>
+                </section>
+
+                <nav>
+                    <ul>
+                        <li><a href="/screen/">Manage screens</a></li>
+                        <li><a href="/slideshow/">Manage slideshows</a></li>
+                        <li><a href="/content/">Manage content</a></li>
+                        <li><a href="/settings/">Settings</a></li>
+                    </ul>
+                </nav>
+
+            </aside>
+
+            <section class="content-wrapper">
+                <section class="content-options">
+                    <h1>Editing screen "1e etage TTH naast de lift"</h1>
+
+                    <section class="flex-container">
+                        <fieldset>
+                        <legend>Preview</legend>
+
+                            <figure class="preview-image">
+                                <img src="../media/poster.jpg">
+                            </figure>
+
+                        </fieldset>
+
+                        <fieldset>
+                        <legend>Options</legend>
+
+                            <label>Content name:
+                                <input type="text" placeholder="Name"></input>
+                            </label>
+
+                            <label>Description:
+                                <input type="text" placeholder="Description"></input>
+                            </label>
+
+                            <label>Display for x seconds:
+                                <input type="text" placeholder="Enter time in seconds"></input>
+                            </label>
+
+                            <label>New image:
+                                <input type="file"></input>
+                            </label>
+
+                            <button>Save changes</button>
+                        </fieldset>
+
+                    </section>
+
+                    <fieldset>
+                    <legend>Delete</legend>
+                        <p>Do you wish to delete this item??</p>
+                        <a href="delete.html"><button>Delete item</button></a>
+                    </fieldset>
+
+                </section>
+            </section>
+
+        </main>
    </body>
 </html>
