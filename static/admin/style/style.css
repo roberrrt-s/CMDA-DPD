@@ -102,7 +102,7 @@ nav li:hover {
 	max-width: 9.4em;
 }
 
-.content-introduction, .content-options, .edit-options {
+.content-introduction, .content-options, .slideshow-options {
 	background-color: #FFF;
 	box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
 	padding: .5em;
@@ -110,7 +110,7 @@ nav li:hover {
 
 .content-wrapper {
 	position: fixed;
-	height: auto;
+	height: 100%;
 	min-width: 80vw;
 	max-width: 100%;
 	margin-left: 20vw;
@@ -118,11 +118,16 @@ nav li:hover {
 	overflow-y: auto;
 }
 
+.content-wrapper fieldset {
+	margin: .5em;
+	padding: 1em;
+}
+
 .content-wrapper:last-child {
 	padding-bottom: 8em;
 }
 
-.content-options fieldset {
+.content-options fieldset, .slideshow-options__fieldset {
 	margin: .5em;
 	padding: 1em;
 	max-width: 20em;
@@ -147,6 +152,14 @@ nav li:hover {
 
 .content-footer {
 	font-size: .8em;
+}
+
+.content-footer input {
+	min-width: auto;
+}
+
+.content-footer input[type="number"] {
+	max-width: 4em;
 }
 
 .content-category-wrapper {
@@ -269,7 +282,6 @@ button {
 	}
 
 	.flex-container fieldset > *{
-
 		clear: both;
 	}
 
@@ -283,12 +295,12 @@ button {
 		float: left;
 	}
 
-	.settings-wrapper, .block-wrapper, .content-wrapper, {
+	.settings-wrapper, .block-wrapper, .content-wrapper {
 		min-width: 100vw;
 		min-height: 80vh;
 		height: 100vh;
 		margin: 0;
-		margin-top: 12vh;
+		margin-top: 15vh;
 		justify-content: center;
 	}
 

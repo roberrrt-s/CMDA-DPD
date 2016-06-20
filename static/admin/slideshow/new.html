@@ -1,39 +1,197 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width">
-        <meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
-        <meta name="author" content="Robert Spier">
-        <link rel="stylesheet" href="../style/style.css">
-        <title>Prototype - Admin</title>
-    </head>
+	<head>
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
+		<meta name="author" content="Robert Spier">
+		<link rel="stylesheet" href="../style/style.css">
+		<title>Prototype - Admin</title>
+	</head>
 
-    <body>
-        <main>
+	<body>
+		<main>
 
-            <aside id="sidebar">
-                <section class="logo-picture">
-                    <a href="/"><img src="../media/logo.jpeg"></a>
-                </section>
+			<aside id="sidebar">
+				<section class="logo-picture">
+					<a href="/"><img src="../media/logo.jpeg"></a>
+				</section>
 
-                <nav>
-                    <ul>
-                        <li><a href="/screen/">Manage screens</a></li>
-                        <li><a href="/slideshow/">Manage slideshows</a></li>
-                        <li><a href="/content/">Manage content</a></li>
-                        <li><a href="/settings/">Settings</a></li>
-                    </ul>
-                </nav>
+				<nav>
+					<ul>
+						<li><a href="/screen/">Manage screens</a></li>
+						<li><a href="/slideshow/">Manage slideshows</a></li>
+						<li><a href="/content/">Manage content</a></li>
+						<li><a href="/settings/">Settings</a></li>
+					</ul>
+				</nav>
 
-            </aside>
+			</aside>
 
-            <section class="content-wrapper">
-                
-                <section class="edit-options"></section>
+			<section class="content-wrapper">
+				
+				<section class="slideshow-options">
 
-            </section>
+	                <fieldset class="slideshow-options__fieldset">
+	                <legend>Slideshow options</legend>
 
-        </main>
+	                    <label>Slideshow name:
+	                        <input type="text" placeholder="Name"></input>
+	                    </label>
+
+	                    <label>Description:
+	                        <input type="text" placeholder="Description"></input>
+	                    </label>
+
+                        <label>Assign screen (optional)
+                            <select>
+                                <option selected>Do not assign yet</option>
+                                <option>tth 1e etage</option>
+                                <option>ksh begane grond</option>
+                            </select>
+                        </label>
+
+	                </fieldset>
+
+					<fieldset>
+					<legend>All content</legend>
+						<fieldset>
+						<legend>Images</legend>
+							
+							<section class="content-category-wrapper">
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/poster.jpg">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Name: </strong>GDA 2016</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/poster2.jpg">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Name: </strong>Stagediving poster</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/poster3.jpg">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Name: </strong>Occhio poster</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/poster4.jpg">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Name: </strong>IAM Core poster</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+							</section>
+
+						</fieldset>
+						<fieldset>
+						<legend>Video's</legend>
+
+							<section class="content-category-wrapper">
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/play.png">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Name: </strong>Samenvatting GDA</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/play.png">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Name: </strong>Welkom op CMDA!</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+							</section>
+
+						</fieldset>
+						<fieldset>
+						<legend>Twitter</legend>
+
+							<section class="content-category-wrapper">
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/twitter.png">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>Hashtag: </strong>#CMD</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+											<li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+
+								<section class="content-item">
+									<header class="block-image">
+										<img src="../media/twitter.png">
+									</header>
+									<footer class="content-footer">
+										<ul>
+											<li><strong>User: </strong>@MattijsBlekemolen</li>
+											<li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
+                                            <li><label><strong>Order</strong><input type="number"></label></li>
+										</ul>
+									</footer>
+								</section>
+					
+							</section>
+
+						</fieldset>
+					</fieldset>
+
+                    <a href="/slideshow/"><button>Save slideshow</button></a>
+                    <a href="/slideshow/"><button>Cancel</button></a>
+
+				</section>
+
+			</section>
+
+		</main>
    </body>
 </html>
