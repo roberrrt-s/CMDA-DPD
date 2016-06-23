@@ -14,17 +14,24 @@
 
 			<section class="input-wrapper">
 				<section class="input-box">
-					<fieldset>
-						<legend>Login</legend>
-						<label>Email:
-							<input type="text"></input>
-						</label>
-						<label>Password:
-							<input type="password"></input>
-						</label>
-						<a href="/"><button>Log in</button></a>
-					</fieldset>
-					<p>No account yet? <a href="../register/">register first</a></p>
+					{{#if error}}
+						<div class="msg">
+							{{error}}
+						</div>
+					{{/if}}
+					<form action="/dashboard/login/" method="post">
+						<fieldset>
+							<legend>Login</legend>
+							<label>Email:
+								<input type="email" name="email"></input>
+							</label>
+							<label>Password:
+								<input type="password" name="password"></input>
+							</label>
+							<input type="submit" value="Login"></input>
+						</fieldset>
+					</form>
+					<p>No account yet? <a href="/dashboard/register/">register first</a></p>
 				</section>
 			</section>
 

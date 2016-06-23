@@ -14,23 +14,30 @@
 
             <section class="input-wrapper">
                 <section class="input-box">
-                    <fieldset>
-                        <legend>Register</legend>
-                        <label>Name:
-                            <input type="text"></input>
-                        </label>
-                        <label>Email:
-                            <input type="text"></input>
-                        </label>
-                        <label>Password:
-                            <input type="password"></input>
-                        </label>
-                        <label>Confirm:
-                            <input type="password"></input>
-                        </label>
-                        <a href="../login/"><button>Register</button></a>
-                    </fieldset>
-                    <p>Already have an account? <a href="../login/">login here</a></p>
+                    {{#if error}}
+                        <div class="msg">
+                            {{error}}
+                        </div>
+                    {{/if}}
+                    <form action="/dashboard/register/" method="post">
+                        <fieldset>
+                            <legend>Register</legend>
+                            <label>Name:
+                                <input type="text" name="name"></input>
+                            </label>
+                            <label>Email:
+                                <input type="email" name="email"></input>
+                            </label>
+                            <label>Password:
+                                <input type="password" name="pass"></input>
+                            </label>
+                            <label>Confirm:
+                                <input type="password" name="confirm"></input>
+                            </label>
+                            <input type="submit" value="Register"></input>
+                        </fieldset>
+                    </form>
+                    <p>Already have an account? <a href="/dashboard/login/">login here</a></p>
                 </section>
             </section>
 

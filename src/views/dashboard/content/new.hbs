@@ -2,39 +2,61 @@
 
 <section class="content-wrapper">
     <section class="content-options">
-        <h1>Creating new image</h1>
+        <h1>Creating new {{type}}</h1>
 
-        <section class="flex-container">
-            <fieldset>
-            <legend>Preview</legend>
-                <p>Upload load an image to preview it here</p>
-                <p>Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
-            </fieldset>
+        <form enctype="multipart/form-data" action="/dashboard/content/new/{{type}}" method="post"> 
 
-            <fieldset>
-            <legend>Options</legend>
+            <section class="flex-container">
+                
+            {{#if preview}}
+                <fieldset>
+                <legend>Preview</legend>
+                    <p id="preview-text">Upload load an image to preview it here<br>
+                    Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
+                    <img id="preview-image">
 
-                <label>Content name:
-                    <input type="text" placeholder="Name"></input>
-                </label>
+                </fieldset>
+            {{/if}}
 
-                <label>Description:
-                    <input type="text" placeholder="Description"></input>
-                </label>
+                <fieldset>
+                <legend>Options</legend>
 
-                <label>Display for x seconds:
-                    <input type="text" placeholder="Enter time in seconds"></input>
-                </label>
+                    <label>Content name:
+                        <input name="name" type="text" placeholder="Name"></input>
+                    </label>
 
-                <label>New image:
-                    <input type="file"></input>
-                </label>
+                    <label>Description:
+                        <input name="desc" type="text" placeholder="Description"></input>
+                    </label>
 
-            </fieldset>
+                    <label>Display for x seconds:
+                        <input name="duration" type="number" placeholder="Enter time in seconds"></input>
+                    </label>
+                    {{#if img}}
+                    <label>New image:
+                        <input id="file-upload" name="file" type="file"></input>
+                    </label>
+                    {{/if}}
 
-        </section>
+                    {{#if url}}
+                    <label>{{type}} code:
+                        <input name="url" type="txt"></input>
+                    </label>
+                    {{/if}}
+
+                    {{#if error}}
+                        <div class="msg">
+                            {{error}}
+                        </div>
+                    {{/if}}
+
+                </fieldset>
+
+            </section>
         
-        <a href="../"><button>Create item</button></a>
+            <input type="submit" value="Create item">
+
+        </form>
 
     </section>
 </section>

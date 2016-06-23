@@ -2,13 +2,16 @@
 
 <section class="content-wrapper">
     <section class="content-introduction">
-        <h1>Are you sure you wish to delete this slideshow?</h1>
-        <p>
-            <ul>
-                <li><strong>Slideshow: </strong>Open dag CMDA</li>
-            </ul>
-        </p>
-        <a href="../"><button>Yes, I want to delete this slideshow</button></a><a href="../edit/"><button>No</button></a>
+        <form action="/dashboard/slideshow/delete/{{id}}" method="post"> 
+	        <h1>Are you sure you wish to delete this slideshow?</h1>
+	        <p>
+	            <ul>
+	                <li><strong>Slideshow: </strong>{{name}}</li>
+	            </ul>
+	        </p>
+	        <input type="submit" value="Yes, I wish to delete this slideshow">
+	    </form>
+	<a href="/dashboard/edit/{{id}}"><button>No</button></a>
     </section>
 </section>
 

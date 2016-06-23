@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
+        <meta name="author" content="Robert Spier">
+        <link rel="stylesheet" href="/style/front.css">
+        <title>Prototype - Poster</title>
+    </head>
+
+    <body>
+        <main id="slideshow">
+            {{#each image}}
+            <section class="item {{type}}">
+                <img src="/uploads/{{link}}" alt="Poster CMD">
+            </section>
+            {{/each}}
+
+            {{#each video}}
+            <section class="item {{type}}">
+                <img src="/uploads/{{link}}" alt="Poster CMD">
+            </section>
+            {{/each}}
+
+            {{#each tweet}}
+            <section class="item {{type}}">
+                
+                <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Shift your design perspective and join our breakout session on <a href="https://twitter.com/WhatDesignCanDo">@WhatDesignCanDo</a> <a href="https://t.co/P9YIL6y3oZ">https://t.co/P9YIL6y3oZ</a> <a href="https://twitter.com/hashtag/WDCD?src=hash">#WDCD</a> <a href="https://t.co/Zk9eyP8A2Y">pic.twitter.com/Zk9eyP8A2Y</a></p>&mdash; CMD Amsterdam (@CMDAmsterdam) <a href="https://twitter.com/CMDAmsterdam/status/745672214637387777">June 22, 2016</a></blockquote>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                
+            </section>
+            {{/each}}
+
+        </main>
+   </body>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   <script src="/js/front.js"></script>
+</html>

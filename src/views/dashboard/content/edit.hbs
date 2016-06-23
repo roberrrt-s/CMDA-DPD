@@ -2,48 +2,53 @@
 
 <section class="content-wrapper">
     <section class="content-options">
-        <h1>Editing image "Golden Dot Awards 2016"</h1>
+        <h1>Editing {{type}} id: {{id}}</h1>
 
-        <section class="flex-container">
-            <fieldset>
-            <legend>Preview</legend>
+        <form action="/dashboard/content/edit/{{id}}" method="post"> 
 
-                <figure class="preview-image">
-                    <img src="/media/poster.jpg">
-                </figure>
+            <section class="flex-container">
+                <fieldset>
+                <legend>Preview</legend>
 
-            </fieldset>
+                    <figure class="preview-image">
+                        <img src="/uploads/{{link}}">
+                    </figure>
 
-            <fieldset>
-            <legend>Options</legend>
+                </fieldset>
 
-                <label>Content name:
-                    <input type="text" placeholder="Name"></input>
-                </label>
+                <fieldset>
+                <legend>Options</legend>
 
-                <label>Description:
-                    <input type="text" placeholder="Description"></input>
-                </label>
+                    <label>Content name:
+                        <input name="name" value="{{name}}" type="text" placeholder="Name"></input>
+                    </label>
 
-                <label>Display for x seconds:
-                    <input type="text" placeholder="Enter time in seconds"></input>
-                </label>
+                    <label>Description:
+                        <input name="description" value="{{desc}}" type="text" placeholder="Description"></input>
+                    </label>
 
-                <label>New image:
-                    <input type="file"></input>
-                </label>
+                    <label>Display for x seconds:
+                        <input name="duration" value="{{dur}}" type="text" placeholder="Enter time in seconds"></input>
+                    </label>
 
-            </fieldset>
+                </fieldset>
 
-        </section>
+            </section>
+
+            <input type="submit" value="Save changes">
+
+        </form>
+        <a href="/dashboard/content/"><button>Cancel</button></a>
+
+
 
         <fieldset>
         <legend>Delete</legend>
             <p>Do you wish to delete this item??</p>
-            <a href="../delete/"><button>Delete item</button></a>
+            <a href="/dashboard/content/delete/{{id}}"><button>Delete item</button></a>
         </fieldset>
 
-        <a href="../"><button>Save changes</button></a>
+
 
     </section>
 

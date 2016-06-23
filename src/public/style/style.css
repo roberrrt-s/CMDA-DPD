@@ -1,7 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	line-height: 150%;
 }
 
 a {
@@ -24,6 +27,10 @@ li {
 body {
 	background-color: #FFCC00;
 	font-family: "Open Sans";
+}
+
+.msg {
+	color: #FF5555;
 }
 
 .flex-container {
@@ -160,6 +167,7 @@ nav li:hover {
 
 .content-footer input[type="number"] {
 	max-width: 4em;
+	margin-bottom: 1em;
 }
 
 .content-category-wrapper {
@@ -263,11 +271,12 @@ legend {
 	margin: .5em;
 }
 
-button {
+button, input[type="submit"] {
 	text-align: center;
 	margin: .5em;
 	padding: .25em;
 	background-color: #CCC;
+	min-width: 1em;
 }
 
 @media (max-width: 60em) {  

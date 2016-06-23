@@ -4,36 +4,42 @@
     <section class="content-options">
         <h1>Edit screen</h1>
 
-        <section class="flex-container">
+        <form action="/dashboard/screen/edit/{{id}}" method="post"> 
 
-            <fieldset>
-            <legend>Screen options</legend>
+            <section class="flex-container">
 
-                <label>Screen name:
-                    <input type="text" placeholder="Name"></input>
-                </label>
+                <fieldset>
+                <legend>Screen options</legend>
 
-                <label>Description:
-                    <input type="text" placeholder="Description"></input>
-                </label>
+                    <label>Screen name:
+                        <input name="name" value="{{name}}" type="text" placeholder="Name"></input>
+                    </label>
 
-                <label>Location:
-                    <input type="text" placeholder="Location"></input>
-                </label>
+                    <label>Description:
+                        <input name="desc" value="{{desc}}" type="text" placeholder="Description"></input>
+                    </label>
 
-                <label>Assign slideshow to screen
-                    <select>
-                        <option>Do not assign</option>
-                        <option selected>Open dag 7 juni</option>
-                        <option>Activiteiten IAM Core</option>
-                    </select>
-                </label>
+                    <label>Location:
+                        <input name="loc" value="{{loc}}" type="text" placeholder="Location"></input>
+                    </label>
 
-            </fieldset>
+                    <label>Assign slideshow to this screen
+                        <select name="slideshow">
+                            <option value="0">Do not assign slideshow</option>
+                            {{#each slideshows}}
+                            <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </label>
 
-        </section>
+                </fieldset>
 
-        <a href="../"><button>Save changes</button></a><a href="../delete/"><button>Delete screen</button></a>
+            </section>
+
+            <input type="submit" value="Save changes">
+
+        </form>
+        <a href="/dashboard/screen/delete/{{id}}"><button>Delete screen</button></a>
 
 
     </section>

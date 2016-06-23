@@ -3,26 +3,25 @@
 <section class="content-wrapper">
     
     <section class="slideshow-options">
+    <form action="/dashboard/slideshow/new/" method="post"> 
 
         <fieldset class="slideshow-options__fieldset">
         <legend>Slideshow options</legend>
 
             <label>Slideshow name:
-                <input type="text" placeholder="Name"></input>
+                <input name="name" type="text" placeholder="Name"></input>
             </label>
 
             <label>Description:
-                <input type="text" placeholder="Description"></input>
+                <input name="description" type="text" placeholder="Description"></input>
             </label>
 
-            <label>Assign screen (optional)
-                <select>
-                    <option selected>Do not assign yet</option>
-                    <option>tth 1e etage</option>
-                    <option>ksh begane grond</option>
-                </select>
-            </label>
-
+            {{#if error}}
+                <div class="msg">
+                    {{error}}
+                </div>
+            {{/if}}
+                    
         </fieldset>
 
         <fieldset>
@@ -32,57 +31,19 @@
                 
                 <section class="content-category-wrapper">
 
+                    {{#each image}}
                     <section class="content-item">
                         <header class="block-image">
-                            <img src="/media/poster.jpg">
+                            <img src="/uploads/{{link}}">
                         </header>
                         <footer class="content-footer">
                             <ul>
-                                <li><strong>Name: </strong>GDA 2016</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
+                                <li><strong>Name: </strong>{{name}}</li>
+                                <li><label><strong>Add to slideshow</strong><input name="{{id}}" type="checkbox"></label></li>
                             </ul>
                         </footer>
                     </section>
-
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/poster2.jpg">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>Stagediving poster</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/poster3.jpg">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>Occhio poster</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/poster4.jpg">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>IAM Core poster</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
+                    {{/each}}
 
                 </section>
 
@@ -92,31 +53,19 @@
 
                 <section class="content-category-wrapper">
 
+                    {{#each video}}
                     <section class="content-item">
                         <header class="block-image">
                             <img src="/media/play.png">
                         </header>
                         <footer class="content-footer">
                             <ul>
-                                <li><strong>Name: </strong>Samenvatting GDA</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
+                                <li><strong>Name: </strong>{{name}}</li>
+                                <li><label><strong>Add to slideshow</strong><input name="{{id}}" type="checkbox"></label></li>
                             </ul>
                         </footer>
                     </section>
-
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/play.png">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>Welkom op CMDA!</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
+                    {{/each}}
 
                 </section>
 
@@ -126,39 +75,29 @@
 
                 <section class="content-category-wrapper">
 
+                    {{#each tweet}}
                     <section class="content-item">
                         <header class="block-image">
                             <img src="/media/twitter.png">
                         </header>
                         <footer class="content-footer">
                             <ul>
-                                <li><strong>Hashtag: </strong>#CMD</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
+                                <li><strong>Name: </strong>{{name}}</li>
+                                <li><label><strong>Add to slideshow</strong><input name="{{id}}" type="checkbox"></label></li>
                             </ul>
                         </footer>
                     </section>
-
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/twitter.png">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>User: </strong>@MattijsBlekemolen</li>
-                                <li><label><strong>Add to slideshow</strong><input type="checkbox"></label></li>
-                                <li><label><strong>Order</strong><input type="number"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
+                    {{/each}}
         
                 </section>
 
             </fieldset>
         </fieldset>
 
-        <a href="../"><button>Save slideshow</button></a>
-        <a href="../"><button>Cancel</button></a>
+        <input type="submit" value="Add new slideshow">
+
+    </form>
+    <a href="../"><button>Cancel</button></a>
 
     </section>
 
