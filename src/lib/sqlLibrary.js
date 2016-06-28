@@ -89,7 +89,7 @@ var sqlLibrary = {
 
 	// API query
 	joinContentAndSlideshow: function() {
-		return 'SELECT DISTINCT * FROM slideshow_has_content LEFT JOIN content ON slideshow_has_content.slideshow_id WHERE slideshow_id = ? GROUP BY link';
+		return 'SELECT link, type FROM slideshow LEFT JOIN slideshow_has_content ON slideshow_id = ? LEFT JOIN content ON slideshow_has_content.content_id = content.id';
 	}
 
 }
