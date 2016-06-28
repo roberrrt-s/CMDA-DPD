@@ -134,16 +134,33 @@ router.get('/edit/:id', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 			connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
+				if(err) { console.log(err) };
 
-				var imageStack = callback.filter(filterType.image)
-				var videoStack = callback.filter(filterType.video)
-				var tweetStack = callback.filter(filterType.tweet)
+				connection.query('SELECT * FROM slideshow_has_content WHERE slideshow_id = ?', [req.params.id], function(err, memory) {
+					if(err) { console.log(err) };
 
-				connection.query(sqlLibrary.selectRowFromSlideshow(), [req.params.id], function(err, callback) {
-					var input = callback[0]
-					res.render('dashboard/slideshow/edit', { title: 'Slideshows', image: imageStack, video: videoStack, tweet: tweetStack, name: input.name, description: input.description, id: req.params.id });
-				})
+					for(var i = 0; i < callback.length; i++) {
+						for(var j = 0; j < memory.length; j++) {
+							if(callback[i].id === memory[j].content_id) {
+								callback[i].checked = true;
+							}
+						}
 
+					}
+
+					var imageStack = callback.filter(filterType.image)
+					var videoStack = callback.filter(filterType.video)
+					var tweetStack = callback.filter(filterType.tweet)
+
+					connection.query(sqlLibrary.selectRowFromSlideshow(), [req.params.id], function(err, callback) {
+						if(err) { console.log(err) };
+
+						var input = callback[0]
+
+						res.render('dashboard/slideshow/edit', { title: 'Slideshows', image: imageStack, video: videoStack, tweet: tweetStack, name: input.name, description: input.description, id: req.params.id });
+					
+					});
+				});
 			})
 		});
 

@@ -12,11 +12,14 @@ router.get('/:id', function (req, res) {
 
 			console.log(data)
 
-			if(!data[0] || data[0].link === null) {
-				res.render('api/index', {error: true})
+			if(!data[0]) {
+				res.render('api/index', {error: "This screen doesn't exist, or has no slideshow assigned"})
+			}
+			else if(data[0].link === null) {
+				res.render('api/index', {error: "There is no content in this slideshow"})
 			}
 			else {
-				
+
 				var imageStack = data.filter(filterType.image)
 				var videoStack = data.filter(filterType.video)
 				var tweetStack = data.filter(filterType.tweet)	
