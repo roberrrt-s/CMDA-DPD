@@ -10,12 +10,14 @@ router.get('/', function(req, res) {
 		req.getConnection(function(err, connection) {
 			var promise = new Promise(function(resolve, reject) {
 				connection.query(sqlLibrary.selectAllFromScreen(), function(err, callback) {
+
 					if(err) { 
 						reject(err) 
 					}
 					else {
 						resolve(callback)
 					}
+
 				})
 			}).then(function(callback) {
 
@@ -76,8 +78,10 @@ router.post('/new/', function(req, res) {
 							resolve(callback)
 						}
 					})
-				}).then(function() {
+				}).then(function(callback) {
+
 					res.redirect('/dashboard/screen');
+
 				})
 			});
 		}
@@ -99,17 +103,37 @@ router.get('/edit/:id', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 
-			connection.query(sqlLibrary.selectRowFromScreen(), [req.params.id], function(err, callback) {
-				if(err) { console.log(err) };
-					var screen = callback[0];
-					var none = false;
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.selectRowFromScreen(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err)
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
+
+				var screen = callback[0];
+				var none = false;
 
 				if(screen.slideshow_id !== 0) {
 					var none = true;
 				}
 
-				connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
-					if(err) { console.log(err) };
+				var promised = new Promise(function(resolve, reject) {
+					connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
+						if(err) { 
+							reject(err) 
+						}
+						else {
+							resolve(callback)
+						}
+					})
+
+				}).then(function(callback) {
+
 					var slideshows = callback
 
 					for(var i = 0; i < slideshows.length; i++) {
@@ -126,14 +150,11 @@ router.get('/edit/:id', function(req, res) {
 						current: screen.slideshow_id,
 						id: req.params.id,
 						slideshows: slideshows
+
 					});
-
-				});
-
-			});
-
-		});		
-
+				})
+			})
+		})
 	}
 	
 	else {
@@ -149,13 +170,20 @@ router.post('/edit/:id', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 
-			connection.query(sqlLibrary.updateRowInScreen(), [input.name, input.desc, input.loc, input.slideshow, req.params.id], function(err, callback) {
-				if(err) { console.log(err) }
-			});
-
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.updateRowInScreen(), [input.name, input.desc, input.loc, input.slideshow, req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
+				res.redirect('/dashboard/screen');	
+			})
 		});
 
-		res.redirect('/dashboard/screen');	
 	}
 	else {
 		res.redirect('/dashboard/login/');
@@ -183,14 +211,22 @@ router.post('/delete/:id', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 
-			connection.query(sqlLibrary.deleteRowFromScreen(), [req.params.id], function(err, callback) {
-				if(err) { console.log(err) };
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.deleteRowFromScreen(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
+				res.redirect('/dashboard/screen');
 			})
 		});
-
-		res.redirect('/dashboard/screen');	
-
+		
 	}
+
 	else {
 		res.redirect('/dashboard/login/');
 	}
