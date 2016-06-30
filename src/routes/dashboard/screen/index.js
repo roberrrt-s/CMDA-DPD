@@ -91,10 +91,24 @@ router.get('/edit/:id', function(req, res) {
 			connection.query(sqlLibrary.selectRowFromScreen(), [req.params.id], function(err, callback) {
 				if(err) { console.log(err) };
 				var screen = callback[0];
+				var none = false;
+
+				console.log(screen.slideshow_id)
+
+				if(screen.slideshow_id !== 0) {
+					var none = true;
+				}
 
 				connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
 					if(err) { console.log(err) };
 					var slideshows = callback
+
+					for(var i = 0; i < slideshows.length; i++) {
+						if(slideshows[i].id === screen.slideshow_id) {
+							console.log('true!')
+							slideshows[i].selected = true;
+						}
+					}
 
 					console.log(slideshows)
 
@@ -105,7 +119,7 @@ router.get('/edit/:id', function(req, res) {
 						loc: screen.location, 
 						current: screen.slideshow_id,
 						id: req.params.id,
-						slideshows: slideshows
+						slideshows: slideshows,
 					});
 
 				});

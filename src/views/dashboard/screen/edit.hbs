@@ -25,9 +25,9 @@
 
                     <label>Assign slideshow to this screen
                         <select name="slideshow">
-                            <option value="0">Do not assign slideshow</option>
+                            <option {{#if none}}selected{{/if}} value="0">Do not assign slideshow</option>
                             {{#each slideshows}}
-                            <option value="{{id}}">{{name}}</option>
+                            <option {{#if selected}}selected{{/if}} value="{{id}}">{{name}}</option>
                             {{/each}}
                         </select>
                     </label>

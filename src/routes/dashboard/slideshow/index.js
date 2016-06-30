@@ -136,7 +136,7 @@ router.get('/edit/:id', function(req, res) {
 			connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
 				if(err) { console.log(err) };
 
-				connection.query('SELECT * FROM slideshow_has_content WHERE slideshow_id = ?', [req.params.id], function(err, memory) {
+				connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, memory) {
 					if(err) { console.log(err) };
 
 					for(var i = 0; i < callback.length; i++) {

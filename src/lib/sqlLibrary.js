@@ -53,6 +53,10 @@ var sqlLibrary = {
 		return 'SELECT * FROM slideshow WHERE id = ?';
 	},
 
+	matchContentFromSlideshow: function () {
+		return 'SELECT * FROM slideshow_has_content WHERE slideshow_id = ?'
+	},
+
 	insertNewSlideshowItem: function() {
 		return 'INSERT INTO slideshow SET name = ?,  description = ?';
 	},
