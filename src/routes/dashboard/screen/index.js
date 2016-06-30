@@ -8,7 +8,16 @@ router.get('/', function(req, res) {
 	if(checkLogin(req.session)) {
 
 		req.getConnection(function(err, connection) {
-			connection.query(sqlLibrary.selectAllFromScreen(), function(err, callback) {
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.selectAllFromScreen(), function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
 
 				if(callback.length < 1) {
 					res.render('dashboard/screen/index', { title: 'Screens', error: 'No screens available yet' });
@@ -16,8 +25,10 @@ router.get('/', function(req, res) {
 				else {
 					res.render('dashboard/screen/index', { title: 'Screens', data: callback });
 				}
+
 			})
-		});
+
+		})
 
 	}
 	else {
@@ -43,8 +54,6 @@ router.post('/new/', function(req, res) {
 		
 		var input = req.body;
 
-		console.log(input)
-
 		if(input.name === '') {
 			res.render('dashboard/screen/new', { title: 'New', error: 'Please fill in a name' });
 		}
@@ -58,17 +67,19 @@ router.post('/new/', function(req, res) {
 
 			req.getConnection(function(err, connection) {
 
-				connection.query(sqlLibrary.insertNewScreenItem(), [input.name, input.desc, input.location], function(err, callback) {
-					if(err) { console.log(err) };
-
-					res.render('dashboard/screen/edit', { title: 'Edit', data: callback, id: req.params.id});
-
+				var promise = new Promise(function(resolve, reject) {
+					connection.query(sqlLibrary.insertNewScreenItem(), [input.name, input.desc, input.location], function(err, callback) {
+						if(err) { 
+							reject(err) 
+						}
+						else {
+							resolve(callback)
+						}
+					})
+				}).then(function() {
+					res.redirect('/dashboard/screen');
 				})
-
 			});
-
-			res.redirect('/dashboard/screen');
-
 		}
 
 	}
@@ -90,10 +101,8 @@ router.get('/edit/:id', function(req, res) {
 
 			connection.query(sqlLibrary.selectRowFromScreen(), [req.params.id], function(err, callback) {
 				if(err) { console.log(err) };
-				var screen = callback[0];
-				var none = false;
-
-				console.log(screen.slideshow_id)
+					var screen = callback[0];
+					var none = false;
 
 				if(screen.slideshow_id !== 0) {
 					var none = true;
@@ -105,12 +114,9 @@ router.get('/edit/:id', function(req, res) {
 
 					for(var i = 0; i < slideshows.length; i++) {
 						if(slideshows[i].id === screen.slideshow_id) {
-							console.log('true!')
 							slideshows[i].selected = true;
 						}
 					}
-
-					console.log(slideshows)
 
 					res.render('dashboard/screen/edit', { 
 						title: 'Edit', 
@@ -119,7 +125,7 @@ router.get('/edit/:id', function(req, res) {
 						loc: screen.location, 
 						current: screen.slideshow_id,
 						id: req.params.id,
-						slideshows: slideshows,
+						slideshows: slideshows
 					});
 
 				});
