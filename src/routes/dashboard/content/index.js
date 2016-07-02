@@ -30,7 +30,18 @@ router.get('/', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 
-			connection.query(sqlLibrary.selectAllFromContent(), ['image'], function(err, callback) {
+			var promise = new Promise(function(resolve, reject) {
+
+				connection.query(sqlLibrary.selectAllFromContent(), ['image'], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}					
+				});
+
+			}).then(function(callback) {
 
 				var imageStack = callback.filter(filterType.image)
 				var videoStack = callback.filter(filterType.video)
@@ -38,7 +49,10 @@ router.get('/', function(req, res) {
 
 				res.render('dashboard/content', { title: 'Content', image: imageStack, video: videoStack, tweet: tweetStack });
 
-			});
+			})
+
+
+
 		});
 
 	}
@@ -117,9 +131,16 @@ router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 					else {
 
 						req.getConnection(function(err, connection) {
-
-							connection.query(sqlLibrary.insertNewContentItem(), [input.name, file.filename, input.desc, input.duration, req.params.type, req.session.userid], function(err, callback) {
-								if(err) { console.log(err) };
+							var promise = new Promise(function(resolve, reject) {
+								connection.query(sqlLibrary.insertNewContentItem(), [input.name, file.filename, input.desc, input.duration, req.params.type, req.session.userid], function(err, callback) {
+									if(err) { 
+										reject(err) 
+									}
+									else {
+										resolve(callback)
+									}
+								})
+							}).then(function(callback) {
 								res.redirect('/dashboard/content/');
 							})
 
@@ -148,9 +169,16 @@ router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 					else {
 
 						req.getConnection(function(err, connection) {
-
-							connection.query(sqlLibrary.insertNewContentItem(), [input.name, input.url, input.desc, input.duration, req.params.type, req.session.userid], function(err, callback) {
-								if(err) { console.log(err) };
+							var promise = new Promise(function(resolve, reject) {
+								connection.query(sqlLibrary.insertNewContentItem(), [input.name, input.url, input.desc, input.duration, req.params.type, req.session.userid], function(err, callback) {
+									if(err) { 
+										reject(err) 
+									}
+									else {
+										resolve(callback)
+									}
+								})
+							}).then(function(callback) {
 								res.redirect('/dashboard/content/');
 							})
 
@@ -202,6 +230,7 @@ router.get('/edit/:id', function(req, res) {
 					desc: input.description,
 					dur: input.duration
 				});
+				
 			})
 
 		});
