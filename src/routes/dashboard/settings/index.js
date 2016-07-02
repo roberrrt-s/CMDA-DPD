@@ -4,11 +4,8 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-    if(checkLogin(req.session)) {
+    if(checkLogin(req.session, res)) {
         res.render('dashboard/settings/index', { title: 'Settings' });
-    }
-    else {
-        res.redirect('/dashboard/login/');
     }
 
 });

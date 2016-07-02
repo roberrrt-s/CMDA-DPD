@@ -26,7 +26,7 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -56,26 +56,21 @@ router.get('/', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.get('/new/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.redirect('/dashboard/content/');
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 });
 
 router.get('/new/:type', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		switch(req.params.type) {
 			case 'image':
@@ -95,15 +90,13 @@ router.get('/new/:type', function(req, res) {
 		}
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 });
 
 router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		var input = req.body,
 			file = req.file;
@@ -193,31 +186,35 @@ router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 			}
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}	
+	
 
 });
 
 router.get('/edit/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.redirect('/dashboard/content/');
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 });
 
 router.get('/edit/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		
 		req.getConnection(function(err, connection) {
 
-			connection.query(sqlLibrary.selectRowFromContent(), [req.params.id], function(err, callback) {
-				if(err) { console.log(err) };
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.selectRowFromContent(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
 
 				var input = callback[0]
 
@@ -230,21 +227,20 @@ router.get('/edit/:id', function(req, res) {
 					desc: input.description,
 					dur: input.duration
 				});
-				
-			})
 
+			})
+					
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
+
 
 });
 
 router.post('/edit/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		var input = req.body;
 
@@ -258,26 +254,22 @@ router.post('/edit/:id', function(req, res) {
 
 		res.redirect('/dashboard/content');	
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 });
 
 router.get('/delete/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.redirect('/dashboard/content/');
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 });
 
 router.get('/delete/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -289,15 +281,13 @@ router.get('/delete/:id', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 });
 
 router.post('/delete/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -309,9 +299,7 @@ router.post('/delete/:id', function(req, res) {
 		res.redirect('/dashboard/content');	
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
+
 
 })
 

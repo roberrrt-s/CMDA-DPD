@@ -6,19 +6,14 @@ var express = require('express'),
 	decryptData = require('../../lib/decryptData.js')
 	router = express.Router();
 
-// Private
 router.get('/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.render('dashboard/index', { title: 'Home' });
-	}
-	else {
-		res.redirect('/dashboard/login/');
 	}
 
 });
 
-// Public
 router.get('/login/', function (req, res) {
 	res.render('dashboard/login', { title: 'Login'});
 });

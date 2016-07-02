@@ -6,7 +6,7 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 			connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
@@ -21,15 +21,12 @@ router.get('/', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.get('/new/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 			connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
@@ -44,15 +41,12 @@ router.get('/new/', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.post('/new/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		var input = req.body
 
@@ -111,26 +105,20 @@ router.post('/new/', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.get('/edit/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.redirect('/dashboard/slideshow/');
-	}
-	else {
-		res.redirect('/dashboard/login/');
 	}
 
 });
 
 router.get('/edit/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 			connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
@@ -165,15 +153,12 @@ router.get('/edit/:id', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.post('/edit/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		var input = req.body
 
 		req.getConnection(function(err, connection) {
@@ -198,9 +183,6 @@ router.post('/edit/:id', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 
 
@@ -208,18 +190,15 @@ router.post('/edit/:id', function(req, res) {
 
 router.get('/delete/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.redirect('/dashboard/slideshow/');
-	}
-	else {
-		res.redirect('/dashboard/login/');
 	}
 
 });
 
 router.get('/delete/:id/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -231,15 +210,12 @@ router.get('/delete/:id/', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.post('/delete/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -255,9 +231,6 @@ router.post('/delete/:id', function(req, res) {
 
 		});
 
-	}
-	else {
-		res.redirect('/dashboard/login/');
 	}
 
 })

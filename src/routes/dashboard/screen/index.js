@@ -5,7 +5,7 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 			var promise = new Promise(function(resolve, reject) {
@@ -33,26 +33,20 @@ router.get('/', function(req, res) {
 		})
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.get('/new/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.render('dashboard/screen/new', { title: 'New' });
-	}
-	else {
-		res.redirect('/dashboard/login/');
 	}
 
 });
 
 router.post('/new/', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		
 		var input = req.body;
 
@@ -87,9 +81,6 @@ router.post('/new/', function(req, res) {
 		}
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
@@ -99,7 +90,7 @@ router.get('/edit/', function(req, res) {
 
 router.get('/edit/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -157,14 +148,11 @@ router.get('/edit/:id', function(req, res) {
 		})
 	}
 	
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 });
 
 router.post('/edit/:id', function(req, res) {
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		
 		var input = req.body;
 
@@ -185,9 +173,6 @@ router.post('/edit/:id', function(req, res) {
 		});
 
 	}
-	else {
-		res.redirect('/dashboard/login/');
-	}
 })
 
 router.get('/delete/', function(req, res) {
@@ -196,18 +181,15 @@ router.get('/delete/', function(req, res) {
 
 router.get('/delete/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 		res.render('dashboard/screen/delete', { title: 'Delete', id: req.params.id });
-	}
-	else {
-		res.redirect('/dashboard/login/');
 	}
 
 });
 
 router.post('/delete/:id', function(req, res) {
 
-	if(checkLogin(req.session)) {
+	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
 
@@ -227,9 +209,6 @@ router.post('/delete/:id', function(req, res) {
 		
 	}
 
-	else {
-		res.redirect('/dashboard/login/');
-	}
 
 })
 
