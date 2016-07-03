@@ -1,12 +1,12 @@
 {{> dashhead}}
 
-<section class="content-wrapper">
+<div class="content-wrapper">
     <section class="content-options">
         <h1>Edit screen</h1>
 
         <form action="/dashboard/screen/edit/{{id}}" method="post"> 
 
-            <section class="flex-container">
+            <div class="flex-container">
 
                 <fieldset>
                 <legend>Screen options</legend>
@@ -34,7 +34,7 @@
 
                 </fieldset>
 
-            </section>
+            </div>
 
             <input type="submit" value="Save changes">
 
@@ -43,6 +43,6 @@
 
 
     </section>
-</section>
+</div>
 
 {{> dashfoot}}

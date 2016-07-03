@@ -1,12 +1,12 @@
 {{> dashhead}}
 
-<section class="content-wrapper">
+<div class="content-wrapper">
     <section class="content-options">
         <h1>Creating new {{type}}</h1>
 
         <form enctype="multipart/form-data" action="/dashboard/content/new/{{type}}" method="post"> 
 
-            <section class="flex-container">
+            <div class="flex-container">
                 
             {{#if preview}}
                 <fieldset>
@@ -52,13 +52,13 @@
 
                 </fieldset>
 
-            </section>
+            </div>
         
             <input type="submit" value="Create item">
 
         </form>
 
     </section>
-</section>
+</div>
 
 {{> dashfoot}}
