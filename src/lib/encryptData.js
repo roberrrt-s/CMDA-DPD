@@ -1,3 +1,5 @@
+// Used for password encryption, never un-encrypt a password.
+
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
     password = 'nerds';

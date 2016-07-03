@@ -26,6 +26,7 @@ router.post('/login/', function(req, res) {
 
 	var input = req.body;
 
+	// Check if both fields have been filled in
 	if(input.email === '' || input.password === '') {
 		res.render('dashboard/login', { error: 'Please enter a email / password'})
 	}
@@ -35,6 +36,7 @@ router.post('/login/', function(req, res) {
 
 			var promise = new Promise(function(resolve, reject) {
 
+				// Get the user information based on the email
 				connection.query(sqlLibrary.selectRowFromUser(), [input.email], function(err, callback) {
 					if(err) { 
 						reject(err) 
@@ -45,6 +47,7 @@ router.post('/login/', function(req, res) {
 				})
 
 			}).then(function(callback) {
+				// Checks if the user exists or the password matches
 				if(callback.length === 0) {
 					res.render('dashboard/login', { error: 'User does not exist', title: 'Login'})	
 				}
@@ -55,6 +58,7 @@ router.post('/login/', function(req, res) {
 
 					var data = callback[0]
 
+					// Add data to the session
 					req.session.name = data.name
 					req.session.email = data.email
 					req.session.userid = data.id
@@ -72,12 +76,14 @@ router.post('/register/', function(req, res) {
 
 	var input = req.body;
 
+	// Checks if all fields are completed
 	if(input.name === '' || input.email === '' || input.pass === '' || input.confirm === '') {
 		res.render('dashboard/register', { error: 'You did not fill in all the fields', title: 'Register'})
 	}
 	else if(input.pass !== input.confirm) {
 		res.render('dashboard/register', { error: 'Your passwords did not match', title: 'Register'})
 	}
+	// Only allow hva email addresses
 	else if(input.email.indexOf('@hva.nl') === -1) {
 		res.render('dashboard/register', { error: 'Only HvA members can register', title: 'Register'})
 	}
@@ -86,6 +92,7 @@ router.post('/register/', function(req, res) {
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
+				// Get user email from the database
 				connection.query(sqlLibrary.selectEmailFromUser(), [input.email], function(err, callback) {
 					if(err) { 
 						reject(err) 
@@ -95,6 +102,7 @@ router.post('/register/', function(req, res) {
 					}					
 				})
 			}).then(function(callback) {
+				// If it already exists, do not register it again
 				if(callback.length > 1) {
 					res.render('dashboard/register', { error: 'This email has been used already', title: 'Register'})
 				}
@@ -102,6 +110,7 @@ router.post('/register/', function(req, res) {
 					
 					var promised = new Promise(function(resolve, reject) {
 
+						// Else, add a new user to the database
 						connection.query(sqlLibrary.insertRowInUser(), [input.email, encryptData(input.pass), input.name], function(err, callback) {
 							if(err) { 
 								reject(err) 

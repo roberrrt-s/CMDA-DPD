@@ -6,9 +6,11 @@ var express = require('express'),
 	multer  = require('multer'),
 
 	storage = multer.diskStorage({
+		// Configuring multer to upload towards the public/uploads map
 	    destination: function(req, file, cb) {
 	        cb(null, 'public/uploads')
 	    },
+	    // Rename the file, so we can create a reference to save in the database.
 	    filename: function(req, file, cb) {
 	    	var ext = file.originalname.split('.')
 	        cb(null, 'upload-' + Date.now() + '.' + ext[ext.length - 1])
@@ -16,13 +18,13 @@ var express = require('express'),
 
 	})	
 
+	// Assign the configured storage to the upload.
 	upload = multer({ 
 		storage: storage,
 	})
 
 	checkLogin = require('../../../lib/checkLogin.js'),
     router = express.Router();
-
 
 router.get('/', function(req, res) {
 
@@ -32,7 +34,8 @@ router.get('/', function(req, res) {
 
 			var promise = new Promise(function(resolve, reject) {
 
-				connection.query(sqlLibrary.selectAllFromContent(), ['image'], function(err, callback) {
+				// Grab all rows from content
+				connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
 					if(err) { 
 						reject(err) 
 					}
@@ -43,6 +46,7 @@ router.get('/', function(req, res) {
 
 			}).then(function(callback) {
 
+				// Filter content based on type for parsing.
 				var imageStack = callback.filter(filterType.image)
 				var videoStack = callback.filter(filterType.video)
 				var tweetStack = callback.filter(filterType.tweet)
@@ -65,13 +69,13 @@ router.get('/new/', function(req, res) {
 		res.redirect('/dashboard/content/');
 	}
 
-
 });
 
 router.get('/new/:type', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
+		// Check the type, and render the corresponding page or redirect back. 
 		switch(req.params.type) {
 			case 'image':
 				res.render('dashboard/content/new', { title: 'Image', type: req.params.type, preview: true, img: true });
@@ -94,6 +98,7 @@ router.get('/new/:type', function(req, res) {
 
 });
 
+// Configure a single upload option (file)
 router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 
 	if(checkLogin(req.session, res)) {
@@ -101,6 +106,7 @@ router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 		var input = req.body,
 			file = req.file;
 
+			// Insert checks for the uploads
 			switch(req.params.type) {
 				case 'image':
 
@@ -123,6 +129,7 @@ router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 
 					else {
 
+						// If everything is fine, upload the image and insert the values in the database
 						req.getConnection(function(err, connection) {
 							var promise = new Promise(function(resolve, reject) {
 								connection.query(sqlLibrary.insertNewContentItem(), [input.name, file.filename, input.desc, input.duration, req.params.type, req.session.userid], function(err, callback) {
@@ -133,6 +140,7 @@ router.post('/new/:type', upload.single('file'), function(req, res, cb) {
 										resolve(callback)
 									}
 								})
+							// When done, redirect to the content.
 							}).then(function(callback) {
 								res.redirect('/dashboard/content/');
 							})
@@ -203,6 +211,7 @@ router.get('/edit/:id', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 		
+		// Get the current specific information of the slide in question.
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
@@ -214,6 +223,8 @@ router.get('/edit/:id', function(req, res) {
 						resolve(callback)
 					}
 				})
+
+			// Render the page with all information available.
 			}).then(function(callback) {
 
 				var input = callback[0]
@@ -238,6 +249,7 @@ router.get('/edit/:id', function(req, res) {
 
 });
 
+
 router.post('/edit/:id', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
@@ -245,6 +257,7 @@ router.post('/edit/:id', function(req, res) {
 		var input = req.body;
 
 		req.getConnection(function(err, connection) {
+			// Insert all new data inside the database.
 			var promise = new Promise(function(resolve, reject) {
 				connection.query(sqlLibrary.updateRowInContent(), [input.name, input.description, input.duration, req.params.id], function(err, callback) {
 					if(err) { 
@@ -305,10 +318,10 @@ router.post('/delete/:id', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 			
+			// Delete all slideshow_has_content items first, due to FK dependencies
 			var promise = new Promise(function(resolve, reject) {
 				connection.query(sqlLibrary.deleteRowFromContentItemSlideshow(), [req.params.id], function(err, callback) {
 					if(err) { 
-						console.log(err)
 						reject(err) 
 					}
 					else {
@@ -317,17 +330,17 @@ router.post('/delete/:id', function(req, res) {
 				})
 			})
 
-
+			// Remove the content from the table itself.
 			var promise = new Promise(function(resolve, reject) {
 				connection.query(sqlLibrary.deleteRowFromContent(), [req.params.id], function(err, callback) {
 					if(err) { 
-						console.log(err)
 						reject(err) 
 					}
 					else {
 						resolve(callback)
 					}
 				})
+
 			}).then(function(callback) {
 				res.redirect('/dashboard/content');	
 			})

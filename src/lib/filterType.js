@@ -1,3 +1,5 @@
+// Filters callback from the database into respective types (images, video's and tweets)
+
 var filterType = {
 
 	image: function(obj) {

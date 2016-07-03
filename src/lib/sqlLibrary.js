@@ -1,3 +1,5 @@
+// Seperate queries and structure for clarification. These are all MySQL queries used by the router.
+
 var sqlLibrary = {
 
 	// Content queries

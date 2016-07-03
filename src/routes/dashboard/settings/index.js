@@ -12,6 +12,7 @@ router.get('/', function(req, res) {
 
 router.post('/settings', function(req, res) {
 
+	// Deletes the session, effectively logging out.
 	req.session.destroy();
 
 	res.redirect('/dashboard/login')

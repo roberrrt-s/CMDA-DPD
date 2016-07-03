@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 			var promise = new Promise(function(resolve, reject) {
+				// Query to select all the screens from the database
 				connection.query(sqlLibrary.selectAllFromScreen(), function(err, callback) {
 
 					if(err) { 
@@ -21,9 +22,11 @@ router.get('/', function(req, res) {
 				})
 			}).then(function(callback) {
 
+				// If there are no screens.
 				if(callback.length < 1) {
 					res.render('dashboard/screen/index', { title: 'Screens', error: 'No screens available yet' });
 				}
+				// If there are.
 				else {
 					res.render('dashboard/screen/index', { title: 'Screens', data: callback });
 				}
@@ -50,6 +53,7 @@ router.post('/new/', function(req, res) {
 		
 		var input = req.body;
 
+		// Checks for validation to see if all fields are entered.
 		if(input.name === '') {
 			res.render('dashboard/screen/new', { title: 'New', error: 'Please fill in a name' });
 		}
@@ -64,6 +68,7 @@ router.post('/new/', function(req, res) {
 			req.getConnection(function(err, connection) {
 
 				var promise = new Promise(function(resolve, reject) {
+					// Insert new screen data in the database
 					connection.query(sqlLibrary.insertNewScreenItem(), [input.name, input.desc, input.location], function(err, callback) {
 						if(err) { 
 							reject(err) 
@@ -95,6 +100,7 @@ router.get('/edit/:id', function(req, res) {
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
+				// Get the current matching screen
 				connection.query(sqlLibrary.selectRowFromScreen(), [req.params.id], function(err, callback) {
 					if(err) { 
 						reject(err)
@@ -109,11 +115,14 @@ router.get('/edit/:id', function(req, res) {
 				var screen = callback[0];
 				var none = false;
 
+				// Pre-selected option for the dropdown, if statement to check if there's a pre-assigned option.
 				if(screen.slideshow_id !== 0) {
 					var none = true;
 				}
 
 				var promised = new Promise(function(resolve, reject) {
+
+					// Select all slideshow information from the database
 					connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
 						if(err) { 
 							reject(err) 
@@ -127,6 +136,7 @@ router.get('/edit/:id', function(req, res) {
 
 					var slideshows = callback
 
+					// If there's a selected option, check all options to see which one matches.
 					for(var i = 0; i < slideshows.length; i++) {
 						if(slideshows[i].id === screen.slideshow_id) {
 							slideshows[i].selected = true;
@@ -159,6 +169,7 @@ router.post('/edit/:id', function(req, res) {
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
+				// Update the information in the database
 				connection.query(sqlLibrary.updateRowInScreen(), [input.name, input.desc, input.loc, input.slideshow, req.params.id], function(err, callback) {
 					if(err) { 
 						reject(err) 
@@ -194,6 +205,7 @@ router.post('/delete/:id', function(req, res) {
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
+				// Query to remove the row from the database
 				connection.query(sqlLibrary.deleteRowFromScreen(), [req.params.id], function(err, callback) {
 					if(err) { 
 						reject(err) 
