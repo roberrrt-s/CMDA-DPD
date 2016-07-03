@@ -245,14 +245,20 @@ router.post('/edit/:id', function(req, res) {
 		var input = req.body;
 
 		req.getConnection(function(err, connection) {
-
-			connection.query(sqlLibrary.updateRowInContent(), [input.name, input.description, input.duration, req.params.id], function(err, callback) {
-				if(err) { console.log(err) }
-			});
-
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.updateRowInContent(), [input.name, input.description, input.duration, req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				});
+			}).then(function(calback) {
+				res.redirect('/dashboard/content');	
+			})
 		});
 
-		res.redirect('/dashboard/content');	
 	}
 
 
@@ -272,9 +278,17 @@ router.get('/delete/:id', function(req, res) {
 	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
-
-			connection.query(sqlLibrary.selectRowFromContent(), [req.params.id], function(err, callback) {
-				if(err) { console.log(err) };
+			
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.selectRowFromContent(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
 				res.render('dashboard/content/delete', { title: 'Delete', id: req.params.id, type: callback[0].type, name: callback[0].name });
 			})
 
@@ -290,13 +304,21 @@ router.post('/delete/:id', function(req, res) {
 	if(checkLogin(req.session, res)) {
 
 		req.getConnection(function(err, connection) {
-
+			
+			var promise = new Promise(function(resolve, reject) {
 			connection.query(sqlLibrary.deleteRowFromContent(), [req.params.id], function(err, callback) {
-				if(err) { console.log(err) };
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
+				res.redirect('/dashboard/content');	
 			})
-		});
 
-		res.redirect('/dashboard/content');	
+		});
 
 	}
 

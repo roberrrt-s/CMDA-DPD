@@ -32,9 +32,19 @@ router.post('/login/', function(req, res) {
 	else {
 
 		req.getConnection(function(err, connection) {
-			connection.query(sqlLibrary.selectRowFromUser(), [input.email], function(err, callback) {
-				if(err) return next('error');
-				
+
+			var promise = new Promise(function(resolve, reject) {
+
+				connection.query(sqlLibrary.selectRowFromUser(), [input.email], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
 				if(callback.length === 0) {
 					res.render('dashboard/login', { error: 'User does not exist', title: 'Login'})	
 				}
@@ -49,13 +59,10 @@ router.post('/login/', function(req, res) {
 					req.session.email = data.email
 					req.session.userid = data.id
 
-					console.log(req.session)
-
 					res.redirect('/dashboard/');
-				}
-
+				}				
 			})
-		});
+		})
 
 	}
 
@@ -77,21 +84,36 @@ router.post('/register/', function(req, res) {
 	else {
 
 		req.getConnection(function(err, connection) {
-			connection.query(sqlLibrary.selectEmailFromUser(), [input.email], function(err, callback) {
+
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.selectEmailFromUser(), [input.email], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}					
+				})
+			}).then(function(callback) {
 				if(callback.length > 1) {
 					res.render('dashboard/register', { error: 'This email has been used already', title: 'Register'})
 				}
 				else {
+					
+					var promised = new Promise(function(resolve, reject) {
 
-					req.getConnection(function(err, connection) {
-						//Might be broken
 						connection.query(sqlLibrary.insertRowInUser(), [input.email, encryptData(input.pass), input.name], function(err, callback) {
-							if(err) { return next('error') };
+							if(err) { 
+								reject(err) 
+							}
+							else {
+								resolve(callback)
+							}								
 						})
-					});
 
-					res.redirect('/dashboard/login/');
-
+					}).then(function(callback) {
+						res.redirect('/dashboard/login/');
+					})
 				}
 			})
 		});
