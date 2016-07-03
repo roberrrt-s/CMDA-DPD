@@ -306,8 +306,22 @@ router.post('/delete/:id', function(req, res) {
 		req.getConnection(function(err, connection) {
 			
 			var promise = new Promise(function(resolve, reject) {
-			connection.query(sqlLibrary.deleteRowFromContent(), [req.params.id], function(err, callback) {
+				connection.query(sqlLibrary.deleteRowFromContentItemSlideshow(), [req.params.id], function(err, callback) {
 					if(err) { 
+						console.log(err)
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}					
+				})
+			})
+
+
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.deleteRowFromContent(), [req.params.id], function(err, callback) {
+					if(err) { 
+						console.log(err)
 						reject(err) 
 					}
 					else {

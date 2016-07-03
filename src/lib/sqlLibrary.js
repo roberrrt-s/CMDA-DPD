@@ -58,15 +58,15 @@ var sqlLibrary = {
 	},
 
 	insertNewSlideshowItem: function() {
-		return 'INSERT INTO slideshow SET name = ?,  description = ?';
+		return 'INSERT INTO slideshow SET name = ?, description = ?';
 	},
 
-	insertRowInSlideshow: function() {
-		return 'INSERT INTO slideshow SET name = ?, description = ? WHERE id = ?';
+	updateRowInSlideshow: function() {
+		return 'UPDATE slideshow SET name = ?, description = ? WHERE id = ?';
 	},
 
 	insertNewSlideshowContentItem: function() {
-		return 'INSERT INTO slideshow_has_content SET slideshow_id = ?, content_id= ?';
+		return 'INSERT INTO slideshow_has_content SET slideshow_id = ?, content_id = ?';
 	},
 
 	deleteRowFromSlideshow: function() {
@@ -76,6 +76,11 @@ var sqlLibrary = {
 	deleteRowFromSlideshowContentItem: function() {
 		return 'DELETE FROM slideshow_has_content WHERE slideshow_id = ?';
 	},
+
+	deleteRowFromContentItemSlideshow: function() {
+		return 'DELETE FROM slideshow_has_content WHERE content_id = ?';
+	},
+
 	// End of Slideshow queries
 
 	// Login queries 
