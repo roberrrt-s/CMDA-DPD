@@ -30,7 +30,10 @@ router.get('/', function(req, res) {
 					res.render('dashboard/slideshow/index', { title: 'Slideshows', data: callback });
 				}				
 				
-			})
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
+
 		});
 
 	}
@@ -62,7 +65,10 @@ router.get('/new/', function(req, res) {
 
 				res.render('dashboard/slideshow/new', { title: 'Slideshows', image: imageStack, video: videoStack, tweet: tweetStack });			
 			
-			})
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
+
 		});
 
 	}
@@ -98,7 +104,10 @@ router.post('/new/', function(req, res) {
 
 					res.render('dashboard/slideshow/new', { title: 'Slideshows', image: imageStack, video: videoStack, tweet: tweetStack, error: 'Please enter a name' });
 				
-				})
+				}).catch(function(err) {
+					console.log("Something went wrong: " + res)
+				});
+
 
 			}
 			else if(input.description === '') {
@@ -120,7 +129,9 @@ router.post('/new/', function(req, res) {
 
 					res.render('dashboard/slideshow/new', { title: 'Slideshows', image: imageStack, video: videoStack, tweet: tweetStack, error: 'Please enter a description' });
 
-				})
+				}).catch(function(err) {
+					console.log("Something went wrong: " + res)
+				});
 
 			}
 			else {
@@ -136,7 +147,7 @@ router.post('/new/', function(req, res) {
 						}
 					})
 				}).then(function(callback) {
-					
+
 					slideshowId = callback.insertId;
 					
 					for(key in input) {
@@ -149,7 +160,10 @@ router.post('/new/', function(req, res) {
 
 					res.redirect('/dashboard/slideshow/');
 
-				})
+				}).catch(function(err) {
+					console.log("Something went wrong: " + res)
+				});
+
 			}
 		})
 	}
@@ -168,9 +182,12 @@ router.get('/edit/:id', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
+		var allContent, memoryContent, imageStack, videoStack, tweetStack;
+
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
+
 				connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
 					if(err) { 
 						reject(err) 
@@ -179,51 +196,73 @@ router.get('/edit/:id', function(req, res) {
 						resolve(callback)
 					}
 				})
+
 			}).then(function(callback) {
-				var promised = new Promise(function(resolve, reject) {
-					connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, memory) {
-						if(err) { 
-							reject(err) 
-						}
-						else {
-							resolve(callback)
-						}
-					})
-				}).then(function(callback) {
+				allContent = callback;
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
 
-					for(var i = 0; i < callback.length; i++) {
-						for(var j = 0; j < memory.length; j++) {
-							if(callback[i].id === memory[j].content_id) {
-								callback[i].checked = true;
-							}
-						}
+			var promise = new Promise(function(resolve, reject) {
 
+				connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
 					}
-
-					var imageStack = callback.filter(filterType.image)
-					var videoStack = callback.filter(filterType.video)
-					var tweetStack = callback.filter(filterType.tweet)
-
-					var show = new Promise(function(resolve, reject) {
-						connection.query(sqlLibrary.selectRowFromSlideshow(), [req.params.id], function(err, callback) {
-							if(err) { 
-								reject(err) 
-							}
-							else {
-								resolve(callback)
-							}
-						})
-					}).then(function(callback) {
-						var input = callback[0]
-
-						res.render('dashboard/slideshow/edit', { title: 'Slideshows', image: imageStack, video: videoStack, tweet: tweetStack, name: input.name, description: input.description, id: req.params.id });					
-					});
+					else {
+						resolve(callback)
+					}
 				})
-			})
-		});
-	}
 
-});
+			}).then(function(callback) {
+				memoryContent = callback;
+
+				for(var i = 0; i < allContent.length; i++) {
+					for(var j = 0; j < memoryContent.length; j++) {
+						if(allContent[i].id === memoryContent[j].content_id) {
+							allContent[i].checked = true;
+						}
+					}
+				}
+
+				imageStack = allContent.filter(filterType.image);
+				videoStack = allContent.filter(filterType.video);
+				tweetStack = allContent.filter(filterType.tweet);
+
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
+
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.selectRowFromSlideshow(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
+				var input = callback[0]
+
+				res.render('dashboard/slideshow/edit', { 
+					title: 'Slideshows', 
+					image: imageStack, 
+					video: videoStack, 
+					tweet: tweetStack, 
+					name: input.name, 
+					description: input.description, 
+					id: req.params.id 
+				});			
+
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
+
+		})
+	}
+})
 
 router.post('/edit/:id', function(req, res) {
 
@@ -242,37 +281,43 @@ router.post('/edit/:id', function(req, res) {
 					}						
 				})
 			}).then(function(callback) {
+				console.log('done')
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
 
-				var promised = new Promise(function(resolve, reject) {
-					connection.query(sqlLibrary.insertRowInSlideshow(), [input.name, input.description, req.params.id], function(err, callback) {
-						if(err) { 
-							reject(err) 
-						}
-						else {
-							resolve(callback)
-						}
-					})
-				}).then(function(callback) {
-
-					for(key in input) {
-						if(!isNaN(key)) {
-							var loop = new Promise(function(resolve, reject) {
-								connection.query(sqlLibrary.insertNewSlideshowContentItem(), [req.params.id, key], function(err, callback) {
-									if(err) { 
-										reject(err) 
-									}
-									else {
-										resolve(callback)
-									}
-								});
-							});
-						}
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.updateRowInSlideshow(), [input.name, input.description, req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
 					}
-
-					res.redirect('/dashboard/slideshow/');
-
+					else {
+						resolve(callback)
+					}
 				})
-			})
+			}).then(function(callback) {
+
+				for(key in input) {
+					if(!isNaN(key)) {
+						var loop = new Promise(function(resolve, reject) {
+							connection.query(sqlLibrary.insertNewSlideshowContentItem(), [req.params.id, key], function(err, callback) {
+								if(err) { 
+									reject(err) 
+								}
+								else {
+									resolve(callback)
+								}
+							});
+						});
+					}
+				}
+
+				res.redirect('/dashboard/slideshow/');
+
+			}).catch(function(err) {
+				console.log("Something went wrong:" + res)
+			});
+
 		});
 	}
 
@@ -303,7 +348,10 @@ router.get('/delete/:id/', function(req, res) {
 				});
 			}).then(function(callback) {
 				res.render('dashboard/slideshow/delete', { title: 'Delete', id: req.params.id, name: callback[0].name });
-			})
+			}).catch(function(err) {
+				console.log("Something went wrong: " + res)
+			});
+
 
 		});
 
