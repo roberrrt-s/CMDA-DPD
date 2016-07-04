@@ -15,17 +15,39 @@
         {{/if}}
 
         <main id="slideshow">
+        <!--
             {{#each image}}
             <section class="item {{type}}">
                 <img src="/uploads/{{link}}" alt="Poster CMD">
             </section>
             {{/each}}
-
+        -->
             {{#each video}}
             <section class="item {{type}}">
                 <img src="/uploads/{{link}}" alt="Poster CMD">
             </section>
             {{/each}}
+
+            {{#each tweet}}
+            <section class="item tweet">
+                <div class="tweet__image">
+                    <img src="{{bgimage}}">
+                </div>
+                <div class="tweet__content">
+                    <section class="tweet__screenname"><h2>@{{screen_name}}</h2></section>
+                    <section class="tweet__name"><h1>{{name}}</h1></section>
+                    <section class="tweet__content">"{{content}}"</section>
+    
+                    {{#if media}}
+                        <section class="tweet__media">
+                            <img src="{{media}}">
+                        </section>
+                    {{/if}}    
+
+                </div>
+            </section>
+            {{/each}}
+
 
         </main>
    </body>

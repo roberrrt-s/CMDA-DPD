@@ -10,6 +10,7 @@ var express = require('express'),
 	hbs = require('hbs'),
 	mysql = require('mysql'),
 	app = express(),
+	Twitter = require('twitter'),
     http = require('http').Server(app);
 
 // Defining routes
@@ -34,6 +35,8 @@ var dbconfig = {
     database: 'dpd',
     port: 3306
 };
+
+// Connecting with Twitter
 
 // Connect with the database by extending the request object
 app.use(myConnection(mysql, dbconfig, 'single'));
