@@ -33,6 +33,13 @@ main {
 	align-items: center;
 }
 
+.item {
+	min-width: 100%;
+	min-height: 100%;	
+	min-width: 100vw;
+	min-height: 100vh;
+}
+
 .image img {
 	max-width: 100%;
 	max-height: 100%;
@@ -40,38 +47,6 @@ main {
 	max-height: 100vh;
 	width: auto;
 	height: auto;
-}
-
-.twitter {
-	background-color: #FFFFFF;
-	min-width: 90%;
-	min-height: 100%;
-	max-height: 100%;
-	min-width: 90vw;	
-	min-height: 100vh;
-	max-height: 100vh;
-}
-
-.twitter img {
-	border-radius: 50%;
-}
-
-.twitter__wrapper {
-	display: -webkit-flex;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-flow: column wrap;
-	align-content: center;
-	max-width: 90%;
-	max-height: 100%;
-	max-width: 90vw;
-	max-height: 100vh;
-}
-
-.query {
-	margin: 1em;
-	min-width: 100%;
 }
 
 .tweet {
@@ -115,21 +90,6 @@ main {
 
 .tweet__media img{
 	border: 1px solid #000;
-}
-
-@media (max-width: 100em) {  
-	.tweet {
-		min-width: 1em;
-		width: auto;
-		min-height: 9em;
-		margin: 1em;
-		font-size: .8em;
-	}
-}
-@media (max-width: 65em) {  
-	.twitter__wrapper {
-		flex-flow: column;
-	}
 }
 
 .hidden {
