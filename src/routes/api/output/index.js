@@ -2,6 +2,7 @@ var express = require('express'),
 	sqlLibrary = require('../../../lib/sqlLibrary.js'),
 	filterType = require('../../../lib/filterType.js'),
 	twit = require('../../../lib/twitter.js'),
+	renderOutput = require('../../../lib/renderOutput.js'),
     router = express.Router();
 
 // Host data at api/output/ <screen id> which can be viewd from a screen
@@ -70,7 +71,8 @@ router.get('/:id', function (req, res) {
 					}).then(function(callback) {
 						// Check if we're done with all tweets, if not, skip this step and repeat.
 						if(tweetList.length === tweetStack.length) {
-							res.render('api/index', {image: imageStack, video: videoStack, tweet: tweetList})
+							var params = { image: imageStack, video: videoStack, tweet: tweetList }
+							renderOutput.init(res, params)
 						}
 					})
 	
