@@ -29,6 +29,10 @@ body {
 	font-family: "Open Sans";
 }
 
+.capitalize {
+	text-transform: capitalize;
+}
+
 .msg {
 	color: #FF5555;
 }

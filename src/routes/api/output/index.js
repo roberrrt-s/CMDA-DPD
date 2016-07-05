@@ -31,6 +31,24 @@ router.get('/:id', function (req, res) {
 				var videoStack = data.filter(filterType.video)
 				var tweetStack = data.filter(filterType.tweet)	
 
+				// If we have video's, make sure we parse the correct id to the data-video attribute
+				if(videoStack) {
+					for(var i = 0; i < videoStack.length; i++) {
+						// Regular URL's
+						if(videoStack[i].link.indexOf('watch?') > 0) {
+							var link = videoStack[i].link.split('=')
+							videoStack[i].link = link[link.length - 1];
+						}
+						// Mobile URL's
+						if(videoStack[i].link.indexOf('.be/') > 0) {
+							var link = videoStack[i].link.split('/')
+							videoStack[i].link = link[link.length - 1];							
+						}
+
+						videoStack[i].id = 'video-' + i
+					}
+				}
+
 				// If we have tweets, activate a twitter client
 				if(tweetStack.length > 0) {
 					var tweet = twit.init();

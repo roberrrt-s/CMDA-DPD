@@ -15,16 +15,16 @@
         {{/if}}
 
         <main id="slideshow">
-        <!--
+        
             {{#each image}}
             <section class="item {{type}}">
                 <img src="/uploads/{{link}}" alt="Poster CMD">
             </section>
             {{/each}}
-        -->
+        
             {{#each video}}
             <section class="item {{type}}">
-                <img src="/uploads/{{link}}" alt="Poster CMD">
+                <div id="{{id}}" data-video="{{link}}"></div>
             </section>
             {{/each}}
 
