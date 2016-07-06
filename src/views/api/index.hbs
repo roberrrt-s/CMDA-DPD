@@ -30,12 +30,15 @@
 
             {{#each tweet}}
             <section data-duration="{{duration}}" class="item tweet">
-                <div class="tweet__image">
+                <div class="tweet__info">
                     <img src="{{bgimage}}">
-                </div>
-                <div class="tweet__content">
                     <section class="tweet__screenname"><h2>@{{screen_name}}</h2></section>
                     <section class="tweet__name"><h1>{{name}}</h1></section>
+                </div>
+
+
+                <div class="tweet__contains">
+
                     <section class="tweet__content">"{{content}}"</section>
     
                     {{#if media}}

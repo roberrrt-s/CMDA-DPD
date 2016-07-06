@@ -60,14 +60,17 @@ main {
 }
 
 .tweet {
+	position: relative;
+	min-width: 80vw;
+	min-height: 80vh;	
+
+	max-width: none;
+	max-height: none;
+
+	margin: auto;
 	background-color: #FFFFFF;
 	display: flex;
 	flex-direction: row;
-	height: auto;
-	max-width: 60em;
-	min-width: 60em;
-	min-height: 10em;
-	margin: 1em 2em;
 	padding: 1em;
 	box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
 }
@@ -76,16 +79,16 @@ main {
 	margin: .5em;
 }
 
-.tweet__image {
-	min-width: 10em;
-	min-height: 10em;
-	max-width: 10em;
-	max-height: 10em;
+.tweet__info {
+	min-width: 20%;
+	max-width: 20%;
+	margin: 2em;
+	text-align: center;
 }
 
-.tweet__image img {
-	width: 100%;
-	height: 100%;
+.tweet__info img {
+	width: 10em;
+	height: 10em;
 	border-radius: 100%;
 	border: 1px solid #000;
 }
@@ -94,14 +97,50 @@ main {
 	margin: 1em;
 }
 
+.tweet__contains {
+	display: flex;
+	flex-flow: column wrap;
+	align-content: center;
+}
+
+.tweet__content {
+	font-size: 1.5em;
+}
+
 .tweet__media {
+	max-width: 100%;
+	max-height: 100%;
 	margin: .5em
 }
 
-.tweet__media img{
+.tweet__media img {
+	max-height: 40em;
+	height: auto;
+	margin: auto;
+	text-align: center;
 	border: 1px solid #000;
 }
 
 .hidden {
 	display: none;
+}
+
+@media (orientation: portrait) {  
+
+	.tweet {
+		display: flex;
+		flex-flow: column wrap;
+	}
+
+	.tweet__info {
+		min-width: 100%;
+		max-width: 100%;
+		margin: 0;
+		text-align: center;
+	}
+
+	.tweet__wrapper {
+		margin: 0;
+	}
+
 }
