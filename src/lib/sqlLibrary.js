@@ -100,7 +100,7 @@ var sqlLibrary = {
 
 	// API query
 	joinContentAndSlideshow: function() {
-		return 'SELECT link, type FROM slideshow LEFT JOIN slideshow_has_content ON slideshow_id = ? LEFT JOIN content ON slideshow_has_content.content_id = content.id';
+		return 'SELECT link, type, duration FROM slideshow LEFT JOIN slideshow_has_content ON slideshow_id = ? LEFT JOIN content ON slideshow_has_content.content_id = content.id';
 	}
 
 }

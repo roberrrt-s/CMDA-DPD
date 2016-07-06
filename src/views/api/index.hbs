@@ -17,19 +17,19 @@
         <main id="slideshow">
         
             {{#each image}}
-            <section class="item {{type}}">
+            <section data-duration="{{duration}}" class="item {{type}}">
                 <img src="/uploads/{{link}}" alt="Poster CMD">
             </section>
             {{/each}}
         
             {{#each video}}
-            <section class="item {{type}}">
+            <section data-duration="video" class="item {{type}}">
                 <div id="{{id}}" data-video="{{link}}"></div>
             </section>
             {{/each}}
 
             {{#each tweet}}
-            <section class="item tweet">
+            <section data-duration="{{duration}}" class="item tweet">
                 <div class="tweet__image">
                     <img src="{{bgimage}}">
                 </div>

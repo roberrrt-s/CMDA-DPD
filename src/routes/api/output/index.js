@@ -65,6 +65,9 @@ router.get('/:id', function (req, res) {
 						var link = tweetStack[i].link.split('/');
 						tweetStack[i].link = link[link.length - 1];
 					}
+
+					var tweetDuration = tweetStack[i].duration
+
 					var promise = new Promise(function(resolve, reject) {
 						// Grab the twitter ID and request the object
 						tweet.get('statuses/show', { id: tweetStack[i].link },  function(err, callback, response) {
@@ -77,19 +80,25 @@ router.get('/:id', function (req, res) {
 						});	
 					}).then(function(callback) {
 
+						console.log(tweetStack[i])
+
 						// Add all data we need into the twitter list
 						tweetList.push( {
 							name: callback.user.name,
 							screen_name: callback.user.screen_name,
 							content: callback.text,
 							bgimage: callback.user.profile_image_url,
-							media: callback.entities.media[0].media_url
+							media: callback.entities.media[0].media_url,
+							duration: tweetDuration
 						})
 
 					}).then(function(callback) {
 						// Check if we're done with all tweets, if not, skip this step and repeat.
 						if(tweetList.length === tweetStack.length) {
 							var params = { image: imageStack, video: videoStack, tweet: tweetList }
+							console.log(imageStack)
+,							console.log(videoStack)
+							console.log(tweetList)
 							renderOutput.init(res, params)
 						}
 					})
