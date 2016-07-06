@@ -1,4 +1,6 @@
+// Main video object
 var video = (function(){
+	'use strict'
 
 	// Insert the YouTube API.
 	var init = function() {
@@ -20,6 +22,7 @@ var video = (function(){
 		// Select all video containers
 		var containers = document.querySelectorAll('.video > div')
 
+		// Check if there are any video's, if not, we do not have to insert a new video.
 		if(containers.length < 1) {
 			animation.play();
 			return false;
@@ -48,6 +51,7 @@ var video = (function(){
 
 	}
 
+	// Save a reference to this video, including the name of the wrapper.
 	var save = function(e) {
 
 		blockbuster.list.push({
@@ -55,15 +59,14 @@ var video = (function(){
 			player: e.target
 		})
 
-		console.log(blockbuster.list.length)
-		console.log(document.getElementsByClassName('video').length)
-
+		// If all video's are ready, start the animation.
 		if(blockbuster.list.length === document.getElementsByClassName('video').length) {
 			animation.play();
 		}
 
 	}
 
+	// If a video has ended playing (checking for data 0, which is the YouTube reference for ended).
 	var ended = function(e) {
 
 		if(e.data === 0) {
@@ -83,23 +86,31 @@ var video = (function(){
 
 }());
 
+// Main animation object.
 var animation = (function(){
+	'use strict'
 
+	// Define the current and all slides in the slideshow.
 	var current = 0;
 	var slides = document.getElementsByClassName('item');
 
+	// Start the animation.
 	var play = function() {
 
+		// Set all slides opacity to 0
 		for (var i = 0; i < slides.length; i++) {
 			slides[i].style.opacity = 0;
 		}
 
+		// Get the current slide, and progress to the next one. Set opacity and duration.
 		animation.current = (animation.current != animation.slides.length - 1) ? animation.current + 1 : 0;
 		animation.slides[animation.current].style.opacity = 1;
 		var duration = animation.slides[animation.current].getAttribute('data-duration') * 1000;
 
+		// Check if the duration is video
 		if(isNaN(duration)) {
 
+			// If video, grab the reference from blockbuster.list and play the video
 			var id = animation.slides[animation.current].childNodes[1].id;
 			var video = document.getElementById(id);
 
@@ -108,17 +119,19 @@ var animation = (function(){
 					blockbuster.list[i].player.playVideo();
 				}
 			}
-
+			// Return false to avoid a new timeout.
 			return false;
 
 		}
 
+		// Restart the animation principle after the delay.
 		setTimeout(function() {
 			animation.play();
 		}, duration)
 
 	}
 
+	// Return the public functions
 	return {
 		current: current,
 		slides: slides,
@@ -127,7 +140,9 @@ var animation = (function(){
 
 }());
 
+// Object that holds all video references.
 var blockbuster = (function(){
+	'use strict'
 
 	var list = [];
 
@@ -142,4 +157,5 @@ function onYouTubePlayerAPIReady() {
 	video.ready();
 }
 
+// Start the application
 video.init();
