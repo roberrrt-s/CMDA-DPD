@@ -7,16 +7,6 @@
         <form enctype="multipart/form-data" action="/dashboard/content/new/{{type}}" method="post"> 
 
             <div class="flex-container">
-                
-            {{#if preview}}
-                <fieldset>
-                <legend>Preview</legend>
-                    <p id="preview-text">Upload load an image to preview it here<br>
-                    Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
-                    <img id="preview-image">
-
-                </fieldset>
-            {{/if}}
 
                 <fieldset>
                 <legend>Options</legend>
@@ -52,6 +42,16 @@
 
                 </fieldset>
 
+                {{#if preview}}
+                    <fieldset id="preview">
+                    <legend>Preview</legend>
+                        <p id="preview-text">Upload load an image to preview it here<br>
+                        Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
+                        <img id="preview-image">
+
+                    </fieldset>
+                {{/if}}
+            
             </div>
         
             <input type="submit" value="Create item">

@@ -54,6 +54,10 @@ body.font-support {
 	background-color: #CCC;
 }
 
+#preview {
+	display: none;
+}
+
 #sidebar {
 	background-color: #FFF;
 	position: fixed;
