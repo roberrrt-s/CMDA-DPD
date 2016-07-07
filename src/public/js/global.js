@@ -1,3 +1,9 @@
+var font = new FontFaceObserver('Open Sans');
+
+font.load().then(function () {
+  document.body.className = "font-ready"
+});
+
 var upload = document.getElementById("file-upload");
 
 // If there's a file-upload available, apply an event that inserts a preview image

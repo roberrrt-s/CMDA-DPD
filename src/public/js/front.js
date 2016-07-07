@@ -1,3 +1,9 @@
+var font = new FontFaceObserver('Open Sans');
+
+font.load().then(function () {
+  document.body.className = "font-ready"
+});
+
 // Main video object
 var video = (function(){
 	'use strict'

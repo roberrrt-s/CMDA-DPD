@@ -18,9 +18,9 @@ var express = require('express'),
 	}),
 
     http = require('http').Server(app),
-	io = require('socket.io').listen(server);
+	io = require('socket.io').listen(server),
 
-	reloader = require('./lib/reloader.js')
+	reloader = require('./lib/reloader.js');
 
 // Defining routes
 var index = require('./routes/index')

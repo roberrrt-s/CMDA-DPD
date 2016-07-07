@@ -20,6 +20,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
+    "fontfaceobserver": "^1.7.1",
     "hbs": "^4.0.0",
     "http": "^0.0.0",
     "mysql": "^2.11.1",
