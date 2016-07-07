@@ -6,7 +6,8 @@ CMD Amsterdam - Digital Poster Dashboard
  - Introduction
  - datamodel
  - src
- - static 
+ - static
+ - Code examples
  - About
 
 ### Introduction
@@ -75,9 +76,159 @@ The API consist of a single dynamic route (api/output/:id) which serves content 
 
 Static is a folder with a static prototype of the entire product. This prototype has been used in the first 2/3 weeks to collect feedback from both Mathijs and students. It involves prototypes for the dashboard with static content, and examples of the api/output/:id for video's, images and tweets.
 
+### Code examples
+
+###### socket.io
+
+I've used socket.io to automatically refresh all screen instances whenever a slideshow / screen gets updated.
+
+```javascript
+// server.js defining the server and io
+http = require('http').Server(app),
+io = require('socket.io').listen(server),
+
+reloader = require('./lib/reloader.js');
+```
+
+```javascript
+// Module from /lib/
+var reloader = {
+
+	send: function() {
+		io.sockets.emit('reload');
+	}
+}
+
+module.exports = reloader;
+```
+
+```javascript
+// Slideshow post request
+.then(function(callback) {
+	reloader.send();
+})
+```
+
+###### YouTube API with the slideshow
+
+I've extensively used the YouTube API to create a static duration for the entire length of an embedded video. This all happens client-sided in javascript, but since the displays are under my control, I do not have to write IE8< supported code.
+
+```javascript
+// Main animation object.
+var animation = (function(){
+	'use strict'
+
+	// Define the current and all slides in the slideshow.
+	var current = 0;
+	var slides = document.getElementsByClassName('item');
+
+	// Start the animation.
+	var play = function() {
+
+		// Set all slides opacity to 0
+		for (var i = 0; i < slides.length; i++) {
+			slides[i].style.opacity = 0;
+		}
+
+		// Get the current slide, and progress to the next one. Set opacity and duration.
+		animation.current = (animation.current != animation.slides.length - 1) ? animation.current + 1 : 0;
+		animation.slides[animation.current].style.opacity = 1;
+		var duration = animation.slides[animation.current].getAttribute('data-duration') * 1000;
+
+		// Check if the duration is video
+		if(isNaN(duration)) {
+
+			// If video, grab the reference from blockbuster.list and play the video
+			var id = animation.slides[animation.current].childNodes[1].id;
+			var video = document.getElementById(id);
+
+			for(var i = 0; i < blockbuster.list.length; i++) {
+				if(blockbuster.list[i].name === id) {
+					blockbuster.list[i].player.playVideo();
+				}
+			}
+			// Return false to avoid a new timeout.
+			return false;
+
+		}
+
+		// Restart the animation principle after the delay.
+		setTimeout(function() {
+			animation.play();
+		}, duration)
+
+	}
+
+	// Return the public functions
+	return {
+		current: current,
+		slides: slides,
+		play: play
+	}
+
+}());
+```
+
+###### Serverside Tweet support
+
+I created a way to render tweets from the serverside, instead of downloading them on the client, which should save bandwidth a lot.
+
+```javascript
+// For every twitter code in the stack
+for(var i = 0; i < tweetStack.length; i++) {
+
+	// If a user pasted the entire URL instead of the code, grab the twitter ID instead.
+	if(isNaN(tweetStack[i].link)) {
+		var link = tweetStack[i].link.split('/');
+		tweetStack[i].link = link[link.length - 1];
+	}
+
+	var tweetDuration = tweetStack[i].duration
+
+	var promise = new Promise(function(resolve, reject) {
+		// Grab the twitter ID and request the object
+		tweet.get('statuses/show', { id: tweetStack[i].link },  function(err, callback, response) {
+			if(err) {
+				reject(err)
+			}
+			else {
+				resolve(callback)
+			}
+		});	
+	}).then(function(callback) {
+
+		// Add all data we need into the twitter list
+		tweetList.push( {
+			name: callback.user.name,
+			screen_name: callback.user.screen_name,
+			content: callback.text,
+			bgimage: callback.user.profile_image_url,
+			media: callback.entities.media[0].media_url,
+			duration: tweetDuration
+		})
+
+	}).then(function(callback) {
+		// Check if we're done with all tweets, if not, skip this step and repeat.
+		if(tweetList.length === tweetStack.length) {
+			var params = { image: imageStack, video: videoStack, tweet: tweetList }
+			renderOutput.init(res, params)
+		}
+	})
+
+}
+
+```
+
+
 ### About
 
 Created for CMD Amsterdam (Mathijs Blekemolen) by Robert Spier as final assignment for the minor "Everything Web - Web Development"
+
+To run this code in your own environment:
+
+`npm install`
+
+`node server.js`
 
 ##### Courses implemented
 
