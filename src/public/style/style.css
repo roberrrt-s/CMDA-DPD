@@ -26,7 +26,15 @@ li {
 
 body {
 	background-color: #FFCC00;
-	font-family: "Open Sans", Arial, sans-serif;
+	font-family: sans-serif;
+}
+
+body.font-ready {
+	font-family: "Open Sans", sans-serif;
+}
+
+body.font-support {
+	font-family: sans-serif;
 }
 
 .capitalize {
