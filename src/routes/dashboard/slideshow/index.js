@@ -2,6 +2,7 @@ var express = require('express'),
 	checkLogin = require('../../../lib/checkLogin.js'),
 	filterType = require('../../../lib/filterType.js'),
 	sqlLibrary = require('../../../lib/sqlLibrary.js'),
+	reloader = require('../../../lib/reloader.js'),	
     router = express.Router();
 
 router.get('/', function(req, res) {

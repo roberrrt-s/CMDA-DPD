@@ -11,7 +11,16 @@ var express = require('express'),
 	mysql = require('mysql'),
 	app = express(),
 	Twitter = require('twitter'),
-    http = require('http').Server(app);
+
+	// Starting the server
+	server = app.listen(3000, function () {
+		console.log('Dashboard is listening on port 3000!');
+	}),
+
+    http = require('http').Server(app),
+	io = require('socket.io').listen(server);
+
+	reloader = require('./lib/reloader.js')
 
 // Defining routes
 var index = require('./routes/index')
@@ -77,8 +86,3 @@ app.use('/dashboard/slideshow', slideshow);
 app.use('/dashboard/content', content);
 app.use('/dashboard/settings', settings);
 
-
-// Start the application on port 3000
-app.listen(3000, function () {
-  console.log('Dashboard is listening on port 3000!');
-});

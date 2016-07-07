@@ -152,6 +152,25 @@ var blockbuster = (function(){
 
 }());
 
+// Object that holds the socket functionality
+var refresh = (function(){
+
+	// Define the socket
+    var socket = io();
+
+    // When required to reload, reload
+    socket.on("reload", function(r) {
+        location.reload();
+    });
+
+	return {
+		socket: socket
+	}
+
+}());
+
+
+
 // YouTube API requires this function to fire, so it's outside of the IIFE scope.
 function onYouTubePlayerAPIReady() {
 	video.ready();

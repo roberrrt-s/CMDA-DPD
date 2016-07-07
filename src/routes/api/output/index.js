@@ -3,6 +3,7 @@ var express = require('express'),
 	filterType = require('../../../lib/filterType.js'),
 	twit = require('../../../lib/twitter.js'),
 	renderOutput = require('../../../lib/renderOutput.js'),
+	reloader = require('../../../lib/reloader.js'),
     router = express.Router();
 
 // Host data at api/output/ <screen id> which can be viewd from a screen
@@ -80,8 +81,6 @@ router.get('/:id', function (req, res) {
 						});	
 					}).then(function(callback) {
 
-						console.log(tweetStack[i])
-
 						// Add all data we need into the twitter list
 						tweetList.push( {
 							name: callback.user.name,
@@ -96,9 +95,6 @@ router.get('/:id', function (req, res) {
 						// Check if we're done with all tweets, if not, skip this step and repeat.
 						if(tweetList.length === tweetStack.length) {
 							var params = { image: imageStack, video: videoStack, tweet: tweetList }
-							console.log(imageStack)
-,							console.log(videoStack)
-							console.log(tweetList)
 							renderOutput.init(res, params)
 						}
 					})
