@@ -338,6 +338,9 @@ router.post('/edit/:id', function(req, res) {
 			});
 
 		});
+
+		// Restart any slideshow instance. 
+		reloader.send();
 	}
 
 });

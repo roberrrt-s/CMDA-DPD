@@ -1,6 +1,7 @@
 var express = require('express'),
 	checkLogin = require('../../../lib/checkLogin.js')
 	sqlLibrary = require('../../../lib/sqlLibrary.js')
+	reloader = require('../../../lib/reloader.js'),	
     router = express.Router();
 
 router.get('/', function(req, res) {
@@ -26,7 +27,7 @@ router.get('/', function(req, res) {
 				if(callback.length < 1) {
 					res.render('dashboard/screen/index', { title: 'Screens', error: 'No screens available yet' });
 				}
-				// If there are.
+				// If there are,
 				else {
 					res.render('dashboard/screen/index', { title: 'Screens', data: callback });
 				}
@@ -156,6 +157,9 @@ router.get('/edit/:id', function(req, res) {
 				})
 			})
 		})
+
+		// Restart any slideshow instance. 
+		reloader.send();
 	}
 	
 
