@@ -78,15 +78,15 @@ router.get('/new/:type', function(req, res) {
 		// Check the type, and render the corresponding page or redirect back. 
 		switch(req.params.type) {
 			case 'image':
-				res.render('dashboard/content/new', { title: 'Image', type: req.params.type, preview: true, img: true });
+				res.render('dashboard/content/new', { title: 'Image', type: req.params.type, preview: true, img: true, duration: true});
 			break;
 
 			case 'video':
-				res.render('dashboard/content/new', { title: 'Video', type: req.params.type, preview: false, url: true });
+				res.render('dashboard/content/new', { title: 'Video', type: req.params.type, preview: false, url: true, duration: false});
 			break;
 
 			case 'tweet':
-				res.render('dashboard/content/new', { title: 'Tweet', type: req.params.type, preview: false, url: true });
+				res.render('dashboard/content/new', { title: 'Tweet', type: req.params.type, preview: false, url: true, duration: true});
 			break;
 
 			default:
@@ -236,7 +236,8 @@ router.get('/edit/:id', function(req, res) {
 					name: input.name, 
 					link: input.link,
 					desc: input.description,
-					dur: input.duration
+					dur: input.duration,
+					duration: true
 				});
 
 			})
@@ -255,6 +256,7 @@ router.post('/edit/:id', function(req, res) {
 	if(checkLogin(req.session, res)) {
 
 		var input = req.body;
+		input.duration = 0;
 
 		req.getConnection(function(err, connection) {
 			// Insert all new data inside the database.
@@ -262,6 +264,7 @@ router.post('/edit/:id', function(req, res) {
 				connection.query(sqlLibrary.updateRowInContent(), [input.name, input.description, input.duration, req.params.id], function(err, callback) {
 					if(err) { 
 						reject(err) 
+						console.log(err)
 					}
 					else {
 						resolve(callback)

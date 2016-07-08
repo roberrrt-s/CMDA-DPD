@@ -16,12 +16,15 @@
                     </label>
 
                     <label>Description:
-                        <input name="desc" type="text" placeholder="Description"></input>
+                        <textarea name="desc" type="text" placeholder="Description"></textarea>
                     </label>
 
+                    {{#if duration}}
                     <label>Display for x seconds:
                         <input name="duration" type="number" placeholder="Enter time in seconds"></input>
                     </label>
+                    {{/if}}
+
                     {{#if img}}
                     <label>New image:
                         <input id="file-upload" name="file" type="file"></input>

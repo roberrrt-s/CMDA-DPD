@@ -8,6 +8,7 @@
 
             <div class="flex-container">
                 <fieldset>
+                {{#if preview}}
                 <legend>Preview</legend>
 
                     <figure class="preview-image">
@@ -15,7 +16,7 @@
                     </figure>
 
                 </fieldset>
-
+                {{/if}}
                 <fieldset>
                 <legend>Options</legend>
 
@@ -24,12 +25,14 @@
                     </label>
 
                     <label>Description:
-                        <input name="description" value="{{desc}}" type="text" placeholder="Description"></input>
+                        <textarea name="description" placeholder="Description">{{desc}}</textarea>
                     </label>
 
+                    {{#if duration}}
                     <label>Display for x seconds:
                         <input name="duration" value="{{dur}}" type="text" placeholder="Enter time in seconds"></input>
                     </label>
+                    {{/if}}
 
                 </fieldset>
 
