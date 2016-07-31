@@ -43,7 +43,31 @@ router.get('/', function(req, res) {
 router.get('/new/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
-		res.render('dashboard/screen/new', { title: 'New' });
+
+		req.getConnection(function(err, connection) {
+
+			var promise = new Promise(function(resolve, reject) {
+
+				// Select all slideshow information from the database
+				connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
+
+				var slideshows = callback
+				console.log(slideshows)
+
+				res.render('dashboard/screen/new', { title: 'New', slideshows: slideshows });
+
+			})
+		})
+
 	}
 
 });
@@ -69,8 +93,9 @@ router.post('/new/', function(req, res) {
 			req.getConnection(function(err, connection) {
 
 				var promise = new Promise(function(resolve, reject) {
+
 					// Insert new screen data in the database
-					connection.query(sqlLibrary.insertNewScreenItem(), [input.name, input.desc, input.location], function(err, callback) {
+					connection.query(sqlLibrary.insertNewScreenItem(), [input.name, input.desc, input.location, input.slideshow], function(err, callback) {
 						if(err) { 
 							reject(err) 
 						}

@@ -34,7 +34,7 @@ var sqlLibrary = {
 	},
 
 	insertNewScreenItem: function() {
-		return 'INSERT INTO screen SET name = ?, description = ?, location = ?, slideshow_id = 0';
+		return 'INSERT INTO screen SET name = ?, description = ?, location = ?, slideshow_id = ?';
 	},
 
 	updateRowInScreen: function() {
