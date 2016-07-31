@@ -95,6 +95,32 @@ CREATE TABLE IF NOT EXISTS `dpd`.`slideshow_has_content` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `dpd`.`slide`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dpd`.`slide` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `slideshow_id` INT NOT NULL,
+  `content_id` INT NOT NULL,
+  `order` INT NULL,
+  `duration` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_slide_slideshow1_idx` (`slideshow_id` ASC),
+  INDEX `fk_slide_content1_idx` (`content_id` ASC),
+  CONSTRAINT `fk_slide_slideshow1`
+    FOREIGN KEY (`slideshow_id`)
+    REFERENCES `dpd`.`slideshow` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_slide_content1`
+    FOREIGN KEY (`content_id`)
+    REFERENCES `dpd`.`content` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
