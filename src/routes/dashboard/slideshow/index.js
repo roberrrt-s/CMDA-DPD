@@ -64,27 +64,19 @@ router.post('/delete/:id', function(req, res) {
 
 // Slides
 
-router.get('/edit/:id/add', function(req, res) {
+router.get('/edit/:id/new', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
 	}
 }
 
-router.post('/edit/:id/add', function(req, res) {
+router.post('/edit/:id/new', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
 	}
 }
-
-router.post('/edit/:id/remove/:slideId', function(req, res) {
-
-	if(checkLogin(req.session, res)) {
-
-	}
-}
-
 
 router.get('/edit/:id/edit/:slideId', function(req, res) {
 
@@ -94,6 +86,13 @@ router.get('/edit/:id/edit/:slideId', function(req, res) {
 }
 
 router.post('/edit/:id/edit/slideId', function(req, res) {
+
+	if(checkLogin(req.session, res)) {
+
+	}
+}
+
+router.post('/edit/:id/remove/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
