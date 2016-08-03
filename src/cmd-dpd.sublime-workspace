@@ -1,0 +1,593 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"R",
+				"Raikkonen"
+			],
+			[
+				"getElement",
+				"getElementsByClassName"
+			],
+			[
+				"tweet",
+				"tweetStack"
+			],
+			[
+				"inser",
+				"insertNewSlideshowContentItem"
+			],
+			[
+				"sql",
+				"sqlLibrary"
+			],
+			[
+				"slideshow",
+				"slideshow_has_content"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"array_re",
+				"array_replace"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"append",
+				"FILE_APPEND"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"get",
+				"getAttribute"
+			],
+			[
+				"funda",
+				"funda-border-blue"
+			],
+			[
+				"cr",
+				"createHtmlReference"
+			],
+			[
+				"funda-",
+				"funda-border-blue"
+			],
+			[
+				"local",
+				"localStorage"
+			],
+			[
+				"repos",
+				"repositories"
+			],
+			[
+				"respo",
+				"repositories"
+			],
+			[
+				"br",
+				"br"
+			],
+			[
+				"REPOS",
+				"repository"
+			],
+			[
+				"issues",
+				"issuesPerRepo"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"network",
+				"networkFriends"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "cmd-dpd.sublime-project",
+			"settings":
+			{
+				"buffer_size": 70,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "Package Control: inst",
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 577.0,
+		"history":
+		[
+			"Package Control: Install Package",
+			"open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())",
+			"urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) );",
+			"ipp = sublime.installed_packages_path(); ",
+			"pf = 'Package Control.sublime-package';",
+			"import urllib.request,os;",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
+			"git clone https://github.com/davidrios/jade-tmbundle.git Jade",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src"
+	],
+	"file_history":
+	[
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/cmd-dpd.sublime-project",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/cmd-dpd.sublime-workspace",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-picture.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-new-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/variables.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/package.json",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/package.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/Team.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/developer/dashboard/project/team.scss",
+		"/C/Users/Robert/Desktop/booot/Config/config.json",
+		"/C/Users/Robert/Desktop/booot/Config/auth.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/CampaignCreate.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/webpack.config.babel.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/partials/side-menu-extended.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/shared/dashboard/side-menu.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/Main.js",
+		"/C/Users/Robert/Desktop/PokeBot/Translations/nl.json",
+		"/C/Users/Robert/Desktop/PokeBot/Translations/de.json",
+		"/C/Users/Robert/Desktop/PokeBot/Translations/.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/Menu.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/user/dashboard/Projects.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/public/Project.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/AddItemDimensions.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/CustomerIdeas.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/Modal.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/CampaignOverview.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/Projects.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/cloudteams.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/designs/settings.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/designs/subproject.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/designs/subproject.sublime-workspace",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/data/example.json",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/js/global.js",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/data/test.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-no-picture.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/Easing.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-new.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-no-picture-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/style.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-picture-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/Tutorial.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/partials/side-menu.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/partials/header.php",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/data/twitter.json",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/data/data.json",
+		"/D/Robert Spier/Projecten/PHP-test/lexwensen.json",
+		"/C/Users/Robert/AppData/Local/Temp/fz3temp-1/twitter.json",
+		"/D/Dropbox/Booreiland/.eslintrc.json",
+		"/D/Dropbox/Booreiland/eslintrc.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/mixins.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/CustomerIdeas.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/core/Config.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/package.user.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/index.html",
+		"/D/xampp/htdocs/php/index-2.jade",
+		"/D/Booreiland/index.php",
+		"/D/xampp/htdocs/php/index.php",
+		"/D/Dropbox/GDG/js/main.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/api/index.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/screen/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/content/index.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/new.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/edit.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/sqlLibrary.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/index.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/_index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/nodemon.json",
+		"/C/Users/Robert/index.php",
+		"/C/Users/Robert/wp-config.php",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/index.html",
+		"/C/Users/Robert/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Robert/Downloads/Marleen Otten.vcf",
+		"/C/Users/Robert/Desktop/PokeBot/PokeGoBot.exe.config",
+		"/D/Robert Spier/Projecten/PokeVisionLocator/filter.css",
+		"/D/Robert Spier/Projecten/PokeVisionLocator/index.html",
+		"/D/Robert Spier/Projecten/PokeVisionLocator/js/main.js",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/style/style.css",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/front.js",
+		"/D/Robert Spier/Projecten/PokeVisionLocator/style/style.css",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/content/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/style/style.css",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/content/edit.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/content/new.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/edit.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/new.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/server.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/README.md",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/twitter.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/global.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/style/front.css",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/checkFont.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/partials/dashfoot.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/login.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/register.hbs",
+		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/main.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/ffo.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/reloader.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/RTW/twitstream/public/js/twitterStream.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/RTW/twitstream/server.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/api/output/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/filterType.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/decryptData.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/checkLogin.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/socket.io.js",
+		"/D/Robert Spier/Projecten/Romap/js/main.js",
+		"/D/Robert Spier/Projecten/Romap/index.html",
+		"/D/Robert Spier/Projecten/Romap/style/style.css",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/IOT/internet-of-things/festireport/rs.nl/dashboard/js/main.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/WAFS/web-app-from-scratch/eindopdracht/js/util.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/renderOutput.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/IOT/internet-of-things/festireport/rs.nl/dashboard/js/chart-data.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/yt.js",
+		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/JavaProgramma/TwitterData/bin/MainData.class",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/encryptData.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static/front/twitter.html",
+		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/node_modules/twitter/lib/twitter.js",
+		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/node_modules/twitter/index.js",
+		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/node_modules/twitter/hello.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/twitter",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/delete.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/settings/index.hbs"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"*.scss",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"7d3c8c",
+			"overflow",
+			"hot ",
+			"60",
+			"candy",
+			"background",
+			"select-drop",
+			"select-dropdown",
+			"}`);",
+			"kleine",
+			"crazysnow",
+			"target\": \"",
+			"\"real_name",
+			"1151713693",
+			"338561132",
+			"Lex Nagtegaal",
+			"179206226",
+			"main",
+			"graph[0]",
+			".length",
+			"enter",
+			"fred",
+			"fred van ",
+			"Location\":",
+			"\"target\"",
+			"\"Source\"",
+			"Source",
+			"Twitter ID",
+			"large",
+			"trans",
+			".content",
+			"#",
+			"popup-team-member-full-profile",
+			"popup.php",
+			"data-",
+			"radius",
+			"border-radius",
+			"p",
+			"padding",
+			"border",
+			"border:",
+			"select-dropdown",
+			"side-menu ",
+			"size",
+			"									<",
+			"ticked",
+			"x",
+			"value",
+			"d.",
+			"Twitter id",
+			"d.main",
+			"\"location",
+			"creation time",
+			"antialiasText",
+			"\\",
+			"sublime",
+			"lint",
+			"\"value\": 1",
+			"twitter_Robert",
+			"Twitter_marissa",
+			"Twitter_Guus",
+			"Twitter_Lex",
+			"Twitter_lex",
+			"twitter_nico",
+			"revenge",
+			"data-original-index",
+			"filter",
+			"distance",
+			"simulation",
+			"facebook",
+			"twitter",
+			"/",
+			"d.main",
+			"nagtegaal",
+			"Lex",
+			"van hemert",
+			"nico",
+			"@nico",
+			"@robertspier",
+			"d3.",
+			"layout.force",
+			"width",
+			"description",
+			"input",
+			"sidebar",
+			"fieldset",
+			"shadow",
+			"border",
+			"http",
+			"server",
+			"19",
+			"18",
+			"17",
+			"16",
+			"15",
+			"init",
+			".init",
+			"this.play",
+			"animation.play",
+			"init",
+			"animation.play",
+			"id",
+			"tweetstack",
+			"})\n",
+			"tweetStack",
+			"item",
+			"twitter",
+			"{{>",
+			"/*	display: flex; */",
+			"display: flex",
+			"vw",
+			"section",
+			"deleterowfromcontent",
+			"slideshow_has_content",
+			"delete",
+			"insertRowInSlideshow",
+			"updateRowInSlideshow",
+			"connection.query",
+			"checkLogin(req",
+			"	else {\n		res.redirect('/dashboard/login/');\n	}",
+			"checkLogin(req.session",
+			"	else {\n		res.redirect('/dashboard/login/');\n	}",
+			"req.session)",
+			"	else {\n		res.redirect('/dashboard/login/');\n	}",
+			"console.log",
+			"then",
+			".catch",
+			"console.log"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"hidden"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "cmd-dpd.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 70,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								46,
+								46
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cmd-dpd.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pi",
+				"C:\\Users\\Robert\\Dropbox\\Pulpstulp\\html\\index.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 288.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"easeInOutCubic"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 201.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

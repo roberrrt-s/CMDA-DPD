@@ -1,0 +1,32 @@
+{{> dashhead}}
+
+<div class="block-wrapper">
+
+{{#each data}}
+    <section class="block-item"><a href="/dashboard/slideshow/edit/{{id}}">
+        <header class="block-image">
+            <img src="/media/slideshow.png">
+        </header>
+        <footer class="block-footer">
+            <ul>
+                <li><strong>Name: </strong>{{name}}</li>
+                <li><strong>Description: </strong>{{description}}</li>
+                </ul>
+        </footer>
+    </a></section>
+{{/each}}
+
+    <section class="block-item new-item"><a href="/dashboard/slideshow/new/">
+        <header class="block-image">
+            <img src="/media/slideshow-new.png">
+        </header>
+        <footer class="block-footer">
+            <ul>
+                <li><strong>Create a new slideshow</strong></li>
+            </ul>
+        </footer>
+    </a></section>
+
+</div>
+
+{{> dashfoot}}
