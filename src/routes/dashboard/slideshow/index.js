@@ -85,7 +85,7 @@ router.get('/edit/:id/edit/:slideId', function(req, res) {
 	}
 }
 
-router.post('/edit/:id/edit/slideId', function(req, res) {
+router.post('/edit/:id/edit/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
