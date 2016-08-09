@@ -111,8 +111,27 @@
 			"file": "cmd-dpd.sublime-project",
 			"settings":
 			{
-				"buffer_size": 70,
+				"buffer_size": 105,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/dashboard/slideshow/index.js",
+			"settings":
+			{
+				"buffer_size": 1460,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "{{> dashhead}}\n\n<div class=\"block-wrapper\">\n\n{{#each data}}\n    <section class=\"block-item\"><a href=\"/dashboard/slideshow/edit/{{id}}\">\n        <header class=\"block-image\">\n            <img src=\"/media/slideshow.png\">\n        </header>\n        <footer class=\"block-footer\">\n            <ul>\n                <li><strong>Name: </strong>{{name}}</li>\n                <li><strong>Description: </strong>{{description}}</li>\n                </ul>\n        </footer>\n    </a></section>\n{{/each}}\n\n    <section class=\"block-item new-item\"><a href=\"/dashboard/slideshow/new/\">\n        <header class=\"block-image\">\n            <img src=\"/media/slideshow-new.png\">\n        </header>\n        <footer class=\"block-footer\">\n            <ul>\n                <li><strong>Create a new slideshow</strong></li>\n            </ul>\n        </footer>\n    </a></section>\n\n</div>\n\n{{> dashfoot}}",
+			"file": "views/dashboard/slideshow/slides/slide.hbs",
+			"file_size": 900,
+			"file_write_time": 131147362717030325,
+			"settings":
+			{
+				"buffer_size": 869,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -169,7 +188,14 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src"
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/slides"
 	],
 	"file_history":
 	[
@@ -466,7 +492,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -475,15 +501,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 70,
+						"buffer_size": 105,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								46,
-								46
+								105,
+								105
 							]
 						],
 						"settings":
@@ -494,7 +520,66 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "routes/dashboard/slideshow/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1144,
+								1144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1083.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/dashboard/slideshow/slides/slide.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 869,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14,
+								14
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

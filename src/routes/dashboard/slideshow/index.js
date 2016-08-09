@@ -85,7 +85,7 @@ router.get('/edit/:id/new', function(req, res) {
 // Create a new slide for an existing slideshow
 
 	}
-}
+})
 
 router.post('/edit/:id/new', function(req, res) {
 
@@ -94,7 +94,7 @@ router.post('/edit/:id/new', function(req, res) {
 // Save slide data to the database
 
 	}
-}
+})
 
 router.get('/edit/:id/edit/:slideId', function(req, res) {
 
@@ -103,7 +103,7 @@ router.get('/edit/:id/edit/:slideId', function(req, res) {
 // Edit a slide from a specific slideshow
 
 	}
-}
+})
 
 router.post('/edit/:id/edit/:slideId', function(req, res) {
 
@@ -112,7 +112,7 @@ router.post('/edit/:id/edit/:slideId', function(req, res) {
 // Save slide changes to the database
 
 	}
-}
+})
 
 router.post('/edit/:id/remove/:slideId', function(req, res) {
 
@@ -121,6 +121,6 @@ router.post('/edit/:id/remove/:slideId', function(req, res) {
 // Delete specific slide from the database and save it to the database (post only)
 
 	}
-}
+})
 
 module.exports = router;
