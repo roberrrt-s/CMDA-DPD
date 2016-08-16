@@ -179,10 +179,15 @@ router.get('/edit/:id', function(req, res) {
 						slideshows: slideshows
 
 					});
+					
 				}).catch(function() {
 					res.redirect('/dashboard/slideshow/');
 				})
+
+			}).catch(function() {
+				res.redirect('/dashboard/slideshow/');
 			})
+
 		})
 
 		// Restart any slideshow instance. 
@@ -253,7 +258,6 @@ router.post('/delete/:id', function(req, res) {
 		});
 		
 	}
-
 
 })
 
