@@ -24,74 +24,45 @@
                     
         </fieldset>
 
-        <fieldset>
-        <legend>All content</legend>
-            <fieldset>
-            <legend>Images</legend>
-                
-                <section class="content-category-wrapper">
-
-                    {{#each image}}
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/uploads/{{link}}">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>{{name}}</li>
-                                <li><label><strong>Add to slideshow</strong><input {{#if checked}}checked{{/if}} name="{{id}}" type="checkbox"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-                    {{/each}}
-
-                </section>
-
-            </fieldset>
-            <fieldset>
-            <legend>Video's</legend>
-
-                <section class="content-category-wrapper">
-
-                    {{#each video}}
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/play.png">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>{{name}}</li>
-                                <li><label><strong>Add to slideshow</strong><input {{#if checked}}checked{{/if}} name="{{id}}" type="checkbox"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-                    {{/each}}
-
-                </section>
-
-            </fieldset>
-            <fieldset>
-            <legend>Twitter</legend>
-
-                <section class="content-category-wrapper">
-
-                    {{#each tweet}}
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/twitter.png">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>{{name}}</li>
-                                <li><label><strong>Add to slideshow</strong><input {{#if checked}}checked{{/if}} name="{{id}}" type="checkbox"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-                    {{/each}}
+        <fieldset class="slideshow-options__fieldset">
+        <legend>Slides</legend>
         
-                </section>
+        {{#each slide}}
 
-            </fieldset>
+        <section class="block-item-slide new-item"><a href="/dashboard/slideshow/edit/{{id}}/new/">
+            <header class="block-image">
+                <img src="/media/slideshow-new.png">
+            </header>
+            <footer class="block-footer">
+                <ul>
+                    <li><strong>Add a slide</strong></li>
+                    <li>
+                        <label>Order:
+                            <input type="text" placeholder="Order"></input>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Duration:
+                            <input type="text" placeholder="Duration"></input>
+                        </label>
+                    </li>                    
+                </ul>
+            </footer>
+        </a></section>
+
+        {{/each}}
+
+        <section class="block-item new-item"><a href="/dashboard/slideshow/edit/{{id}}/new/">
+            <header class="block-image">
+                <img src="/media/slideshow-new.png">
+            </header>
+            <footer class="block-footer">
+                <ul>
+                    <li><strong>Add a slide</strong></li>
+                </ul>
+            </footer>
+        </a></section>
+
         </fieldset>
 
         <input type="submit" value="Save your changes">

@@ -211,6 +211,12 @@ nav li:hover {
 	cursor: pointer;
 }
 
+.block-item-slide {
+	max-width: 20em;
+	margin: 1em;
+	cursor: pointer;
+}
+
 .new-item {
 	opacity: .5;
 }

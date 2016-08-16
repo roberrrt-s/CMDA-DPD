@@ -111,27 +111,16 @@
 			"file": "cmd-dpd.sublime-project",
 			"settings":
 			{
-				"buffer_size": 105,
+				"buffer_size": 153,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "routes/dashboard/slideshow/index.js",
+			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1460,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "{{> dashhead}}\n\n<div class=\"block-wrapper\">\n\n{{#each data}}\n    <section class=\"block-item\"><a href=\"/dashboard/slideshow/edit/{{id}}\">\n        <header class=\"block-image\">\n            <img src=\"/media/slideshow.png\">\n        </header>\n        <footer class=\"block-footer\">\n            <ul>\n                <li><strong>Name: </strong>{{name}}</li>\n                <li><strong>Description: </strong>{{description}}</li>\n                </ul>\n        </footer>\n    </a></section>\n{{/each}}\n\n    <section class=\"block-item new-item\"><a href=\"/dashboard/slideshow/new/\">\n        <header class=\"block-image\">\n            <img src=\"/media/slideshow-new.png\">\n        </header>\n        <footer class=\"block-footer\">\n            <ul>\n                <li><strong>Create a new slideshow</strong></li>\n            </ul>\n        </footer>\n    </a></section>\n\n</div>\n\n{{> dashfoot}}",
-			"file": "views/dashboard/slideshow/slides/slide.hbs",
-			"file_size": 900,
-			"file_write_time": 131147362717030325,
-			"settings":
-			{
-				"buffer_size": 869,
-				"line_ending": "Windows"
+				"buffer_size": 679,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -189,23 +178,47 @@
 	"expanded_folders":
 	[
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/slides"
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard"
 	],
 	"file_history":
 	[
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/template.twig",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/sass/blocks/foodwaste.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/index.html",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/js/global.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/Main.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/partials/Modal.js",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/sass/common/_variables.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/sass/main.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/sass/blocks/story.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/views/templates/foodwaste.twig",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/page-foodwaste/img/overlay.svg",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/templates/template-foodwaste.php",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/templates/layouts/base.php",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/src/lib/Common.php",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/src/admin.php",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/composer.json",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/watch.js",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/package.json",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/restaurant-quotes/sass/blocks/story.scss",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/slides/slide.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/package.json",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/new.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/_index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/edit.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/delete.hbs",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/sqlLibrary.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/cmd-dpd.sublime-project",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/cmd-dpd.sublime-project",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/cmd-dpd.sublime-workspace",
 		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-picture.php",
 		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-new-popup.php",
 		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/variables.scss",
 		"/D/Dropbox/Booreiland/projects/2016/designs/package.json",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/package.json",
 		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/Team.js",
 		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/developer/dashboard/project/team.scss",
 		"/C/Users/Robert/Desktop/booot/Config/config.json",
@@ -267,10 +280,7 @@
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/content/index.hbs",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/new.hbs",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/edit.hbs",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/sqlLibrary.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/index.hbs",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/_index.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/index.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/nodemon.json",
 		"/C/Users/Robert/index.php",
 		"/C/Users/Robert/wp-config.php",
@@ -288,8 +298,6 @@
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/style/style.css",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/content/edit.hbs",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/content/new.hbs",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/edit.hbs",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/slideshow/new.hbs",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/server.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/README.md",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/twitter.js",
@@ -303,30 +311,7 @@
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/ffo.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/reloader.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/index.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/RTW/twitstream/public/js/twitterStream.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/RTW/twitstream/server.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/api/output/index.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/filterType.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/decryptData.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/checkLogin.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/socket.io.js",
-		"/D/Robert Spier/Projecten/Romap/js/main.js",
-		"/D/Robert Spier/Projecten/Romap/index.html",
-		"/D/Robert Spier/Projecten/Romap/style/style.css",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/IOT/internet-of-things/festireport/rs.nl/dashboard/js/main.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/WAFS/web-app-from-scratch/eindopdracht/js/util.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/renderOutput.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/IOT/internet-of-things/festireport/rs.nl/dashboard/js/chart-data.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js/yt.js",
-		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/JavaProgramma/TwitterData/bin/MainData.class",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/encryptData.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static/front/twitter.html",
-		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/node_modules/twitter/lib/twitter.js",
-		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/node_modules/twitter/index.js",
-		"/D/Dropbox/Strategy on Demand (shared)/Analyse on Demand/node_modules/twitter/hello.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/twitter",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/delete.hbs",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/settings/index.hbs"
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/RTW/twitstream/public/js/twitterStream.js"
 	],
 	"find":
 	{
@@ -346,6 +331,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"subpage",
+			"is-visible",
+			"-link",
+			"res.redirect",
+			"deleteRowFromSlideshow",
+			"7d3c8c",
+			"deleteRowFromSlideshow",
 			"7d3c8c",
 			"overflow",
 			"hot ",
@@ -466,14 +458,7 @@
 			"connection.query",
 			"checkLogin(req",
 			"	else {\n		res.redirect('/dashboard/login/');\n	}",
-			"checkLogin(req.session",
-			"	else {\n		res.redirect('/dashboard/login/');\n	}",
-			"req.session)",
-			"	else {\n		res.redirect('/dashboard/login/');\n	}",
-			"console.log",
-			"then",
-			".catch",
-			"console.log"
+			"checkLogin(req.session"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -501,15 +486,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 105,
+						"buffer_size": 153,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								105,
-								105
+								153,
+								153
 							]
 						],
 						"settings":
@@ -520,66 +505,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "routes/dashboard/slideshow/index.js",
+					"file": "package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1460,
+						"buffer_size": 679,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1144,
-								1144
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1083.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/dashboard/slideshow/slides/slide.hbs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 869,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14,
-								14
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -670,7 +626,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 201.0,
+	"side_bar_width": 270.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

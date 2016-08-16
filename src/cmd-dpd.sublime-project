@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"folder_exclude_patterns": ["sessions", "node_modules"],
+			"folder_exclude_patterns": ["node_modules", "sessions"],
+            "file_exclude_patterns": ["*.cfg"],
 			"path": "."
 		}
 	]

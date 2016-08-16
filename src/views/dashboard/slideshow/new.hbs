@@ -13,7 +13,7 @@
             </label>
 
             <label>Description:
-                <textarea name="description" type="text" placeholder="Description"></textarea>
+                <textarea name="description" type="text" rows="5" placeholder="Description"></textarea>
             </label>
 
             {{#if error}}
@@ -22,76 +22,6 @@
                 </div>
             {{/if}}
                     
-        </fieldset>
-
-        <fieldset>
-        <legend>All content</legend>
-            <fieldset>
-            <legend>Images</legend>
-                
-                <section class="content-category-wrapper">
-
-                    {{#each image}}
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/uploads/{{link}}">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>{{name}}</li>
-                                <li><label><strong>Add to slideshow</strong><input name="{{id}}" type="checkbox"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-                    {{/each}}
-
-                </section>
-
-            </fieldset>
-            <fieldset>
-            <legend>Video's</legend>
-
-                <section class="content-category-wrapper">
-
-                    {{#each video}}
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/play.png">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>{{name}}</li>
-                                <li><label><strong>Add to slideshow</strong><input name="{{id}}" type="checkbox"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-                    {{/each}}
-
-                </section>
-
-            </fieldset>
-            <fieldset>
-            <legend>Twitter</legend>
-
-                <section class="content-category-wrapper">
-
-                    {{#each tweet}}
-                    <section class="content-item">
-                        <header class="block-image">
-                            <img src="/media/twitter.png">
-                        </header>
-                        <footer class="content-footer">
-                            <ul>
-                                <li><strong>Name: </strong>{{name}}</li>
-                                <li><label><strong>Add to slideshow</strong><input name="{{id}}" type="checkbox"></label></li>
-                            </ul>
-                        </footer>
-                    </section>
-                    {{/each}}
-        
-                </section>
-
-            </fieldset>
         </fieldset>
 
         <input type="submit" value="Add new slideshow">
