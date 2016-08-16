@@ -33,6 +33,7 @@ var index = require('./routes/index')
 	dashboard = require('./routes/dashboard/index'),
 	screen = require('./routes/dashboard/screen/index'),
 	slideshow = require('./routes/dashboard/slideshow/index'),
+	slide = require('./routes/dashboard/slideshow/slide/index'),
 	content = require('./routes/dashboard/content/index'),
 	settings = require('./routes/dashboard/settings/index')
 
@@ -83,6 +84,7 @@ app.use('/api/output', output);
 app.use('/dashboard', dashboard);
 app.use('/dashboard/screen', screen);
 app.use('/dashboard/slideshow', slideshow);
+app.use('/dashboard/slideshow/edit', slide);
 app.use('/dashboard/content', content);
 app.use('/dashboard/settings', settings);
 
