@@ -240,6 +240,8 @@ router.get('/edit/:id', function(req, res) {
 					duration: true
 				});
 
+			}).catch(function() {
+				res.redirect('/dashboard/slideshow/');
 			})
 					
 		});
@@ -306,6 +308,8 @@ router.get('/delete/:id', function(req, res) {
 				})
 			}).then(function(callback) {
 				res.render('dashboard/content/delete', { title: 'Delete', id: req.params.id, type: callback[0].type, name: callback[0].name });
+			}).catch(function() {
+				res.redirect('/dashboard/slideshow/');
 			})
 
 		});

@@ -38,7 +38,7 @@ router.get('/', function(req, res) {
 				}				
 				
 			}).catch(function(err) {
-				console.log("Something went wrong: " + res)
+				console.log("Something went wrong: " + err)
 			});
 
 		});
@@ -100,7 +100,7 @@ if(checkLogin(req.session, res)) {
 
 				}).catch(function(err) {
 
-					console.log("Something went wrong: " + res)
+					console.log("Something went wrong: " + err)
 
 				});
 
@@ -135,7 +135,8 @@ if(checkLogin(req.session, res)) {
 				// Apply the callback to a broader scope
 				allContent = callback;
 			}).catch(function(err) {
-				console.log("Something went wrong: " + res)
+				console.log("Something went wrong: " + err)
+				res.redirect('/dashboard/slideshow/');
 			});
 
 			var promise = new Promise(function(resolve, reject) {
@@ -169,7 +170,8 @@ if(checkLogin(req.session, res)) {
 				tweetStack = allContent.filter(filterType.tweet);
 
 			}).catch(function(err) {
-				console.log("Something went wrong: " + res)
+				console.log("Something went wrong: " + err)
+				res.redirect('/dashboard/slideshow/');
 			});
 
 			// Get the slideshow data from the database
@@ -198,7 +200,8 @@ if(checkLogin(req.session, res)) {
 				});			
 
 			}).catch(function(err) {
-				console.log("Something went wrong: " + res)
+				console.log("Something went wrong: " + err)
+				res.redirect('/dashboard/slideshow/');
 			});
 
 		})
@@ -237,12 +240,12 @@ router.get('/delete/:id/', function(req, res) {
 
 			}).then(function(callback) {
 
-				console.log('?')
 				res.render('dashboard/slideshow/delete', { title: 'Delete', id: req.params.id, name: callback[0].name });
 			
 			}).catch(function(err) {
 
 				console.log("Something went wrong: " + err)
+				res.redirect('/dashboard/slideshow/');
 
 			});
 

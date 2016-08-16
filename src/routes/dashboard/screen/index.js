@@ -179,6 +179,8 @@ router.get('/edit/:id', function(req, res) {
 						slideshows: slideshows
 
 					});
+				}).catch(function() {
+					res.redirect('/dashboard/slideshow/');
 				})
 			})
 		})
@@ -209,6 +211,8 @@ router.post('/edit/:id', function(req, res) {
 				})
 			}).then(function(callback) {
 				res.redirect('/dashboard/screen');	
+			}).catch(function() {
+				res.redirect('/dashboard/slideshow/');
 			})
 		});
 
