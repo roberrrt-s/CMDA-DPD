@@ -56,7 +56,7 @@ var sqlLibrary = {
 	},
 
 	matchContentFromSlideshow: function () {
-		return 'SELECT * FROM slideshow_has_content WHERE slideshow_id = ?'
+		return 'SELECT * FROM slide WHERE slideshow_id = ?'
 	},
 
 	insertNewSlideshowItem: function() {
@@ -68,7 +68,7 @@ var sqlLibrary = {
 	},
 
 	insertNewSlideshowContentItem: function() {
-		return 'INSERT INTO slideshow_has_content SET slideshow_id = ?, content_id = ?';
+		return 'INSERT INTO slide SET slideshow_id = ?, content_id = ?';
 	},
 
 	deleteRowFromSlideshow: function() {
@@ -76,11 +76,11 @@ var sqlLibrary = {
 	},
 
 	deleteRowFromSlideshowContentItem: function() {
-		return 'DELETE FROM slideshow_has_content WHERE slideshow_id = ?';
+		return 'DELETE FROM slide WHERE slideshow_id = ?';
 	},
 
 	deleteRowFromContentItemSlideshow: function() {
-		return 'DELETE FROM slideshow_has_content WHERE content_id = ?';
+		return 'DELETE FROM slide WHERE content_id = ?';
 	},
 
 	// End of Slideshow queries
@@ -100,7 +100,7 @@ var sqlLibrary = {
 
 	// API query
 	joinContentAndSlideshow: function() {
-		return 'SELECT link, type, duration FROM slideshow LEFT JOIN slideshow_has_content ON slideshow_id = ? LEFT JOIN content ON slideshow_has_content.content_id = content.id';
+		return 'SELECT link, type, duration FROM slideshow LEFT JOIN slide ON slideshow_id = ? LEFT JOIN content ON slide.content_id = content.id';
 	}
 
 }

@@ -12,7 +12,7 @@
                 <input value="{{name}}" name="name" type="text" placeholder="Name"></input>
             </label>
 
-            <label>Description:
+            <label>Descriptionnn:
                 <textarea name="description" type="text" placeholder="Description">{{description}}</textarea>
             </label>
 
@@ -29,13 +29,13 @@
         
         {{#each slide}}
 
-        <section class="block-item-slide new-item"><a href="/dashboard/slideshow/edit/{{id}}/new/">
+        <section class="block-item-slide new-item"><a href="/dashboard/slideshow/edit/{{slideshow_id}}/slide/{{id}}">
             <header class="block-image">
                 <img src="/media/slideshow-new.png">
             </header>
             <footer class="block-footer">
                 <ul>
-                    <li><strong>Add a slide</strong></li>
+                    <li><strong>Edit a slide</strong></li>
                     <li>
                         <label>Order:
                             <input type="text" placeholder="Order"></input>
@@ -52,7 +52,7 @@
 
         {{/each}}
 
-        <section class="block-item new-item"><a href="/dashboard/slideshow/edit/{{id}}/new/">
+        <section class="block-item new-item"><a href="/dashboard/slideshow/edit/{{id}}/slide/new/">
             <header class="block-image">
                 <img src="/media/slideshow-new.png">
             </header>

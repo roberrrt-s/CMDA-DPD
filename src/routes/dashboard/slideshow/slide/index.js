@@ -11,7 +11,6 @@ router.get('/:id/slide/new', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		console.log('but at least I work!')
 		res.render('dashboard/slideshow/slide/new', { title: 'New slide', id: req.params.id });
 
 	}
@@ -30,7 +29,7 @@ router.get('/:id/slide/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		res.render('dashboard/slideshow/slide/edit', { title: 'New slide', id: req.params.id, slideId: req.params.slideId });
+		res.render('dashboard/slideshow/slide/edit', { title: 'Edit slide', id: req.params.id, slideId: req.params.slideId });
 
 	}
 })

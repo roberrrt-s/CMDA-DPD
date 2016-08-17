@@ -15,9 +15,14 @@ router.get('/:id', function (req, res) {
 		connection.query(sqlLibrary.joinContentAndSlideshow(), [req.params.id], function(err, callback) {
 
 			var data = callback;
+			console.log(data)
+
+			if(!data) {
+				res.render('api/index', {error: "Database related error, contact webmaster"})
+			}
 
 			// Check if screen has a slideshow that exists
-			if(!data[0]) {
+			else if(!data[0]) {
 				res.render('api/index', {error: "This screen doesn't exist, or has no slideshow assigned"})
 			}
 

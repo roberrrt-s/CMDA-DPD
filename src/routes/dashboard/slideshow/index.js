@@ -114,65 +114,7 @@ router.get('/edit/:id', function(req, res) {
 
 if(checkLogin(req.session, res)) {
 
-		// Set the variables to this scope to access them everywhere we need.
-		var allContent, memoryContent, imageStack, videoStack, tweetStack;
-
 		req.getConnection(function(err, connection) {
-
-			var promise = new Promise(function(resolve, reject) {
-
-				// Select all data from content
-				connection.query(sqlLibrary.selectAllFromContent(), function(err, callback) {
-					if(err) { 
-						reject(err) 
-					}
-					else {
-						resolve(callback)
-					}
-				})
-
-			}).then(function(callback) {
-				// Apply the callback to a broader scope
-				allContent = callback;
-			}).catch(function(err) {
-				console.log("Something went wrong: " + err)
-				res.redirect('/dashboard/slideshow/');
-			});
-
-			var promise = new Promise(function(resolve, reject) {
-
-				// Get all slideshow_has_content references.
-				connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, callback) {
-					if(err) { 
-						reject(err) 
-					}
-					else {
-						resolve(callback)
-					}
-				})
-
-			}).then(function(callback) {
-				// Apply the callback to a broaders scope
-				memoryContent = callback;
-
-				// Check all boxes that have been selected previously through a double for loop
-				for(var i = 0; i < allContent.length; i++) {
-					for(var j = 0; j < memoryContent.length; j++) {
-						if(allContent[i].id === memoryContent[j].content_id) {
-							allContent[i].checked = true;
-						}
-					}
-				}
-
-				// Filter all content
-				imageStack = allContent.filter(filterType.image);
-				videoStack = allContent.filter(filterType.video);
-				tweetStack = allContent.filter(filterType.tweet);
-
-			}).catch(function(err) {
-				console.log("Something went wrong: " + err)
-				res.redirect('/dashboard/slideshow/');
-			});
 
 			// Get the slideshow data from the database
 			var promise = new Promise(function(resolve, reject) {
@@ -188,16 +130,32 @@ if(checkLogin(req.session, res)) {
 			}).then(function(callback) {
 				var input = callback[0]
 
-				// Render the edit page
-				res.render('dashboard/slideshow/edit', { 
-					title: 'Slideshows', 
-					image: imageStack, 
-					video: videoStack, 
-					tweet: tweetStack, 
-					name: input.name, 
-					description: input.description, 
-					id: req.params.id 
-				});			
+				var promised = new Promise(function(resolve, reject) {
+					connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, callback) {
+						if(err) { 
+							reject(err) 
+						}
+						else {
+							resolve(callback)
+						}
+					})
+
+				}).then(function(slides) {
+					
+					console.log(slides)
+
+					// Render the edit page
+					res.render('dashboard/slideshow/edit', { 
+						title: 'Slideshows', 
+						name: input.name, 
+						description: input.description,
+						slide: slides,
+						id: req.params.id 
+					});			
+
+				})
+
+	
 
 			}).catch(function(err) {
 				console.log("Something went wrong: " + err)
@@ -212,15 +170,39 @@ if(checkLogin(req.session, res)) {
 router.post('/edit/:id', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
-		
-// Send editted slideshow data to the database
+		var input = req.body
 
+		req.getConnection(function(err, connection) {
+
+			var promise = new Promise(function(resolve, reject) {
+				// Update slideshow table
+				connection.query(sqlLibrary.updateRowInSlideshow(), [input.name, input.description, req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+			}).then(function(callback) {
+
+				res.redirect('/dashboard/slideshow/');
+			
+			}).catch(function(err) {
+			
+				console.log("Something went wrong:" + res)
+			
+			});
+
+		});
+
+		// Restart any slideshow instance. 
+		reloader.send();
 	}
 
 });
 
 router.get('/delete/:id/', function(req, res) {
-
 
 	if(checkLogin(req.session, res)) {
 
