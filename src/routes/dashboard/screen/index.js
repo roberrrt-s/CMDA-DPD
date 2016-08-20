@@ -51,7 +51,7 @@ router.get('/new/', function(req, res) {
 				// Select all slideshow information from the database
 				connection.query(sqlLibrary.selectAllFromSlideshow(), function(err, callback) {
 					if(err) { 
-						reject(err) 
+						reject(err)
 					}
 					else {
 						resolve(callback)

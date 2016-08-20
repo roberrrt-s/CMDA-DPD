@@ -21,7 +21,6 @@ router.get('/', function(req, res) {
 						reject(err) 
 					}
 					else {
-						console.log('ja')
 						resolve(callback)
 					}	
 				});
@@ -142,8 +141,6 @@ if(checkLogin(req.session, res)) {
 
 				}).then(function(slides) {
 					
-					console.log(slides)
-
 					// Render the edit page
 					res.render('dashboard/slideshow/edit', { 
 						title: 'Slideshows', 

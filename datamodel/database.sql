@@ -57,7 +57,6 @@ CREATE TABLE IF NOT EXISTS `dpd`.`content` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
-  `duration` INT NULL,
   `link` VARCHAR(255) NOT NULL,
   `type` ENUM('image', 'video', 'tweet') NOT NULL,
   `user_id` INT NOT NULL,
@@ -73,36 +72,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dpd`.`slideshow_has_content`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dpd`.`slideshow_has_content` (
-  `slideshow_id` INT NOT NULL,
-  `content_id` INT NOT NULL,
-  `order` INT NULL,
-  PRIMARY KEY (`slideshow_id`, `content_id`),
-  INDEX `fk_slideshow_has_content_content1_idx` (`content_id` ASC),
-  INDEX `fk_slideshow_has_content_slideshow1_idx` (`slideshow_id` ASC),
-  CONSTRAINT `fk_slideshow_has_content_slideshow1`
-    FOREIGN KEY (`slideshow_id`)
-    REFERENCES `dpd`.`slideshow` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_slideshow_has_content_content1`
-    FOREIGN KEY (`content_id`)
-    REFERENCES `dpd`.`content` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `dpd`.`slide`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `dpd`.`slide` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `slideshow_id` INT NOT NULL,
   `content_id` INT NOT NULL,
-  `order` INT NULL,
+  `slide_order` INT NOT NULL,
   `duration` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),

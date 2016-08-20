@@ -12,7 +12,7 @@ var sqlLibrary = {
 	},
 
 	insertNewContentItem: function() {
-		return 'INSERT INTO content SET name = ?, link = ?, description = ?, duration = ?, type = ?, user_id = ?';
+		return 'INSERT INTO content SET name = ?, link = ?, description = ?, type = ?, user_id = ?';
 	},
 
 	updateRowInContent: function() {
@@ -21,6 +21,10 @@ var sqlLibrary = {
 
 	deleteRowFromContent: function() {
 		return 'DELETE FROM content WHERE id = ?';
+	},
+
+	selectImagesFromContent: function () {
+		return "SELECT * FROM content WHERE type = 'image'";
 	},
 	// End of content queries
 
