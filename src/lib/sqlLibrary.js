@@ -64,7 +64,7 @@ var sqlLibrary = {
 	},
 
 	matchContentFromSlideshow: function () {
-		return 'SELECT slide.id, slideshow_id, content_id, slide_order, duration, name, link, type FROM slide LEFT JOIN content ON slide.content_id = content.id WHERE slideshow_id = ?'
+		return 'SELECT * FROM slideshow LEFT JOIN slide ON slideshow.id = slide.slideshow_id LEFT JOIN content ON slide.content_id = content.id WHERE slideshow.id = ? ORDER BY slide.slide_order, slide.id'
 	},
 
 	insertNewSlideshowItem: function() {

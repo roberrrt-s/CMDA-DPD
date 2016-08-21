@@ -62,7 +62,6 @@ if(checkLogin(req.session, res)) {
 		var input = req.body
 
 		req.getConnection(function(err, connection) {
-			var slideshowId;
 
 			// Checks with a new query to regenerate the current page with the error.
 			if(input.name === '') {
@@ -117,7 +116,7 @@ if(checkLogin(req.session, res)) {
 
 			// Get the slideshow data from the database
 			var promise = new Promise(function(resolve, reject) {
-				connection.query(sqlLibrary.selectRowFromSlideshow(), [req.params.id], function(err, callback) {
+				connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, callback) {
 					if(err) { 
 						reject(err) 
 					}
@@ -129,31 +128,16 @@ if(checkLogin(req.session, res)) {
 			}).then(function(callback) {
 				var input = callback[0]
 
-				var promised = new Promise(function(resolve, reject) {
-					connection.query(sqlLibrary.matchContentFromSlideshow(), [req.params.id], function(err, callback) {
-						if(err) { 
-							reject(err) 
-						}
-						else {
-							resolve(callback)
-						}
-					})
+				console.log(callback)
 
-				}).then(function(slides) {
-					
-					console.log(slides)
-
-					// Render the edit page
-					res.render('dashboard/slideshow/edit', { 
-						title: 'Slideshows', 
-						name: input.name, 
-						description: input.description,
-						slide: slides,
-						id: req.params.id 
-					});			
-
-				})
-
+				// Render the edit page
+				res.render('dashboard/slideshow/edit', { 
+					title: 'Slideshows', 
+					name: input.name, 
+					description: input.description,
+					slide: callback,
+					id: req.params.id 
+				});	
 	
 
 			}).catch(function(err) {

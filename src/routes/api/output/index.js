@@ -29,6 +29,7 @@ router.get('/:id', function (req, res) {
 			else if(data[0].link === null) {
 				res.render('api/index', {error: "There is no content in this slideshow"})
 			}
+
 			else {
 
 				var tweets = [];
@@ -105,15 +106,12 @@ router.get('/:id', function (req, res) {
 							for(var j = 0; j < data.length; j++) {
 
 								if(data[j].type === "tweet" && data[j].link === callback[i].id_str) {
-									console.log('found a tweet and matched!')
 
 									data[j].name = callback[i].user.name;
 									data[j].screen_name = callback[i].user.screen_name;
 									data[j].content = callback[i].text;
 									data[j].bgimage = callback[i].user.profile_image_url;
 									data[j].media = callback[i].entities.media[0].media_url;
-
-									console.log(data[j])
 
 								}
 

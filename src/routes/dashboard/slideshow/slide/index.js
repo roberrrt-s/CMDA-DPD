@@ -233,8 +233,8 @@ router.get('/:id/slide/:slideId', function(req, res) {
 
 				res.render('dashboard/slideshow/slide/edit', { 
 					title: 'Edit slide', 
-					duration: callback[0].duration, 
-					order: callback[0].slide_order, 
+					duration: callback.duration, 
+					order: callback.slide_order, 
 					id: req.params.id, 
 					slideId: req.params.slideId 
 				});
