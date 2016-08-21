@@ -141,6 +141,8 @@ if(checkLogin(req.session, res)) {
 
 				}).then(function(slides) {
 					
+					console.log(slides)
+
 					// Render the edit page
 					res.render('dashboard/slideshow/edit', { 
 						title: 'Slideshows', 

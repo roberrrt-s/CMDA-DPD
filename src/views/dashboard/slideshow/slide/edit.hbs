@@ -3,24 +3,19 @@
 <div class="content-wrapper">
     
     <section class="slideshow-options">
-    <form action="/dashboard/slideshow/new/" method="post"> 
+    <form action="/dashboard/slideshow/edit/{{id}}/slide/{{slideId}}/" method="post"> 
 
-        <fieldset class="slideshow-options__fieldset">
-        <legend>Content</legend>
-
-            <p>This resembles the available content</p>
-                    
         </fieldset>
 
         <fieldset class="slideshow-options__fieldset">
-        <legend>Slide meta options</legend>
+        <legend>Slide metaaaaaa {{duration}} options</legend>
 
             <label>Slide duration:
-                <input name="duration" type="number" placeholder="Duration"></input> sec
+                <input name="duration" type="number" value="{{duration}}" placeholder="Duration">sec</input>
             </label>
 
             <label>Slide order:
-                <input name="order" type="number" placeholder="Order"></input>
+                <input name="order" type="number" value="{{order}}" placeholder="Order"></input>
             </label>
 
             {{#if error}}

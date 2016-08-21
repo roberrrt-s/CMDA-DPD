@@ -12,10 +12,9 @@ router.get('/:id', function (req, res) {
 	req.getConnection(function(err, connection) {
 
 		// Join slideshow and corresponding content and grab the media url and type.
-		connection.query(sqlLibrary.joinContentAndSlideshow(), [req.params.id], function(err, callback) {
+		connection.query(sqlLibrary.grabOutputContent(), [req.params.id], function(err, callback) {
 
 			var data = callback;
-			console.log(data)
 
 			if(!data) {
 				res.render('api/index', {error: "Database related error, contact webmaster"})
@@ -32,78 +31,104 @@ router.get('/:id', function (req, res) {
 			}
 			else {
 
-				// Filter types because images, videos and tweets get parsed differently.
-				var imageStack = data.filter(filterType.image)
-				var videoStack = data.filter(filterType.video)
-				var tweetStack = data.filter(filterType.tweet)	
+				var tweets = [];
 
-				// If we have video's, make sure we parse the correct id to the data-video attribute
-				if(videoStack) {
-					for(var i = 0; i < videoStack.length; i++) {
-						// Regular URL's
-						if(videoStack[i].link.indexOf('watch?') > 0) {
-							var link = videoStack[i].link.split('=')
-							videoStack[i].link = link[link.length - 1];
-						}
-						// Mobile URL's
-						if(videoStack[i].link.indexOf('.be/') > 0) {
-							var link = videoStack[i].link.split('/')
-							videoStack[i].link = link[link.length - 1];							
-						}
+				for(var i = 0; i < data.length; i++) {
 
-						videoStack[i].id = 'video-' + i
+					switch(data[i].type) {
+
+						case 'image': 
+						data[i].image = true;
+						
+						break;
+						case 'video':
+
+							data[i].video = true;
+
+							if(data[i].link.indexOf('watch?') > 0) {
+								var link = data[i].link.split('=')
+								data[i].link = link[link.length - 1];
+							}
+
+							// Mobile URL's
+							if(data[i].link.indexOf('.be/') > 0) {
+								var link = data[i].link.split('/')
+								data[i].link = link[link.length - 1];							
+							}
+
+						data[i].id = 'video-' + i
+						
+						break;
+						case 'tweet':
+
+							data[i].tweet = true;
+
+							// If a user pasted the entire URL instead of the code, grab the twitter ID instead.
+							if(isNaN(data[i].link)) {
+								var link = data[i].link.split('/');
+								data[i].link = link[link.length - 1];
+							}
+
+							tweets.push(i);
+
+						break;
+
 					}
+
 				}
 
-				// If we have tweets, activate a twitter client
-				if(tweetStack.length > 0) {
+				if(tweets.length > 0) {
+
 					var tweet = twit.init();
-				}
+					var tweetStack = [];
 
-				// Array which will hold the twitter return object items we'll save
-				var tweetList = []
+					for(var i = 0; i < tweets.length; i++) {
 
-				// For every twitter code in the stack
-				for(var i = 0; i < tweetStack.length; i++) {
-
-					// If a user pasted the entire URL instead of the code, grab the twitter ID instead.
-					if(isNaN(tweetStack[i].link)) {
-						var link = tweetStack[i].link.split('/');
-						tweetStack[i].link = link[link.length - 1];
-					}
-
-					var tweetDuration = tweetStack[i].duration
-
-					var promise = new Promise(function(resolve, reject) {
-						// Grab the twitter ID and request the object
-						tweet.get('statuses/show', { id: tweetStack[i].link },  function(err, callback, response) {
-							if(err) {
-								reject(err)
-							}
-							else {
-								resolve(callback)
-							}
-						});	
-					}).then(function(callback) {
-
-						// Add all data we need into the twitter list
-						tweetList.push( {
-							name: callback.user.name,
-							screen_name: callback.user.screen_name,
-							content: callback.text,
-							bgimage: callback.user.profile_image_url,
-							media: callback.entities.media[0].media_url,
-							duration: tweetDuration
+						var promise = new Promise(function(resolve, reject) {
+							// Grab the twitter ID and request the object
+							tweet.get('statuses/show', { id: data[tweets[i]].link },  function(err, callback, response) {
+								if(err) {
+									reject(err)
+								}
+								else {
+									resolve(callback)
+								}
+							});	
 						})
 
-					}).then(function(callback) {
-						// Check if we're done with all tweets, if not, skip this step and repeat.
-						if(tweetList.length === tweetStack.length) {
-							var params = { image: imageStack, video: videoStack, tweet: tweetList }
-							renderOutput.init(res, params)
+						tweetStack.push(promise)
+					}
+
+					Promise.all(tweetStack).then(function(callback) {
+						for(var i = 0; i < callback.length; i++) {
+
+							for(var j = 0; j < data.length; j++) {
+
+								if(data[j].type === "tweet" && data[j].link === callback[i].id_str) {
+									console.log('found a tweet and matched!')
+
+									data[j].name = callback[i].user.name;
+									data[j].screen_name = callback[i].user.screen_name;
+									data[j].content = callback[i].text;
+									data[j].bgimage = callback[i].user.profile_image_url;
+									data[j].media = callback[i].entities.media[0].media_url;
+
+									console.log(data[j])
+
+								}
+
+							}
+
 						}
+
+						res.render('api/index', { item: data })
+
 					})
-	
+
+				}
+
+				else {
+					res.render('api/index', { item: data })
 				}
 			}
 		})

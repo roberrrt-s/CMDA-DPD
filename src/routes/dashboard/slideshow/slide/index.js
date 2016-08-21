@@ -91,6 +91,8 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 								console.log(callback)
 
+								createSlide(req, connection, callback, input);
+
 							}).catch(function(err) {
 
 								console.log("Something went wrong: " + err)
@@ -99,6 +101,14 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 						break;
 						case "existing":
+
+							var callback = {
+								insertId: input.existing_image_id
+							}
+
+							createSlide(req, connection, callback, input);
+
+							console.log(input)
 
 						break;
 						default: 
@@ -123,6 +133,8 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 					}).then(function(callback) {
 
 						console.log(callback)
+
+						createSlide(req, connection, callback, input);
 
 					}).catch(function(err) {
 
@@ -149,6 +161,8 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 						console.log(callback)
 
+						createSlide(req, connection, callback, input);
+
 					}).catch(function(err) {
 
 						console.log("Something went wrong: " + err)
@@ -159,9 +173,35 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 				default: 
 					console.log('broken');
+
 			}
 
-			console.log(input)
+			function createSlide(req, connection, callback, input) {
+
+				var promise = new Promise(function(resolve, reject) {
+					
+					connection.query(sqlLibrary.insertNewSlide(), [req.params.id, callback.insertId, input.order, input.duration], function(err, callback) {
+						if(err) { 
+							reject(err) 
+						}
+						else {
+							resolve(callback)
+						}
+					})
+
+				}).then(function(callback) {
+
+					console.log('succes!')
+					res.redirect('/dashboard/slideshow/edit/' + req.params.id);
+
+				}).catch(function(err) {
+
+					console.log(err)
+
+				});
+
+
+			}
 
 			console.log('hello world')
 
@@ -173,7 +213,37 @@ router.get('/:id/slide/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		res.render('dashboard/slideshow/slide/edit', { title: 'Edit slide', id: req.params.id, slideId: req.params.slideId });
+		console.log('hi')
+
+		req.getConnection(function(err, connection) {
+
+			var promise = new Promise(function(resolve, reject) {
+
+				// Select all slideshow information from the database
+				connection.query(sqlLibrary.selectRowFromSlide(), [req.params.slideId], function(err, callback) {
+					if(err) { 
+						reject(err)
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
+
+				res.render('dashboard/slideshow/slide/edit', { 
+					title: 'Edit slide', 
+					duration: callback[0].duration, 
+					order: callback[0].slide_order, 
+					id: req.params.id, 
+					slideId: req.params.slideId 
+				});
+
+			}).catch(function(callback) {
+				console.log(callback)
+			})
+
+		})
 
 	}
 })
@@ -182,7 +252,32 @@ router.post('/:id/slide/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-// Save slide changes to the database
+		var input = req.body;
+		console.log(req.params)
+
+		req.getConnection(function(err, connection) {
+
+			var promise = new Promise(function(resolve, reject) {
+
+				// Select all slideshow information from the database
+				connection.query(sqlLibrary.updateRowInSlide(), [input.duration, input.order, req.params.slideId], function(err, callback) {
+					if(err) { 
+						reject(err)
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
+
+					res.redirect('/dashboard/slideshow/edit/' + req.params.id);
+
+			}).catch(function(callback) {
+				console.log(callback)
+			})
+
+		})	
 
 	}
 })

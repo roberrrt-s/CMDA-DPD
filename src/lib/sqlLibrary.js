@@ -59,20 +59,28 @@ var sqlLibrary = {
 		return 'SELECT * FROM slideshow WHERE id = ?';
 	},
 
+	selectRowFromSlide: function() {
+		return 'SELECT * FROM slide WHERE id = ?';
+	},
+
 	matchContentFromSlideshow: function () {
-		return 'SELECT * FROM slide WHERE slideshow_id = ?'
+		return 'SELECT slide.id, slideshow_id, content_id, slide_order, duration, name, link, type FROM slide LEFT JOIN content ON slide.content_id = content.id WHERE slideshow_id = ?'
 	},
 
 	insertNewSlideshowItem: function() {
 		return 'INSERT INTO slideshow SET name = ?, description = ?';
 	},
 
+	updateRowInSlide: function() {
+		return 'UPDATE slide SET duration = ?, slide_order = ? WHERE id = ?';
+	},
+
 	updateRowInSlideshow: function() {
 		return 'UPDATE slideshow SET name = ?, description = ? WHERE id = ?';
 	},
 
-	insertNewSlideshowContentItem: function() {
-		return 'INSERT INTO slide SET slideshow_id = ?, content_id = ?';
+	insertNewSlide: function() {
+		return 'INSERT INTO slide SET slideshow_id = ?, content_id = ?, slide_order = ?, duration = ?';
 	},
 
 	deleteRowFromSlideshow: function() {
@@ -103,8 +111,8 @@ var sqlLibrary = {
 	},
 
 	// API query
-	joinContentAndSlideshow: function() {
-		return 'SELECT link, type, duration FROM slideshow LEFT JOIN slide ON slideshow_id = ? LEFT JOIN content ON slide.content_id = content.id';
+	grabOutputContent: function() {
+		return 'SELECT slide.slideshow_id, content.id, content.type, content.link, content.name, slide.duration, slide.slide_order FROM slide LEFT JOIN slideshow ON slide.slideshow_id = slideshow.id LEFT JOIN content ON slide.content_id = content.id LEFT JOIN screen ON slideshow.id = screen.slideshow_id WHERE screen.id = ? ORDER BY slide.slide_order, slide.id';
 	}
 
 }
