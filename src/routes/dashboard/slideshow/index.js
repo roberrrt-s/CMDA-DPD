@@ -110,7 +110,30 @@ if(checkLogin(req.session, res)) {
 
 router.get('/edit/:id', function(req, res) {
 
-if(checkLogin(req.session, res)) {
+	if(checkLogin(req.session, res)) {
+
+		var message;
+
+		switch(req.query.message) {
+			case 'failed':
+				message = "Could not save changes";
+			break;
+
+			case 'new':
+				message = "Succesfully created new slide";
+			break;
+
+			case 'edit':
+				message = "Succesfully edited slide";
+			break;
+
+			case 'delete':
+				message = "Succesfully deleted slide";
+			break;
+
+			default: 
+				message;
+		}
 
 		req.getConnection(function(err, connection) {
 
@@ -126,17 +149,32 @@ if(checkLogin(req.session, res)) {
 				})
 
 			}).then(function(callback) {
+				console.log(callback)
 				var input = callback[0]
 
-				console.log(callback)
+				// Handlebars parses null values as 'values that exist' but have no content, manual check to avoid this.
+				if(callback[0].id === null) {
+
+					res.render('dashboard/slideshow/edit', { 
+						title: 'Slideshows', 
+						name: input.slideshowName, 
+						description: input.slideshowDesc,
+						id: req.params.id,
+						message: message
+					});	
+
+					return false;				
+
+				}
 
 				// Render the edit page
 				res.render('dashboard/slideshow/edit', { 
 					title: 'Slideshows', 
-					name: input.name, 
-					description: input.description,
+					name: input.slideshowName, 
+					description: input.slideshowDesc,
 					slide: callback,
-					id: req.params.id 
+					id: req.params.id,
+					message: message
 				});	
 	
 
@@ -169,11 +207,11 @@ router.post('/edit/:id', function(req, res) {
 				})
 			}).then(function(callback) {
 
-				res.redirect('/dashboard/slideshow/');
+				res.redirect('/dashboard/slideshow/?message=edit');
 			
 			}).catch(function(err) {
 			
-				console.log("Something went wrong:" + res)
+				res.redirect('/dashboard/slideshow/?message=failed');
 			
 			});
 
@@ -209,7 +247,6 @@ router.get('/delete/:id/', function(req, res) {
 			
 			}).catch(function(err) {
 
-				console.log("Something went wrong: " + err)
 				res.redirect('/dashboard/slideshow/');
 
 			});
@@ -229,6 +266,24 @@ router.post('/delete/:id', function(req, res) {
 
 			var promise = new Promise(function(resolve, reject) {
 
+				connection.query(sqlLibrary.deleteRowFromSlide(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err);
+					}
+					else {
+						resolve(callback);
+					}
+
+				})
+
+			}).catch(function(callback) {
+
+				res.redirect('/dashboard/slideshow/?message=failed');
+
+			})
+
+			var promise = new Promise(function(resolve, reject) {
+
 				connection.query(sqlLibrary.deleteRowFromSlideshow(), [req.params.id], function(err, callback) {
 					if(err) { 
 						reject(err);
@@ -241,11 +296,11 @@ router.post('/delete/:id', function(req, res) {
 
 			}).then(function(callback) {
 
-				res.redirect('/dashboard/slideshow/');
+				res.redirect('/dashboard/slideshow/?message=delete');
 
 			}).catch(function(err) {
 
-				console.log("Something went wrong: " + err);
+				res.redirect('/dashboard/slideshow/?message=failed');
 
 			});			
 

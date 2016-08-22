@@ -2,58 +2,32 @@
 
 <div class="content-wrapper">
     <section class="content-options">
-        <h1>Creating new {{type}}</h1>
+        <h1>Upload new image</h1>
 
-        <form enctype="multipart/form-data" action="/dashboard/content/new/{{type}}" method="post"> 
+        <form enctype="multipart/form-data" action="/dashboard/content/new/image" method="post"> 
 
             <div class="flex-container">
 
                 <fieldset>
                 <legend>Options</legend>
 
-                    <label>Content name:
+                    <label>Image title:
                         <input name="name" type="text" placeholder="Name"></input>
                     </label>
 
-                    <label>Description:
-                        <textarea name="desc" type="text" placeholder="Description"></textarea>
-                    </label>
-
-                    {{#if duration}}
-                    <label>Display for x seconds:
-                        <input name="duration" type="number" placeholder="Enter time in seconds"></input>
-                    </label>
-                    {{/if}}
-
-                    {{#if img}}
-                    <label>New image:
+                    <label>Upload image:
                         <input id="file-upload" name="file" type="file"></input>
                     </label>
-                    {{/if}}
-
-                    {{#if url}}
-                    <label><span class="capitalize">{{type}}</span> code:
-                        <input name="url" type="txt"></input>
-                    </label>
-                    {{/if}}
-
-                    {{#if error}}
-                        <div class="msg">
-                            {{error}}
-                        </div>
-                    {{/if}}
 
                 </fieldset>
 
-                {{#if preview}}
-                    <fieldset id="preview">
-                    <legend>Preview</legend>
-                        <p id="preview-text">Upload load an image to preview it here<br>
-                        Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
-                        <img id="preview-image">
+                <fieldset id="preview">
+                <legend>Preview</legend>
+                    <p id="preview-text">Upload load an image to preview it here<br>
+                    Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
+                    <img id="preview-image">
 
-                    </fieldset>
-                {{/if}}
+                </fieldset>
             
             </div>
         

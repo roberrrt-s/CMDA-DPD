@@ -8,6 +8,29 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
+		var message;
+
+		switch(req.query.message) {
+			case 'failed':
+				message = "Could not save changes";
+			break;
+
+			case 'new':
+				message = "Succesfully created new slide";
+			break;
+
+			case 'edit':
+				message = "Succesfully edited slide";
+			break;
+
+			case 'delete':
+				message = "Succesfully deleted slide";
+			break;
+
+			default: 
+				message;
+		}
+
 		req.getConnection(function(err, connection) {
 			var promise = new Promise(function(resolve, reject) {
 				// Query to select all the screens from the database
@@ -29,7 +52,7 @@ router.get('/', function(req, res) {
 				}
 				// If there are,
 				else {
-					res.render('dashboard/screen/index', { title: 'Screens', data: callback });
+					res.render('dashboard/screen/index', { title: 'Screens', data: callback, message: message });
 				}
 
 			})
@@ -105,9 +128,14 @@ router.post('/new/', function(req, res) {
 					})
 				}).then(function(callback) {
 
-					res.redirect('/dashboard/screen');
+					res.redirect('/dashboard/screen?message=new');
+
+				}).catch(function(callback) {
+
+					res.redirect('/dashboard/screen?message=failed');
 
 				})
+
 			});
 		}
 
@@ -215,9 +243,13 @@ router.post('/edit/:id', function(req, res) {
 					}
 				})
 			}).then(function(callback) {
-				res.redirect('/dashboard/screen');	
+
+				res.redirect('/dashboard/screen?message=edit');
+
 			}).catch(function() {
-				res.redirect('/dashboard/slideshow/');
+
+				res.redirect('/dashboard/screen?message=failed');
+
 			})
 		});
 
@@ -253,7 +285,9 @@ router.post('/delete/:id', function(req, res) {
 					}
 				})
 			}).then(function(callback) {
-				res.redirect('/dashboard/screen');
+				res.redirect('/dashboard/screen?message=delete');
+			}).catch(function(callback) {
+				res.redirect('/dashboard/screen?message=failed');
 			})
 		});
 		

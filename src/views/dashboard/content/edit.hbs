@@ -2,37 +2,17 @@
 
 <div class="content-wrapper">
     <section class="content-options">
-        <h1>Editing {{type}} id: {{id}}</h1>
+        <h1>Editing image: {{name}}</h1>
 
         <form action="/dashboard/content/edit/{{id}}" method="post"> 
 
             <div class="flex-container">
                 <fieldset>
-                {{#if preview}}
-                <legend>Preview</legend>
-
-                    <figure class="preview-image">
-                        <img src="/uploads/{{link}}">
-                    </figure>
-
-                </fieldset>
-                {{/if}}
-                <fieldset>
                 <legend>Options</legend>
 
-                    <label>Content name:
+                    <label>Image title:
                         <input name="name" value="{{name}}" type="text" placeholder="Name"></input>
                     </label>
-
-                    <label>Description:
-                        <textarea name="description" placeholder="Description">{{desc}}</textarea>
-                    </label>
-
-                    {{#if duration}}
-                    <label>Display for x seconds:
-                        <input name="duration" value="{{dur}}" type="text" placeholder="Enter time in seconds"></input>
-                    </label>
-                    {{/if}}
 
                 </fieldset>
 

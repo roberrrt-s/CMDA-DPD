@@ -138,7 +138,7 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 					}).catch(function(err) {
 
-						console.log("Something went wrong: " + err)
+						res.redirect('/dashboard/slideshow/?message=failed');
 
 					});
 
@@ -191,12 +191,11 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 				}).then(function(callback) {
 
-					console.log('succes!')
-					res.redirect('/dashboard/slideshow/edit/' + req.params.id);
+					res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=succes');
 
 				}).catch(function(err) {
 
-					console.log(err)
+					res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=failed');
 
 				});
 
@@ -209,51 +208,14 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 	}
 })
 
-router.get('/:id/slide/:slideId', function(req, res) {
-
-	if(checkLogin(req.session, res)) {
-
-		console.log('hi')
-
-		req.getConnection(function(err, connection) {
-
-			var promise = new Promise(function(resolve, reject) {
-
-				// Select all slideshow information from the database
-				connection.query(sqlLibrary.selectRowFromSlide(), [req.params.slideId], function(err, callback) {
-					if(err) { 
-						reject(err)
-					}
-					else {
-						resolve(callback)
-					}
-				})
-
-			}).then(function(callback) {
-
-				res.render('dashboard/slideshow/slide/edit', { 
-					title: 'Edit slide', 
-					duration: callback.duration, 
-					order: callback.slide_order, 
-					id: req.params.id, 
-					slideId: req.params.slideId 
-				});
-
-			}).catch(function(callback) {
-				console.log(callback)
-			})
-
-		})
-
-	}
-})
-
 router.post('/:id/slide/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
 		var input = req.body;
-		console.log(req.params)
+		console.log(input.duration)
+		console.log(input.order)
+		console.log(req.params.slideId)
 
 		req.getConnection(function(err, connection) {
 
@@ -271,10 +233,12 @@ router.post('/:id/slide/:slideId', function(req, res) {
 
 			}).then(function(callback) {
 
-					res.redirect('/dashboard/slideshow/edit/' + req.params.id);
+				res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=edit');
 
 			}).catch(function(callback) {
-				console.log(callback)
+
+				res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=failure');
+
 			})
 
 		})	
@@ -286,9 +250,33 @@ router.post('/:id/slide/remove/:slideId', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-// Delete specific slide from the database and save it to the database (post only)
+		req.getConnection(function(err, connection) {
+
+			// Remove the content from the table itself.
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.deleteRowFromSlide(), [req.params.slideId], function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).then(function(callback) {
+
+				res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=delete');
+
+			}).catch(function(callback) {
+
+				res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=failed');
+
+			})
+
+		});
 
 	}
+
 })
 
 module.exports = router;

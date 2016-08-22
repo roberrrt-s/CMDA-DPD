@@ -2,6 +2,12 @@
 
 <div class="block-wrapper">
 
+{{#if message}}
+
+	{{message}}
+
+{{/if}}
+
 {{#each data}}
 	<section class="block-item"><a href="/dashboard/screen/edit/{{id}}">
 		<header class="block-image">
