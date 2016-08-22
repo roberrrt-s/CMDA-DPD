@@ -9,7 +9,7 @@
     {{/if}}
     
     <section class="slideshow-options">
-        <form action="/dashboard/slideshow/edit/{{id}}" method="post"> 
+        <form action="/dashboard/slideshow/edit/{{id    }}" method="post"> 
 
             <fieldset class="slideshow-options__fieldset">
             <legend>Slideshow options</legend>
@@ -43,7 +43,7 @@
         {{#each slide}}
 
             <section class="block-item-slide">
-                    <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/{{id}}" method="post"> 
+                    <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/{{slideId}}" method="post"> 
                     <ul>
                         <li><strong>{{name}}<strong></li>
                     </ul>
@@ -70,7 +70,7 @@
                     </footer>
                 </form>
 
-                <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/remove/{{id}}" method="post"> 
+                <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/remove/{{slideId}}" method="post"> 
                     <input type="submit" value="Remove slide">
                 </form>
 

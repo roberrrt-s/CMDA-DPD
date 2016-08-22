@@ -11,6 +11,29 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
+		var message;
+
+		switch(req.query.message) {
+			case 'failed':
+				message = "Could not save changes";
+			break;
+
+			case 'new':
+				message = "Succesfully created new screen";
+			break;
+
+			case 'edit':
+				message = "Succesfully edited screen";
+			break;
+
+			case 'delete':
+				message = "Succesfully deleted screen";
+			break;
+
+			default: 
+				message;
+		}
+
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
@@ -29,11 +52,11 @@ router.get('/', function(req, res) {
 
 				// If there's no data.
 				if(callback.length < 1) {
-					res.render('dashboard/slideshow/index', { title: 'Slideshows', error: 'No slideshows available yet' });
+					res.render('dashboard/slideshow/index', { title: 'Slideshows', message: message });
 				}
 				// If there is.
 				else {
-					res.render('dashboard/slideshow/index', { title: 'Slideshows', data: callback });
+					res.render('dashboard/slideshow/index', { title: 'Slideshows', data: callback, message: message });
 				}				
 				
 			}).catch(function(err) {
@@ -48,8 +71,30 @@ router.get('/', function(req, res) {
 router.get('/new/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
+		
+		req.getConnection(function(err, connection) {
 
-		res.render('dashboard/slideshow/new', { title: 'New slideshow' });			
+			var promise = new Promise(function(resolve, reject) {
+
+				// Select all data from the slideshow table.
+				connection.query(sqlLibrary.selectAllFromScreen(), function(err, callback) {
+					if(err) { 
+						reject(err) 
+					}
+					else {
+						resolve(callback)
+					}	
+				});
+
+			}).then(function(callback) {
+
+				res.render('dashboard/slideshow/new', { title: 'New slideshow', screen: callback });			
+				
+			}).catch(function(err) {
+				console.log("Something went wrong: " + err)
+			});
+
+		})
 			
 	}
 
@@ -57,7 +102,7 @@ router.get('/new/', function(req, res) {
 
 router.post('/new/', function(req, res) {
 
-if(checkLogin(req.session, res)) {
+	if(checkLogin(req.session, res)) {
 
 		var input = req.body
 
@@ -94,11 +139,11 @@ if(checkLogin(req.session, res)) {
 
 				}).then(function(callback) {
 
-					res.redirect('/dashboard/slideshow/');
+					res.redirect('/dashboard/slideshow/?message=new');
 
 				}).catch(function(err) {
 
-					console.log("Something went wrong: " + err)
+					res.redirect('/dashboard/slideshow/?message=failed');
 
 				});
 
@@ -153,7 +198,7 @@ router.get('/edit/:id', function(req, res) {
 				var input = callback[0]
 
 				// Handlebars parses null values as 'values that exist' but have no content, manual check to avoid this.
-				if(callback[0].id === null) {
+				if(callback[0].slideId === null) {
 
 					res.render('dashboard/slideshow/edit', { 
 						title: 'Slideshows', 

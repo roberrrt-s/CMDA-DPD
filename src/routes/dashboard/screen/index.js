@@ -16,15 +16,15 @@ router.get('/', function(req, res) {
 			break;
 
 			case 'new':
-				message = "Succesfully created new slide";
+				message = "Succesfully created new screen";
 			break;
 
 			case 'edit':
-				message = "Succesfully edited slide";
+				message = "Succesfully edited screen";
 			break;
 
 			case 'delete':
-				message = "Succesfully deleted slide";
+				message = "Succesfully deleted screen";
 			break;
 
 			default: 
@@ -48,7 +48,7 @@ router.get('/', function(req, res) {
 
 				// If there are no screens.
 				if(callback.length < 1) {
-					res.render('dashboard/screen/index', { title: 'Screens', error: 'No screens available yet' });
+					res.render('dashboard/screen/index', { title: 'Screens', message: message });
 				}
 				// If there are,
 				else {

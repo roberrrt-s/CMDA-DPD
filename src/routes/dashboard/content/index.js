@@ -30,6 +30,31 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
+		var message;
+
+		switch(req.query.message) {
+			case 'failed':
+				message = "Could not save changes";
+			break;
+
+			case 'new':
+				message = "Succesfully uploaded new image";
+			break;
+
+			case 'edit':
+				message = "Succesfully edited image";
+			break;
+
+			case 'delete':
+				message = "Succesfully deleted image";
+			break;
+
+			default: 
+				message;
+		}
+
+		console.log(message)
+
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
@@ -49,7 +74,7 @@ router.get('/', function(req, res) {
 				// Filter content based on type for parsing.
 				var images = callback.filter(filterType.image)
 
-				res.render('dashboard/content', { title: 'Content', image: images });
+				res.render('dashboard/content', { title: 'Content', image: images, message: message });
 
 			})
 
@@ -248,6 +273,21 @@ router.post('/delete/:id', function(req, res) {
 
 		req.getConnection(function(err, connection) {
 
+			var promise = new Promise(function(resolve, reject) {
+				connection.query(sqlLibrary.deleteRowsFromSlide(), [req.params.id], function(err, callback) {
+					if(err) { 
+						reject(err)
+					}
+					else {
+						resolve(callback)
+					}
+				})
+
+			}).catch(function(callback) {
+				console.log(callback)
+				res.redirect('/dashboard/content?message=failed');	
+			})
+
 			// Remove the content from the table itself.
 			var promise = new Promise(function(resolve, reject) {
 				connection.query(sqlLibrary.deleteRowFromContent(), [req.params.id], function(err, callback) {
@@ -260,7 +300,13 @@ router.post('/delete/:id', function(req, res) {
 				})
 
 			}).then(function(callback) {
-				res.redirect('/dashboard/content');	
+
+				res.redirect('/dashboard/content?message=delete');
+
+			}).catch(function(callback) {
+
+				res.redirect('/dashboard/content?message=failed');
+
 			})
 
 		});

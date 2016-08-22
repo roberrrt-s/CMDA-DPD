@@ -16,6 +16,15 @@
                 <textarea name="description" type="text" rows="5" placeholder="Description"></textarea>
             </label>
 
+            <label>Assign this slideshow to a screen
+                <select name="slideshow">
+                    <option value="">Do not assign screen</option>
+                    {{#each screen}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+
             {{#if error}}
                 <div class="msg">
                     {{error}}

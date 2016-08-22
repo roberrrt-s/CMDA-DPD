@@ -1,9 +1,14 @@
 {{> dashhead}}
 
 <div class="content-wrapper">
+
 	<section class="content-divider">
 		<h1>All available images</h1>
 	</section>
+
+	{{#if message}}
+		{{message}}
+	{{/if}}
 
 	<div class="content-category-wrapper">
 

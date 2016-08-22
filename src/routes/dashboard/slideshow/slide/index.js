@@ -191,7 +191,7 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 				}).then(function(callback) {
 
-					res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=succes');
+					res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=new');
 
 				}).catch(function(err) {
 
@@ -254,7 +254,7 @@ router.post('/:id/slide/remove/:slideId', function(req, res) {
 
 			// Remove the content from the table itself.
 			var promise = new Promise(function(resolve, reject) {
-				connection.query(sqlLibrary.deleteRowFromSlide(), [req.params.slideId], function(err, callback) {
+				connection.query(sqlLibrary.removeSlideFromSlideshow(), [req.params.slideId], function(err, callback) {
 					if(err) { 
 						reject(err) 
 					}
