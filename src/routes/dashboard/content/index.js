@@ -87,7 +87,6 @@ router.post('/new/image', upload.single('file'), function(req, res, cb) {
 
 		var input = req.body,
 			file = req.file;
-			console.log(input)
 
 		if(input.name === '') {
 			res.render('dashboard/content/new', { title: 'Upload new image', error: 'Please enter a name' });
@@ -182,7 +181,6 @@ router.post('/edit/:id', function(req, res) {
 	if(checkLogin(req.session, res)) {
 
 		var input = req.body;
-		input.duration = 0;
 
 		req.getConnection(function(err, connection) {
 			// Insert all new data inside the database.
