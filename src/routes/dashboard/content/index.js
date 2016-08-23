@@ -1,6 +1,7 @@
 var express = require('express'),
 	fs = require('fs'),
 	path = require('path'),
+	query = require('../../../lib/query.js'),
 	filterType = require('../../../lib/filterType.js'),
 	sqlLibrary = require('../../../lib/sqlLibrary.js'),
 	multer  = require('multer'),
@@ -30,30 +31,7 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message;
-
-		switch(req.query.message) {
-			case 'failed':
-				message = "Could not save changes";
-			break;
-
-			case 'new':
-				message = "Succesfully uploaded new image";
-			break;
-
-			case 'edit':
-				message = "Succesfully edited image";
-			break;
-
-			case 'delete':
-				message = "Succesfully deleted image";
-			break;
-
-			default: 
-				message;
-		}
-
-		console.log(message)
+		var message = query.message(req.query.message);
 
 		req.getConnection(function(err, connection) {
 

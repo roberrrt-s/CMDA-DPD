@@ -2,7 +2,8 @@ var express = require('express'),
 	checkLogin = require('../../../lib/checkLogin.js'),
 	filterType = require('../../../lib/filterType.js'),
 	sqlLibrary = require('../../../lib/sqlLibrary.js'),
-	reloader = require('../../../lib/reloader.js'),	
+	reloader = require('../../../lib/reloader.js'),
+	query = require('../../../lib/query.js'),	
     router = express.Router();
 
 // Slideshows
@@ -11,28 +12,7 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message;
-
-		switch(req.query.message) {
-			case 'failed':
-				message = "Could not save changes";
-			break;
-
-			case 'new':
-				message = "Succesfully created new screen";
-			break;
-
-			case 'edit':
-				message = "Succesfully edited screen";
-			break;
-
-			case 'delete':
-				message = "Succesfully deleted screen";
-			break;
-
-			default: 
-				message;
-		}
+		var message = query.message(req.query.message);
 
 		req.getConnection(function(err, connection) {
 
@@ -157,28 +137,7 @@ router.get('/edit/:id', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message;
-
-		switch(req.query.message) {
-			case 'failed':
-				message = "Could not save changes";
-			break;
-
-			case 'new':
-				message = "Succesfully created new slide";
-			break;
-
-			case 'edit':
-				message = "Succesfully edited slide";
-			break;
-
-			case 'delete':
-				message = "Succesfully deleted slide";
-			break;
-
-			default: 
-				message;
-		}
+		var message = query.message(req.query.message)
 
 		req.getConnection(function(err, connection) {
 
