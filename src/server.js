@@ -13,8 +13,8 @@ var express = require('express'),
 	Twitter = require('twitter'),
 
 	// Starting the server
-	server = app.listen(3000, function () {
-		console.log('Dashboard is listening on port 3000!');
+	server = app.listen(3001, function () {
+		console.log('Dashboard is listening on port 3001!');
 	}),
 
     http = require('http').Server(app),

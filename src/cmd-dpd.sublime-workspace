@@ -107,6 +107,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "routes/dashboard/slideshow/index.js",
+			"settings":
+			{
+				"buffer_size": 6771,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -115,8 +123,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 104.0,
-		"last_filter": "Package Control: inst",
+		"height": 392.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -132,7 +140,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 432.0
 	},
 	"console":
 	{
@@ -161,19 +169,21 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard"
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views"
 	],
 	"file_history":
 	[
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/ERRORS.handlebars",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/query.js",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/cmd-dpd.sublime-project",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/cmd-dpd.sublime-workspace",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/encryptData.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/content/index.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/screen/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/ERRORS.handlebars",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/lib/query.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/slideshow/index.js",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/screen/new.hbs",
 		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/dashboard/login.hbs",
@@ -294,10 +304,7 @@
 		"/D/Booreiland/index.php",
 		"/D/xampp/htdocs/php/index.php",
 		"/D/Dropbox/GDG/js/main.js",
-		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/nodemon.json",
-		"/C/Users/Robert/index.php",
-		"/C/Users/Robert/wp-config.php",
-		"/D/Robert Spier/Strategy on Demand/Visualiser/index.html"
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/nodemon.json"
 	],
 	"find":
 	{
@@ -317,6 +324,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"none",
 			"switch",
 			"callback",
 			"router.get",
@@ -443,8 +451,7 @@
 			"distance",
 			"simulation",
 			"facebook",
-			"twitter",
-			"/"
+			"twitter"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -463,8 +470,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "routes/dashboard/slideshow/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								918,
+								918
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

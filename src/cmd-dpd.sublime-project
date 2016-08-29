@@ -2,8 +2,16 @@
 	"folders":
 	[
 		{
-			"folder_exclude_patterns": ["node_modules", "sessions"],
-            "file_exclude_patterns": ["*.cfg"],
+			"file_exclude_patterns":
+			[
+				"*.sublime-*",
+				"*.cfg"
+			],
+			"folder_exclude_patterns":
+			[
+				"node_modules",
+				"sessions"
+			],
 			"path": "."
 		}
 	]

@@ -1,0 +1,9 @@
+// Import variables for continuity.
+@import "variables.scss";
+
+// CSS for general sections changes
+@import "general.scss";
+
+// Specific CSS
+@import "login.scss";
+@import "form.scss";

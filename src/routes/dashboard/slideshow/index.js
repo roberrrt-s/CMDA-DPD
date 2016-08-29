@@ -1,4 +1,4 @@
-var express = require('express'),
+	var express = require('express'),
 	checkLogin = require('../../../lib/checkLogin.js'),
 	filterType = require('../../../lib/filterType.js'),
 	sqlLibrary = require('../../../lib/sqlLibrary.js'),

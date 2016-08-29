@@ -1,0 +1,152 @@
+#content {
+	fieldset {
+		border: 0px;
+	}
+
+	input[type="text"], input[type="number"], textarea {
+		border-radius: $border-radius;
+		line-height: $line-height;
+		font-family: sans-serif;
+		padding: $d5;
+		outline: 0;
+		border: 1px solid $color-light-grey;
+		width: 100%;
+
+		&:focus {
+			border: 1px solid $color-dark-blue;
+			transition: $transition-time-2 $easing-1;
+		}
+
+	}
+
+	select {
+		border-radius: $border-radius;
+		padding: $d5;
+		margin-top: $d5;
+		border: 1px solid $color-light-grey;
+		outline: 0;
+		width: 100%;
+
+		&:focus {
+			border: 1px solid $color-dark-blue;
+			transition: $transition-time-2 $easing-1;
+		}
+
+	}
+
+	input[type="submit"], button {
+		cursor: pointer;
+		background-color: $color-light-grey;
+		border-radius: $border-radius;
+		font-family: $font-main;
+		font-size: 1rem;
+		max-width: max-content;
+		outline: 0;
+		padding: $d5 $d15;
+		line-height: $line-height;
+		border: 1px solid $color-dark-blue;
+		float: left;
+		margin-right: $d10;
+		> a {
+			color: $color-dark-blue;
+		}
+	}
+
+	input[type="radio"] {
+		display: none;
+
+		+ label {
+			margin: $d5;
+			line-height: $line-height;
+			cursor: pointer;
+		}
+
+		+ label:before {
+			content: "";
+			width: $d20;
+			height: $d20;
+			background-color: $color-black-blue;
+			border-radius: 100%;
+			margin-right: 10px;
+			display: inline-block;
+			border: 1px solid $color-black-blue;
+		}
+
+
+		&:checked + label:before {
+			background-color: $color-light-grey;
+			height: 16px;
+			width: 16px;
+			border: 3px solid $color-black-blue;
+			transition: background-color $transition-time-1 $easing-1;
+		}
+
+	}
+
+	.submit-btn:hover, .submit-btn:focus {
+		background-color: $color-dark-blue;
+		color: $color-text;
+		transition: $transition-time-2 $easing-1;
+	}
+
+	.cancel-btn:hover, .cancel-btn:focus {
+		background-color: $color-cmd-red;
+		transition: $transition-time-2 $easing-1;
+		> a {
+			color: $color-white;
+		}
+	}
+
+	.content-form {
+		max-width: 40em;
+		margin: 50px auto;
+		padding: $d10;
+		background-color: $color-white;
+	}
+
+	.normal-input {
+		width: 20em;
+		display: flex;
+		flex-direction: column;
+		margin: $d10;
+	}
+
+	.normal-radio {
+		width: 20em;
+		display: flex;
+		flex-direction: column;
+		margin: $d10;		
+	}
+
+	.normal-select {
+		width: 20em;
+		display: flex;
+		flex-direction: column;
+		margin: $d10;
+	}
+
+	.normal-button {
+		width: 20em;
+		margin: $d20 $d10;
+	}
+
+	.required > label:after {
+		content: "*";
+		color: $color-cmd-red;
+	}
+
+	.error {
+		> input {
+			border-color: $color-cmd-red;
+			
+		}
+
+		> .error-message {
+			font-size: .8rem;
+			color: $color-cmd-red;
+		}
+
+	}
+
+
+}

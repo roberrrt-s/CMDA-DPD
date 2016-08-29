@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+// colors
+$color-white 		: #FFFFFF;
+$color-black 		: #000000;
+$color-light-grey	: #E4E4E4;
+$color-dark-blue	: #232B2D;
+$color-black-blue	: #1B2224;
+$color-cmd-yellow 	: #FFCC00;
+$color-cmd-red		: #E9625C;
+$color-cmd-green	: #43B05C;
+
+// main uses
+$color-text			: $color-light-grey;
+$color-text-hover	: $color-white;
+$color-text-invert	: $color-black-blue;
+$color-sidebar-bg	: $color-dark-blue;
+
+// font
+$font-main 			: "Open Sans", "Helvetica", "Arial", "sans-serif";
+
+$font-size-base 	: 1.2em;
+$font-size-1		: 120%;
+$font-size-2		: 140%;
+
+$font-body			: $font-size-base;
+$font-header		: $font-size-1;
+$font-subheader		: $font-size-2;
+
+$line-height		: 150%;
+$line-height-large	: 300%;
+
+// dimensions
+$d0			 		: 0;
+$d5					: 5px;
+$d10				: 10px;
+$d15				: 15px;
+$d20				: 20px;
+$d25				: 25px;
+$d30				: 30px;
+$d35				: 35px;
+
+$border-radius		: $d5;
+$padding			: $d10;
+$margin				: $d10;
+
+// transformations
+$transition-time-1	: 150ms;
+$transition-time-2	: 350ms;
+$transition-time-3	: 750ms;
+
+$easing-1			: cubic-bezier(0.5, 0.35, 0, 1);
+$easing-2			: cubic-bezier(0.85, 0.15, 0.15, 0.85);
