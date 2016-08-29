@@ -1,45 +1,46 @@
 {{> dashhead}}
 
-<div class="content-wrapper">
-    
-    <section class="slideshow-options">
-    <form action="/dashboard/slideshow/new/" method="post"> 
+    <section id="content">
+        <section class="content-scroll-div">
 
-        <fieldset class="slideshow-options__fieldset">
-        <legend>Slideshow options</legend>
+            <div class="content-header">
+                <h1>Create new slideshow</h1>
+            </div>
 
-            <label>Slideshow name:
-                <input name="name" type="text" placeholder="Name"></input>
-            </label>
+            <div class="content-form">
+            
+                <form action="/dashboard/slideshow/new" method="post"> 
 
-            <label>Description:
-                <textarea name="description" type="text" rows="5" placeholder="Description"></textarea>
-            </label>
+                    <fieldset class="normal-input required">
+                        <label for="form-name">Slideshow title</label>
+                        <input id="form-name" name="name" type="text" maxlength="100">
+                    </fieldset>
 
-            <label>Assign this slideshow to a screen
-                <select name="slideshow">
-                    <option value="">Do not assign screen</option>
-                    {{#each screen}}
-                        <option value="{{id}}">{{name}}</option>
-                    {{/each}}
-                </select>
-            </label>
+                    <fieldset class="normal-input required">
+                        <label for="form-desc">Screen description</label>
+                        <textarea id="form-desc" name="description" type="text" rows="4" maxlength="100"></textarea>
+                    </fieldset>
 
-            {{#if error}}
-                <div class="msg">
-                    {{error}}
-                </div>
-            {{/if}}
-                    
-        </fieldset>
+                    <fieldset class="normal-select">
+                        <label for="form-slideshow">Assign this slideshow to a screen (optional)</label>
+                        <select id="form-slideshow" name="slideshow">
+                            <option selected value="0">Do not assign screen yet</option>
+                            {{#each screen}}
+                            <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </fieldset>
 
-        <input type="submit" value="Add new slideshow">
+                    <fieldset class="normal-button">
+                        <input id="form-submit" value="Save changes" name="submit" class="submit-btn" type="submit">
+                        <button type="button" class="cancel-btn"><a href="#">Cancel</a></button>
+                    </fieldset>
 
-    </form>
-    <a href="../"><button>Cancel</button></a>
+                </form>
 
+            </div>
+
+        </section>
     </section>
-
-</div>
 
 {{> dashfoot}}

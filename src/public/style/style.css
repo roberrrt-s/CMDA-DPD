@@ -592,7 +592,7 @@ main {
   margin: 20px 10px;
 }
 
-#content .required > label:after {
+#content .required > label:first-of-type:after {
   content: "*";
   color: #E9625C;
 }

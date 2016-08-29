@@ -1,41 +1,47 @@
 {{> dashhead}}
 
-<div class="content-wrapper">
-    <section class="content-options">
-        <h1>Upload new image</h1>
+    <section id="content">
+        <section class="content-scroll-div">
 
-        <form enctype="multipart/form-data" action="/dashboard/content/new/image" method="post"> 
-
-            <div class="flex-container">
-
-                <fieldset>
-                <legend>Options</legend>
-
-                    <label>Image title:
-                        <input name="name" type="text" placeholder="Name"></input>
-                    </label>
-
-                    <label>Upload image:
-                        <input id="file-upload" name="file" type="file"></input>
-                    </label>
-
-                </fieldset>
-
-                <fieldset id="preview">
-                <legend>Preview</legend>
-                    <p id="preview-text">Upload load an image to preview it here<br>
-                    Please remember that the screens have an aspect ratio of either 16:9 or 9:16. Images without this ratio will be cropped</p>
-                    <img id="preview-image">
-
-                </fieldset>
-            
+            <div class="content-header">
+                <h1>Upload new image</h1>
             </div>
-        
-            <input type="submit" value="Create item">
 
-        </form>
+            <div class="content-form">
+            
+                <form enctype="multipart/form-data" action="/dashboard/content/new/image" method="post"> 
 
+                    <fieldset class="normal-input required">
+                        <label for="form-name">Image title</label>
+                        <input id="form-name" name="name" type="text" maxlength="100">
+                    </fieldset>
+
+                    <fieldset class="normal-upload required">
+                        <label>Upload an image</label>
+                        <label class="upload-label" for="form-upload">
+
+                            <img id="preview-image">
+                            <svg version="1.1" id="add-symbol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                                <circle style="fill:#43B05C;" cx="25" cy="25" r="25"/>
+                                <line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="25" y1="13" x2="25" y2="38"/>
+                                <line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="37.5" y1="25" x2="12.5" y2="25"/>
+                            </svg>
+
+                        </label>
+                        <input id="form-upload" name="file" type="file">
+                    </fieldset>
+
+                    <fieldset class="normal-button">
+                        <input id="form-submit" value="Save changes" name="submit" class="submit-btn" type="submit">
+                        <button type="button" class="cancel-btn"><a href="#">Cancel</a></button>
+                    </fieldset>
+
+                </form>
+
+            </div>
+
+        </section>
     </section>
-</div>
 
 {{> dashfoot}}

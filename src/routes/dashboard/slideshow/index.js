@@ -12,7 +12,26 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message = query.message(req.query.message);
+		var negative, positive;
+		var message = req.query.message;
+
+		switch(message) {
+			case 'failed':
+				negative = "Could not save changes";
+			break;
+
+			case 'new':
+				positive = "Succesfully created new slideshow";
+			break;
+
+			case 'edit':
+				positive = "Succesfully edited slideshow";
+			break;
+
+			case 'delete':
+				positive = "Succesfully deleted slideshow";
+			break;
+		}
 
 		req.getConnection(function(err, connection) {
 
@@ -32,11 +51,11 @@ router.get('/', function(req, res) {
 
 				// If there's no data.
 				if(callback.length < 1) {
-					res.render('dashboard/slideshow/index', { title: 'Slideshows', message: message });
+					res.render('dashboard/slideshow/index', { title: 'Slideshows', negative: negative, positive: positive });
 				}
 				// If there is.
 				else {
-					res.render('dashboard/slideshow/index', { title: 'Slideshows', data: callback, message: message });
+					res.render('dashboard/slideshow/index', { title: 'Slideshows', data: callback, negative: negative, positive: positive });
 				}				
 				
 			}).catch(function(err) {
@@ -164,7 +183,7 @@ router.get('/edit/:id', function(req, res) {
 						name: input.slideshowName, 
 						description: input.slideshowDesc,
 						id: req.params.id,
-						message: message
+						negative: negative, positive: positive
 					});	
 
 					return false;				
@@ -178,7 +197,7 @@ router.get('/edit/:id', function(req, res) {
 					description: input.slideshowDesc,
 					slide: callback,
 					id: req.params.id,
-					message: message
+					negative: negative, positive: positive
 				});	
 	
 
