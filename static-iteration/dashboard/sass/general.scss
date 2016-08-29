@@ -94,7 +94,12 @@ main {
 	.content-scroll-div {
 		position: relative;
 		height: 100%;
-		overflow-x: auto;
+		overflow-y: auto;
+
+		&.flexible {
+			display: flex;
+			flex-flow: row wrap;
+		}
 	}
 
 	.content-header {
@@ -303,6 +308,11 @@ main {
 		.content-scroll-div {
 			height: 100%;
 			padding-bottom: 100px;
+
+			&.flexible {
+				justify-content: center;
+			}
+
 		}
 
 
@@ -354,10 +364,15 @@ main {
 }
 
 @keyframes fade {
-  0%, 100% { 
-  	opacity: 0 
+  0%, 99% { 
+  	opacity: 0;
+  	top: $d10;
   }
   20%, 80% { 
-  	opacity: 1 
+  	opacity: 1;
+  	top: $d10;
+  }
+  100% {
+  	top: -100px;
   }
 }

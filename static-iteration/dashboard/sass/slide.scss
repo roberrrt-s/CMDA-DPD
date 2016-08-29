@@ -1,0 +1,48 @@
+#container {
+
+	.slide-block {
+		width: 200px;
+		height: auto;
+		color: $color-text-invert;
+
+		.slide-options {
+			font-size: .8rem;
+		}
+
+		svg {
+			display: block;
+			height: 100px;
+			margin: auto;
+		}
+
+		> div {
+			display: none;
+		}
+
+		&:hover > div, &:focus > div {
+			display: block;
+		}
+
+		.normal-button {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0;
+		}
+
+		input, button {
+			max-width: 100px;
+			margin: 0;
+			font-size: .9rem;
+
+			&[type="submit"], &[type="button"] {
+				max-width: 200px;
+				padding: 0 $d5;
+				margin-bottom: $d5;
+			}
+		}
+
+	}
+
+
+
+}

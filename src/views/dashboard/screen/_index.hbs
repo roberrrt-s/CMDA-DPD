@@ -1,0 +1,39 @@
+{{> dashhead}}
+
+<div class="block-wrapper">
+
+{{#if message}}
+
+	{{message}}
+
+{{/if}}
+
+{{#each data}}
+	<section class="block-item"><a href="/dashboard/screen/edit/{{id}}">
+		<header class="block-image">
+			<img src="/media/tv.png">
+		</header>
+		<footer class="block-footer">
+			<ul>
+				<li><strong>Name: </strong>{{name}}</li>
+				<li><strong>Location: </strong>{{location}}</li>
+			</ul>
+		</footer>
+	</a></section>	
+{{/each}}
+
+
+    <section class="block-item new-item"><a href="/dashboard/screen/new/">
+        <header class="block-image">
+            <img src="/media/new.png">
+        </header>
+        <footer class="block-footer">
+            <ul>
+                <li><strong>Create a new screen</strong></li>
+            </ul>
+        </footer>
+    </a></section>
+
+</div>
+
+{{> dashfoot}}

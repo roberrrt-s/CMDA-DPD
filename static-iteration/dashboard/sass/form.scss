@@ -3,7 +3,7 @@
 		border: 0px;
 	}
 
-	input[type="text"], input[type="number"], textarea {
+	input[type="text"], input[type="number"], input[type="password"], textarea {
 		border-radius: $border-radius;
 		line-height: $line-height;
 		font-family: sans-serif;
@@ -21,6 +21,7 @@
 
 	select {
 		border-radius: $border-radius;
+		font-size: 1rem;
 		padding: $d5;
 		margin-top: $d5;
 		border: 1px solid $color-light-grey;
@@ -83,6 +84,10 @@
 
 	}
 
+	input[type="file"] {
+		display: none;
+	}
+
 	.submit-btn:hover, .submit-btn:focus {
 		background-color: $color-dark-blue;
 		color: $color-text;
@@ -125,6 +130,43 @@
 		margin: $d10;
 	}
 
+	.normal-upload {
+		width: 20em;
+		display: flex;
+		flex-direction: column;
+		margin: $d10;
+
+		> label:last-of-type {
+			width: 20em;
+			height: 10em;
+			margin-top: $d10;
+			border: 3px dotted $color-light-grey;
+			text-align: center; 
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				width: 3rem;
+				height: 3rem;
+			}
+
+			img {
+				max-width: 20em;
+				max-height: 10em;
+				width: auto;
+				height: auto;
+			}
+
+			&:hover svg, &:focus svg {
+				transform: rotate(180deg);
+				transition: all $transition-time-3 $easing-2;
+			}
+		}
+
+	}
+
 	.normal-button {
 		width: 20em;
 		margin: $d20 $d10;
@@ -138,7 +180,7 @@
 	.error {
 		> input {
 			border-color: $color-cmd-red;
-			
+
 		}
 
 		> .error-message {

@@ -1,20 +1,28 @@
 {{> dashhead}}
 
-<div class="content-wrapper">
-	<section class="content-introduction">
-		<form action="/dashboard/screen/delete/{{id}}" method="post"> 
+    <section id="content">
+        <section class="content-scroll-div">
 
-			<h1>Are you sure you wish to delete this screen?</h1>
-			<p>
-				<ul>
-					<li><strong>Screen: </strong>1e etage TTH</li>
-				</ul>
-			</p>
-			<input type="submit" value="Yes, I wish to delete this screen">
+            <div class="content-header">
+                <h1>Delete screen</h1>
+            </div>
 
-		</form>
-		<a href="/dashboard/screen/edit/{{id}}"><button>No</button></a>
-	</section>
-</div>
+            <div class="content-form">
+            
+				<form action="/dashboard/screen/delete/{{id}}" method="post">
+
+				<p class="details">Are you sure you wish to delete this screen?</p>
+
+                    <fieldset class="normal-button">
+                        <input id="form-submit" value="Delete screen" name="submit" class="submit-btn" type="submit">
+                        <button type="button" class="cancel-btn"><a href="/dashboard/screen/">Cancel</a></button>
+                    </fieldset>
+
+                </form>
+
+            </div>
+
+        </section>
+    </section>
 
 {{> dashfoot}}

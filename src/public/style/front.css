@@ -60,7 +60,7 @@ main {
 }
 
 .tweet {
-	position: relative;
+	position: absolute;
 	min-width: 80vw;
 	min-height: 80vh;	
 

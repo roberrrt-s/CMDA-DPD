@@ -1,0 +1,48 @@
+    {{> dashhead}}
+
+<div class="content-wrapper">
+    <section class="content-options">
+        <h1>Edit screen</h1>
+
+        <form action="/dashboard/screen/edit/{{id}}" method="post"> 
+
+            <div class="flex-container">
+
+                <fieldset>
+                <legend>Screen options</legend>
+
+                    <label>Screen name:
+                        <input name="name" value="{{name}}" type="text" placeholder="Name"></input>
+                    </label>
+
+                    <label>Description:
+                        <textarea name="desc" type="text" placeholder="Description">{{desc}}</textarea>
+                    </label>
+
+                    <label>Location:
+                        <input name="loc" value="{{loc}}" type="text" placeholder="Location"></input>
+                    </label>
+
+                    <label>Assign slideshow to this screen
+                        <select name="slideshow">
+                            <option {{#if none}}selected{{/if}} value="0">Do not assign slideshow</option>
+                            {{#each slideshows}}
+                            <option {{#if selected}}selected{{/if}} value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </label>
+
+                </fieldset>
+
+            </div>
+
+            <input type="submit" value="Save changes">
+
+        </form>
+        <a href="/dashboard/screen/delete/{{id}}"><button>Delete screen</button></a>
+
+
+    </section>
+</div>
+
+{{> dashfoot}}

@@ -96,7 +96,16 @@ main {
 #content .content-scroll-div {
   position: relative;
   height: 100%;
-  overflow-x: auto;
+  overflow-y: auto;
+}
+
+#content .content-scroll-div.flexible {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 #content .content-header {
@@ -314,6 +323,11 @@ main {
     height: 100%;
     padding-bottom: 100px;
   }
+  #content .content-scroll-div.flexible {
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
   #content .content-header svg {
     display: block;
   }
@@ -355,20 +369,30 @@ main {
 }
 
 @-webkit-keyframes fade {
-  0%, 100% {
+  0%, 99% {
     opacity: 0;
+    top: 10px;
   }
   20%, 80% {
     opacity: 1;
+    top: 10px;
+  }
+  100% {
+    top: -100px;
   }
 }
 
 @keyframes fade {
-  0%, 100% {
+  0%, 99% {
     opacity: 0;
+    top: 10px;
   }
   20%, 80% {
     opacity: 1;
+    top: 10px;
+  }
+  100% {
+    top: -100px;
   }
 }
 
@@ -376,7 +400,7 @@ main {
   border: 0px;
 }
 
-#content input[type="text"], #content input[type="number"], #content textarea {
+#content input[type="text"], #content input[type="number"], #content input[type="password"], #content textarea {
   border-radius: 5px;
   line-height: 150%;
   font-family: sans-serif;
@@ -386,13 +410,14 @@ main {
   width: 100%;
 }
 
-#content input[type="text"]:focus, #content input[type="number"]:focus, #content textarea:focus {
+#content input[type="text"]:focus, #content input[type="number"]:focus, #content input[type="password"]:focus, #content textarea:focus {
   border: 1px solid #232B2D;
   transition: 350ms cubic-bezier(0.5, 0.35, 0, 1);
 }
 
 #content select {
   border-radius: 5px;
+  font-size: 1rem;
   padding: 5px;
   margin-top: 5px;
   border: 1px solid #E4E4E4;
@@ -455,6 +480,10 @@ main {
   transition: background-color 150ms cubic-bezier(0.5, 0.35, 0, 1);
 }
 
+#content input[type="file"] {
+  display: none;
+}
+
 #content .submit-btn:hover, #content .submit-btn:focus {
   background-color: #232B2D;
   color: #E4E4E4;
@@ -510,6 +539,54 @@ main {
   margin: 10px;
 }
 
+#content .normal-upload {
+  width: 20em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10px;
+}
+
+#content .normal-upload > label:last-of-type {
+  width: 20em;
+  height: 10em;
+  margin-top: 10px;
+  border: 3px dotted #E4E4E4;
+  text-align: center;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#content .normal-upload > label:last-of-type svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+#content .normal-upload > label:last-of-type img {
+  max-width: 20em;
+  max-height: 10em;
+  width: auto;
+  height: auto;
+}
+
+#content .normal-upload > label:last-of-type:hover svg, #content .normal-upload > label:last-of-type:focus svg {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  transition: all 750ms cubic-bezier(0.85, 0.15, 0.15, 0.85);
+}
+
 #content .normal-button {
   width: 20em;
   margin: 20px 10px;
@@ -527,4 +604,71 @@ main {
 #content .error > .error-message {
   font-size: .8rem;
   color: #E9625C;
+}
+
+#container .slide-block {
+  width: 200px;
+  height: auto;
+  color: #1B2224;
+}
+
+#container .slide-block .slide-options {
+  font-size: .8rem;
+}
+
+#container .slide-block svg {
+  display: block;
+  height: 100px;
+  margin: auto;
+}
+
+#container .slide-block > div {
+  display: none;
+}
+
+#container .slide-block:hover > div, #container .slide-block:focus > div {
+  display: block;
+}
+
+#container .slide-block .normal-button {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 0;
+}
+
+#container .slide-block input, #container .slide-block button {
+  max-width: 100px;
+  margin: 0;
+  font-size: .9rem;
+}
+
+#container .slide-block input[type="submit"], #container .slide-block input[type="button"], #container .slide-block button[type="submit"], #container .slide-block button[type="button"] {
+  max-width: 200px;
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+
+main.login-container {
+  background-color: #232B2D;
+}
+
+main.login-container #content {
+  left: 0;
+}
+
+main.login-container #content .content-form {
+  border-radius: 5px;
+}
+
+main.login-container #content a {
+  color: #232B2D;
+  font-size: 1rem;
+}
+
+main.login-container #content a:hover, main.login-container #content a:focus {
+  text-decoration: underline;
 }

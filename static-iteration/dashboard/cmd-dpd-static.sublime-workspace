@@ -1,0 +1,884 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tran",
+				"transition-time-2"
+			],
+			[
+				"easing",
+				"easing-1"
+			],
+			[
+				"trans",
+				"transition-time-3"
+			],
+			[
+				"line-h",
+				"line-height-large"
+			],
+			[
+				"color-tetx",
+				"color-text-secondary"
+			],
+			[
+				"R",
+				"Raikkonen"
+			],
+			[
+				"getElement",
+				"getElementsByClassName"
+			],
+			[
+				"tweet",
+				"tweetStack"
+			],
+			[
+				"inser",
+				"insertNewSlideshowContentItem"
+			],
+			[
+				"sql",
+				"sqlLibrary"
+			],
+			[
+				"slideshow",
+				"slideshow_has_content"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"array_re",
+				"array_replace"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"append",
+				"FILE_APPEND"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"get",
+				"getAttribute"
+			],
+			[
+				"funda",
+				"funda-border-blue"
+			],
+			[
+				"cr",
+				"createHtmlReference"
+			],
+			[
+				"funda-",
+				"funda-border-blue"
+			],
+			[
+				"local",
+				"localStorage"
+			],
+			[
+				"repos",
+				"repositories"
+			],
+			[
+				"respo",
+				"repositories"
+			],
+			[
+				"br",
+				"br"
+			],
+			[
+				"REPOS",
+				"repository"
+			],
+			[
+				"issues",
+				"issuesPerRepo"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"network",
+				"networkFriends"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 36653,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "new.html",
+			"settings":
+			{
+				"buffer_size": 33864,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "slide.html",
+			"settings":
+			{
+				"buffer_size": 18966,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "#container {\n\n	.slide-block {\n		width: 200px;\n		height: auto;\n		color: $color-text-invert;\n\n		svg {\n			display: block;\n			height: 100px;\n			margin: auto;\n		}\n\n		> div {\n			display: none;\n		}\n\n		&:hover > div, &:focus > div {\n			display: block;\n		}\n\n		input {\n			max-width: 100px;\n			margin: 0;\n\n			&[type=\"submit\"], button {\n				max-width: 200px\\;\n			}\n		}\n\n	}\n\n\n\n}\n",
+			"file": "sass/slide.scss",
+			"file_size": 400,
+			"file_write_time": 131169322168583545,
+			"settings":
+			{
+				"buffer_size": 366,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sass/form.scss",
+			"settings":
+			{
+				"buffer_size": 3205,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sass/general.scss",
+			"settings":
+			{
+				"buffer_size": 4893,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sass/global.scss",
+			"settings":
+			{
+				"buffer_size": 204,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sass/variables.scss",
+			"settings":
+			{
+				"buffer_size": 1154,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "Package Control: inst",
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 577.0,
+		"history":
+		[
+			"Package Control: Install Package",
+			"open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())",
+			"urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) );",
+			"ipp = sublime.installed_packages_path(); ",
+			"pf = 'Package Control.sublime-package';",
+			"import urllib.request,os;",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
+			"git clone https://github.com/davidrios/jade-tmbundle.git Jade",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/style"
+	],
+	"file_history":
+	[
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/global.scss",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/style/style.css",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/slideshow.scss",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/screen.scss",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/login.scss",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/content.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/variables.scss",
+		"/D/Dropbox/Studie/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/public/style/style.css",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/developer/dashboard/project/overview.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/data.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/content.php",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/global.scss",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/variables.sass",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/shared/partials/cloudteams-icons.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/style.scss",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/static-iteration/dashboard/sass/partial.scss",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/server.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/developer/dashboard/project/personas.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/campaign/data.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/personas/create-persona.php",
+		"/D/Dropbox/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/views/partials/dashhead.hbs",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/campaign/add-persona.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/campaign/rate-persona.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/campaign/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/developer/dashboard/CampaignOverview.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/developer/dashboard/project/campaign-overview.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/js/global.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/shared/dashboard/side-menu.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/campaign/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/developer/dashboard/Team.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/team/member-new-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/team/member-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/developer/dashboard/Personas.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/personas/index.php",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/WAFS/web-app-from-scratch/eindopdracht/js/router.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/index.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/WAFS/web-app-from-scratch/eindopdracht/js/ls.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/routes/dashboard/content/index.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/developer/dashboard/project/documents.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/create/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/personas/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/partials/Modal.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/webpack.config.babel.js",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/sass/custom/shared/dashboard/page.scss",
+		"/C/Users/Robert/Desktop/test.html",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/package.json",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/documents/new-url.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/projects/project/campaigns/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/cloudteams.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/cloudteams.sublime-workspace",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/sass/common/_variables.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/sass/blocks/about-partners.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/index.html",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/style/global.css",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/sass/main.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/sass/sandbox.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/views/partials/blocks/b-locations-map.twig",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/assets/styles/layouts/_tinymce.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/views/templates/about-us.twig",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/node_modules/bootstrap/Gruntfile.js",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/scss/main.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock-static/aboutus-partners/scss/_variables.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/node_modules/bootstrap/dist/css/bootstrap.css",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/node_modules/jquery/dist/jquery.js",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/package.json",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/webpack.config.js",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/src/admin.php",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/assets/styles/common/_fonts.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/assets/styles/common/_global.scss",
+		"/D/Dropbox/Booreiland/projects/2016/instock/site/web/app/themes/instock/assets/styles/main.scss",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/views/developer/dashboard/partials/side-menu-extended.php",
+		"/D/Dropbox/Booreiland/projects/2016/cloudteams-main/designs/src/js/developer/dashboard/Documents.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/documents/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/variables.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/npm-debug.log",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/documents/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/developer/dashboard/project/documents.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/package.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/webpack.config.babel.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/package.user.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/tmp/stats.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/mixins.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/documents/document.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-new-popup.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/partials/side-menu-extended.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/Team.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/developer/dashboard/project/project-create.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/developer/dashboard/project/team.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/create/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-picture.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/style.scss",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/create/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/profile/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/content.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/campaigns/create/index.php",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/Main.js",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/cmd-dpd.sublime-project",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/cmd-dpd.sublime-workspace",
+		"/D/Robert Spier/Hogeschool van Amsterdam/Verdieping 2/MINOR/MP/CMDA-DPD/src/package.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/Team.js",
+		"/C/Users/Robert/Desktop/booot/Config/config.json",
+		"/C/Users/Robert/Desktop/booot/Config/auth.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/CampaignCreate.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/sass/custom/shared/dashboard/side-menu.scss",
+		"/C/Users/Robert/Desktop/PokeBot/Translations/nl.json",
+		"/C/Users/Robert/Desktop/PokeBot/Translations/de.json",
+		"/C/Users/Robert/Desktop/PokeBot/Translations/.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/Menu.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/user/dashboard/Projects.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/public/Project.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/AddItemDimensions.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/CustomerIdeas.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/partials/Modal.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/CampaignOverview.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/js/developer/dashboard/Projects.js",
+		"/D/Dropbox/Booreiland/projects/2016/designs/cloudteams.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/designs/settings.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/designs/subproject.sublime-project",
+		"/D/Dropbox/Booreiland/projects/2016/designs/subproject.sublime-workspace",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/data/example.json",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/js/global.js",
+		"/D/Robert Spier/Strategy on Demand/Visualiser/data/test.json",
+		"/D/Dropbox/Booreiland/projects/2016/designs/src/views/developer/dashboard/projects/project/team/member-no-picture.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"",
+			"*.scss",
+			"*.php",
+			"*.scss",
+			"*.php",
+			"*.scss",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"item-block",
+			"slideshow",
+			"svg",
+			"button",
+			"d15",
+			"#content",
+			"color:",
+			"section",
+			"id=\"content",
+			"#content",
+			"screen.html",
+			"opacity: ",
+			"opacity: .",
+			"last",
+			";\n",
+			"$trans",
+			"45px",
+			"e4",
+			"color-",
+			"bold",
+			".icon-user",
+			"icon-user",
+			".vertical-align",
+			".vertical-align\"",
+			"class=\"vertical-align\"",
+			"block",
+			"json",
+			"tage-block",
+			"				\n",
+			"						\n",
+			"</h2",
+			"class=\"btn ",
+			"modal-dialog.medium",
+			"modal-dialog medium",
+			"$color-clear-gray ",
+			"header",
+			"open",
+			"look",
+			"confirm-button",
+			"after",
+			"name",
+			"document",
+			"color-text",
+			"document",
+			"padding",
+			"100vh",
+			"-65px",
+			"		\n",
+			"<figure class=\"b-partners__icon\">",
+			"--",
+			".partners",
+			"--",
+			"partners",
+			"--",
+			"iconbox",
+			"white",
+			"partners--information",
+			"<p>ding</p>",
+			"align",
+			"lg",
+			"icons",
+			"padding",
+			"~",
+			"team",
+			"graph",
+			"div>",
+			"browserSync",
+			"plugin",
+			"node_env",
+			"watch",
+			"NODE_ENV",
+			"block block",
+			"include",
+			"#",
+			"#F",
+			"FFF",
+			"font-size",
+			"font-size: 60px",
+			".add-project-button i",
+			"add-project-button",
+			".add-project-button i",
+			".add-project-botton",
+			"60px",
+			"hr",
+			"input type=\"file\"",
+			"search",
+			"-1000px",
+			"input[type=radio]",
+			"input[type=\"radio\"]",
+			"input[type=\"radio]",
+			"fieldset",
+			"radio",
+			"campaign",
+			"css",
+			"scss",
+			"');",
+			"class",
+			"7d3c8c",
+			"overflow",
+			"hot ",
+			"60",
+			"candy",
+			"background",
+			"select-drop",
+			"select-dropdown",
+			"}`);",
+			"kleine",
+			"crazysnow",
+			"target\": \"",
+			"\"real_name",
+			"1151713693",
+			"338561132",
+			"Lex Nagtegaal",
+			"179206226",
+			"main",
+			"graph[0]",
+			".length",
+			"enter",
+			"fred",
+			"fred van ",
+			"Location\":",
+			"\"target\"",
+			"\"Source\"",
+			"Source",
+			"Twitter ID",
+			"large",
+			"trans",
+			".content"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"hidden"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36653,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13423,
+								13423
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4788.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "new.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 33864,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1517,
+								1517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "slide.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18966,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17481,
+								17481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5586.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sass/slide.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								346,
+								346
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sass/form.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								3205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "sass/general.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2758,
+								2768
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3846.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "sass/global.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 204,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "sass/variables.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								399,
+								381
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cmd-dpd-static.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"modal",
+				"src\\js\\partials\\Modal.js"
+			],
+			[
+				"pi",
+				"C:\\Users\\Robert\\Dropbox\\Pulpstulp\\html\\index.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"easeInOutCubic"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 264.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
