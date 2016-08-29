@@ -1,0 +1,43 @@
+{{> dashhead}}
+
+<div class="content-wrapper">
+
+	<section class="content-divider">
+		<h1>All available images</h1>
+	</section>
+
+	{{#if message}}
+		{{message}}
+	{{/if}}
+
+	<div class="content-category-wrapper">
+
+		{{#each image}}
+			<section class="content-item"><a href="/dashboard/content/edit/{{id}}">
+				<header class="block-image">
+					<img src="/uploads/{{link}}">
+				</header>
+				<footer class="content-footer">
+					<ul>
+						<li><strong>Title: </strong>{{name}}</li>
+					</ul>
+				</footer>
+			</a></section>
+		{{/each}}
+
+		<section class="content-item new-item"><a href="/dashboard/content/new/image">
+			<header class="block-image">
+				<img src="/media/content-new.png">
+			</header>
+			<footer class="content-footer">
+				<ul>
+					<li><strong>Upload new image</strong></li>
+				</ul>
+			</footer>
+		</a></section>
+	
+	</div>
+
+</div>
+
+{{> dashfoot}}

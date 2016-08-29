@@ -1,0 +1,36 @@
+{{> dashhead}}
+
+<div class="content-wrapper">
+    <section class="content-options">
+        <h1>Editing image: {{name}}</h1>
+
+        <form action="/dashboard/content/edit/{{id}}" method="post"> 
+
+            <div class="flex-container">
+                <fieldset>
+                <legend>Options</legend>
+
+                    <label>Image title:
+                        <input name="name" value="{{name}}" type="text" placeholder="Name"></input>
+                    </label>
+
+                </fieldset>
+
+            </div>
+
+            <input type="submit" value="Save changes">
+
+        </form>
+        <a href="/dashboard/content/"><button>Cancel</button></a>
+
+        <fieldset>
+        <legend>Delete</legend>
+            <p>Do you wish to delete this item??</p>
+            <a href="/dashboard/content/delete/{{id}}"><button>Delete item</button></a>
+        </fieldset>
+
+    </section>
+
+</div>
+
+{{> dashfoot}}

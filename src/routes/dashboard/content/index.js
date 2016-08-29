@@ -31,8 +31,26 @@ router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message = query.message(req.query.message);
+		var negative, positive;
+		var message = req.query.message;
 
+		switch(message) {
+			case 'failed':
+				negative = "Could not save changes";
+			break;
+
+			case 'new':
+				positive = "Succesfully uploaded new image";
+			break;
+
+			case 'edit':
+				positive = "Succesfully edited image";
+			break;
+
+			case 'delete':
+				positive = "Succesfully deleted image";
+			break;
+		}
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
@@ -52,7 +70,7 @@ router.get('/', function(req, res) {
 				// Filter content based on type for parsing.
 				var images = callback.filter(filterType.image)
 
-				res.render('dashboard/content', { title: 'Content', image: images, message: message });
+				res.render('dashboard/content', { title: 'Content', image: images, negative: negative, positive: positive });
 
 			})
 
@@ -73,9 +91,7 @@ router.get('/new/', function(req, res) {
 router.get('/new/image', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
-
 		res.render('dashboard/content/new', { title: 'Upload new image' });
-
 	}
 
 });

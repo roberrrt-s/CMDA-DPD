@@ -1,0 +1,20 @@
+{{> dashhead}}
+
+<div class="content-wrapper">
+    <section class="content-introduction">
+    	<form action="/dashboard/content/delete/{{id}}" method="post"> 
+
+	        <h1>Are you sure you wish to delete this image? This action will also remove all slides containing this image</h1>
+	        <p>
+	            <ul>
+	                <li><strong>Image title: </strong>{{name}}</li>
+	            </ul>
+	        </p>
+			<input type="submit" value="Yes, I wish to delete this screen">
+
+		</form>
+		<a href="/dashboard/content/edit/{{id}}"><button>No</button></a>
+    </section>
+</div>
+
+{{> dashfoot}}

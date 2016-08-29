@@ -2,14 +2,32 @@ var express = require('express'),
 	checkLogin = require('../../../lib/checkLogin.js')
 	sqlLibrary = require('../../../lib/sqlLibrary.js')
 	reloader = require('../../../lib/reloader.js'),
-	query = require('../../../lib/query.js'),
     router = express.Router();
 
 router.get('/', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message = query.message(req.query.message);
+		var negative, positive;
+		var message = req.query.message;
+
+		switch(message) {
+			case 'failed':
+				negative = "Could not save changes";
+			break;
+
+			case 'new':
+				positive = "Succesfully created new screen";
+			break;
+
+			case 'edit':
+				positive = "Succesfully edited screen";
+			break;
+
+			case 'delete':
+				positive = "Succesfully deleted screen";
+			break;
+		}
 
 		req.getConnection(function(err, connection) {
 			var promise = new Promise(function(resolve, reject) {
@@ -28,11 +46,11 @@ router.get('/', function(req, res) {
 
 				// If there are no screens.
 				if(callback.length < 1) {
-					res.render('dashboard/screen/index', { title: 'Screens', message: message });
+					res.render('dashboard/screen/index', { title: 'Screens', positive: positive, negative: negative });
 				}
 				// If there are,
 				else {
-					res.render('dashboard/screen/index', { title: 'Screens', data: callback, message: message });
+					res.render('dashboard/screen/index', { title: 'Screens', data: callback, positive: positive, negative: negative });
 				}
 
 			})
