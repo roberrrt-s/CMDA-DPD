@@ -51,6 +51,7 @@ router.get('/', function(req, res) {
 				positive = "Succesfully deleted image";
 			break;
 		}
+		
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {

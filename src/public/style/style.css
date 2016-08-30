@@ -106,6 +106,7 @@ main {
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  overflow-x: hidden;
 }
 
 #content .content-header {
@@ -610,6 +611,7 @@ main {
   width: 200px;
   height: auto;
   color: #1B2224;
+  cursor: pointer;
 }
 
 #container .slide-block .slide-options {

@@ -34,8 +34,7 @@ var index = require('./routes/index')
 	screen = require('./routes/dashboard/screen/index'),
 	slideshow = require('./routes/dashboard/slideshow/index'),
 	slide = require('./routes/dashboard/slideshow/slide/index'),
-	content = require('./routes/dashboard/content/index'),
-	settings = require('./routes/dashboard/settings/index')
+	content = require('./routes/dashboard/content/index');
 
 // Defining database options
 var dbconfig = {
@@ -86,5 +85,4 @@ app.use('/dashboard/screen', screen);
 app.use('/dashboard/slideshow', slideshow);
 app.use('/dashboard/slideshow/edit', slide);
 app.use('/dashboard/content', content);
-app.use('/dashboard/settings', settings);
 

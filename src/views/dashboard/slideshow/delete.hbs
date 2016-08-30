@@ -1,18 +1,28 @@
 {{> dashhead}}
 
-<div class="content-wrapper">
-    <section class="content-introduction">
-        <form action="/dashboard/slideshow/delete/{{id}}" method="post"> 
-	        <h1>Are you sure you wish to delete this slideshow?</h1>
-	        <p>
-	            <ul>
-	                <li><strong>Slideshow: </strong>{{name}}</li>
-	            </ul>
-	        </p>
-	        <input type="submit" value="Yes, I wish to delete this slideshow">
-	    </form>
-	<a href="/dashboard/edit/{{id}}"><button>No</button></a>
+    <section id="content">
+        <section class="content-scroll-div">
+
+            <div class="content-header">
+                <h1>Delete slideshow</h1>
+            </div>
+
+            <div class="content-form">
+            
+				<form action="/dashboard/screen/slideshow/{{id}}" method="post">
+
+				<p class="details">Are you sure you wish to delete this slideshow?</p>
+
+                    <fieldset class="normal-button">
+                        <input id="form-submit" value="Delete slideshow" name="submit" class="submit-btn" type="submit">
+                        <button type="button" class="cancel-btn"><a href="/dashboard/slideshow/">Cancel</a></button>
+                    </fieldset>
+
+                </form>
+
+            </div>
+
+        </section>
     </section>
-</div>
 
 {{> dashfoot}}

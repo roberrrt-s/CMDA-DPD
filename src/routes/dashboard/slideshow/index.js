@@ -156,7 +156,26 @@ router.get('/edit/:id', function(req, res) {
 
 	if(checkLogin(req.session, res)) {
 
-		var message = query.message(req.query.message)
+		var negative, positive;
+		var message = req.query.message;
+
+		switch(message) {
+			case 'failed':
+				negative = "Could not save changes";
+			break;
+
+			case 'new':
+				positive = "Succesfully created new slide";
+			break;
+
+			case 'edit':
+				positive = "Succesfully edited slide";
+			break;
+
+			case 'delete':
+				positive = "Succesfully deleted slide";
+			break;
+		}
 
 		req.getConnection(function(err, connection) {
 
@@ -173,6 +192,7 @@ router.get('/edit/:id', function(req, res) {
 
 			}).then(function(callback) {
 				console.log(callback)
+
 				var input = callback[0]
 
 				// Handlebars parses null values as 'values that exist' but have no content, manual check to avoid this.
@@ -183,13 +203,30 @@ router.get('/edit/:id', function(req, res) {
 						name: input.slideshowName, 
 						description: input.slideshowDesc,
 						id: req.params.id,
-						negative: negative, positive: positive
+						negative: negative, 
+						positive: positive
 					});	
 
 					return false;				
 
 				}
 
+				for(var i = 0; i < callback.length; i++) {
+					switch(callback[i].type) {
+						case 'image':
+							callback[i].image = true;
+						break;
+						case 'video':
+							callback[i].video = true;
+						break;
+						case 'tweet':
+							callback[i].tweet = true;
+						break;
+						default:
+							return;
+					}
+				}
+				
 				// Render the edit page
 				res.render('dashboard/slideshow/edit', { 
 					title: 'Slideshows', 
@@ -197,7 +234,8 @@ router.get('/edit/:id', function(req, res) {
 					description: input.slideshowDesc,
 					slide: callback,
 					id: req.params.id,
-					negative: negative, positive: positive
+					negative: negative, 
+					positive: positive,
 				});	
 	
 

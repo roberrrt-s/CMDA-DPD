@@ -1,101 +1,140 @@
 {{> dashhead}}
 
-<div class="content-wrapper">
+{{#if positive}}
+<section id="message" class="positive">
+    <p>{{positive}}</p>
+</section>
+{{/if}}
 
-    {{#if message}}
+{{#if negative}}
+<section id="message" class="negative">
+    <p>{{negative}}</p>
+</section>
+{{/if}}
 
-        {{message}}
+<section id="content">
+    <section class="content-scroll-div">
 
-    {{/if}}
-    
-    <section class="slideshow-options">
-        <form action="/dashboard/slideshow/edit/{{id    }}" method="post"> 
+        <div class="content-header">
+            <h1>Edit slideshow</h1>
+        </div>
 
-            <fieldset class="slideshow-options__fieldset">
-            <legend>Slideshow options</legend>
-
-                <label>Slideshow name:
-                    <input value="{{name}}" name="name" type="text" placeholder="Name"></input>
-                </label>
-
-                <label>Description:
-                    <textarea name="description" type="text" placeholder="Description">{{description}}</textarea>
-                </label>
-
-
-                <input type="submit" value="Save your changes">
-
-
-                {{#if error}}
-                    <div class="msg">
-                        {{error}}
-                    </div>
-                {{/if}}
-                        
-            </fieldset>
-
-        </form>
-
-
-        <fieldset class="slideshow-options__fieldset">
-        <legend>Slides</legend>
+        <div class="content-form">
         
-        {{#each slide}}
+            <form action="/dashboard/slideshow/edit/{{id}}" method="post"> 
 
-            <section class="block-item-slide">
-                    <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/{{slideId}}" method="post"> 
-                    <ul>
-                        <li><strong>{{name}}<strong></li>
-                    </ul>
+                <fieldset class="normal-input required">
+                    <label for="form-name">Slideshow title</label>
+                    <input value="{{name}}" id="form-name" name="name" type="text" maxlength="100">
+                </fieldset>
 
-                    <header class="block-image">
-                        <img src="/media/slideshow-new.png">
-                    </header>
-                    <footer class="block-footer">
-                        <ul>
-                            <li>
-                                <label>Slide order:
-                                    <input type="number" name="order" type="slide-order" value="{{slide_order}}" placeholder="Optional slide order">
-                                </label>
-                            </li>
-                            <li>
-                                <label>Slide duration:
-                                    <input type="number" name="duration" type="slide-duration" value="{{duration}}" placeholder="Slide duration">
-                                </label>
-                            </li>
-                            <li>
-                                <input type="submit" value="Quick edit">
-                            </li>
-                        </ul>
-                    </footer>
-                </form>
+                <fieldset class="normal-input required">
+                    <label for="form-desc">Screen description</label>
+                    <textarea id="form-desc" name="description" type="text" rows="3" maxlength="100">{{description}}</textarea>
+                </fieldset>
 
-                <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/remove/{{slideId}}" method="post"> 
-                    <input type="submit" value="Remove slide">
-                </form>
+                <fieldset class="normal-button">
+                    <input id="form-submit" value="Save changes" name="submit" class="submit-btn" type="submit">
+                    <button type="button" class="cancel-btn"><a href="/dashboard/slideshow/">Cancel</a></button>
+                </fieldset>
 
+                <fieldset class="normal-button">
+                    <button type="button" class="cancel-btn"><a href="/dashboard/slideshow/delete/{{id}}">Delete this slideshow</a></button>
+                </fieldset>
+
+            </form>
+
+        </div>
+
+        <div class="content-header">
+            <h1>Slides</h1>
+            <a href="/dashboard/slideshow/edit/{{id}}/slide/new/">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                    <circle style="fill:#43B05C;" cx="25" cy="25" r="25"/>
+                    <line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="25" y1="13" x2="25" y2="38"/>
+                    <line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="37.5" y1="25" x2="12.5" y2="25"/>
+                </svg>
+                <span>Create new slide</span>
+            </a>
+        </div>
+
+            <section id="container">
+                <section class="content-scroll-div flexible">
+
+                    {{#each slide}}
+
+                    <div class="slide-block">
+
+                        {{#if image}}
+                            <img alt="content image" src="/uploads/{{link}}">
+                        {{/if}}
+                        {{#if video}}
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+                                <rect x="1" y="7" style="fill:#7383BF;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="56" height="44"/>
+                                <polygon style="fill:#FFFFFF;" points="25,36 25,28.954 25,22 36,29 "/>
+                                <rect x="1" y="7" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="1" y="18" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="1" y="29" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="1" y="40" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="47" y="7" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="47" y="18" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="47" y="29" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                                <rect x="47" y="40" style="fill:#556080;stroke:#424A60;stroke-width:2;stroke-miterlimit:10;" width="10" height="11"/>
+                            </svg>
+                        {{/if}}
+                        {{#if tweet}}
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 309.142 309.142" style="enable-background:new 0 0 309.142 309.142;" xml:space="preserve">
+                            <g>
+                                <path style="fill:#61B4E4;" d="M154.571,0C69.662,0,0.83,68.832,0.83,153.741c0,38.283,13.997,73.295,37.147,100.207
+                                    c-6.953,19.986-19.807,37.21-36.479,49.581c10.592,3.619,21.938,5.613,33.757,5.613c20.214,0,39.082-5.751,55.067-15.698
+                                    c19.551,9.006,41.311,14.038,64.249,14.038c84.909,0,153.741-68.832,153.741-153.742C308.313,68.832,239.48,0,154.571,0z"/>
+                                <g>
+                                    <g>
+                                        <path style="fill:#FFFFFF;" d="M240.278,88.33c-6.817,3.988-14.372,6.875-22.411,8.436c-6.424-6.749-15.593-10.969-25.744-10.969
+                                            c-19.478,0-35.271,15.546-35.271,34.73c0,2.715,0.313,5.358,0.906,7.903c-29.316-1.449-55.31-15.27-72.709-36.278
+                                            c-3.032,5.123-4.78,11.087-4.78,17.458c0,12.045,6.238,22.672,15.698,28.905c-5.774-0.191-11.22-1.747-15.978-4.345
+                                            c0,0.147,0,0.29,0,0.437c0,16.819,12.163,30.855,28.305,34.051c-2.967,0.795-6.082,1.219-9.303,1.219
+                                            c-2.272,0-4.479-0.222-6.639-0.625c4.499,13.79,17.517,23.836,32.955,24.117c-12.078,9.307-27.28,14.864-43.818,14.864
+                                            c-2.854,0-5.654-0.164-8.418-0.486c15.62,9.848,34.168,15.599,54.082,15.599c64.891,0,100.364-52.907,100.364-98.796
+                                            c0-1.505-0.021-3.008-0.091-4.497c6.885-4.889,12.872-11.009,17.6-17.978c-6.327,2.766-13.121,4.624-20.263,5.463
+                                            C232.052,103.254,237.637,96.445,240.278,88.33z"/>
+                                    </g>
+                                </g>
+                            </g>
+                            </svg>
+                        {{/if}}
+
+                        <p class="details"><strong>Name: </strong>{{name}}</p>
+
+                        <div class="slide-options">
+                            <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/{{slideId}}" method="post"> 
+                                <fieldset class="normal-input">
+                                    <label for="form-order">Slide order</label>
+                                    <input value="{{slide_order}}" id="form-order" name="order" type="number"></input>
+                                </fieldset>
+
+                                <fieldset class="normal-input">
+                                    <label for="form-duration">Slide duration</label>
+                                    <input value="{{duration}}" id="form-duration" name="duration" type="number"></input>
+                                </fieldset>
+
+                                <fieldset class="normal-button">
+                                    <input id="form-submit" value="Quick edit" name="submit" class="submit-btn" type="submit">
+                            </form>
+                            <form action="/dashboard/slideshow/edit/{{slideshow_id}}/slide/remove/{{slideId}}" method="post"> 
+                                    <input id="form-submit" value="Remove slide" name="submit" class="cancel-btn" type="submit">
+                                </fieldset>
+                            </form>
+                        </div>                    
+
+                    </div>
+
+                {{/each}}
+                </section>
             </section>
-
-        {{/each}}
-
-        <section class="block-item new-item"><a href="/dashboard/slideshow/edit/{{id}}/slide/new/">
-            <header class="block-image">
-                <img src="/media/slideshow-new.png">
-            </header>
-            <footer class="block-footer">
-                <ul>
-                    <li><strong>Add a slide</strong></li>
-                </ul>
-            </footer>
-        </a></section>
-
-        </fieldset>
-
-    <a href="/dashboard/slideshow/"><button>Cancel</button></a>
-    <a href="/dashboard/slideshow/delete/{{id}}"><button>Delete this slideshow</button></a>
-
-    </section>
-
-</div>
+        </section>
 
 {{> dashfoot}}

@@ -199,7 +199,6 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 				});
 
-
 			}
 
 			console.log('hello world')

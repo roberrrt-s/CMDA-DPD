@@ -1,101 +1,99 @@
 {{> dashhead}}
 
-<div class="content-wrapper">
-	
-	<section class="slideshow-options">
-	<form enctype="multipart/form-data" action="/dashboard/slideshow/edit/{{id}}/slide/new/" method="post"> 
+    <section id="content">
+        <section class="content-scroll-div">
 
-		<fieldset class="slideshow-options__fieldset">
-		<legend>Content</legend>
+            <div class="content-header">
+                <h1>Create new slide</h1>
+            </div>
 
-			<label>Image<input type="radio" name="type" value="image" checked></label>
-			<label>YouTube video<input type="radio" name="type" value="video"></label>
-			<label>Tweet<input type="radio" name="type" value="tweet"></label>
-					
-		</fieldset>
+            <div class="content-form">
+            
+                <form enctype="multipart/form-data" action="/dashboard/content/new/image" method="post"> 
 
-		<fieldset class="slideshow-options__fieldset">
-		<legend>Slide meta options</legend>
+					<fieldset class="normal-radio">
+						<label>Select the content type for this slide:</label>
+						<input id="form-radio-1" name="type" type="radio"><label for="form-radio-1">Image</label>
+						<input id="form-radio-2" name="type" type="radio"><label for="form-radio-2">Video</label>
+						<input id="form-radio-3" name="type" type="radio"><label for="form-radio-3">Tweet</label>
+					</fieldset>
 
-			<label>Slide duration:
-				<input name="duration" type="number" placeholder="Duration"></input> sec
-			</label>
+                    <fieldset class="normal-input has-image has-video has-tweet required">
+                        <label for="form-order">Slide order</label>
+                        <input id="form-order" name="order" type="number" maxlength="100">
+                    </fieldset>
 
-			<label>Slide order:
-				<input name="order" type="number" placeholder="Order"></input>
-			</label>
+                    <fieldset class="normal-input has-image has-tweet required">
+                        <label for="form-duration">Slide duration in seconds</label>
+                        <input id="form-duration" value="1" name="duration" type="number" maxlength="100">
+                    </fieldset>
 
-			{{#if error}}
-				<div class="msg">
-					{{error}}
-				</div>
-			{{/if}}
-					
-		</fieldset>
+					<fieldset class="normal-radio has-image">
+						<label>Create a new image slide</label>
+						<input id="form-radio-4" name="image_type" type="radio"><label for="form-radio-4">Upload new image</label>
+						<input id="form-radio-5" name="image_type" type="radio"><label for="form-radio-5">Use existing image</label>
+					</fieldset>
 
-		<fieldset id="submit-image">
-		<legend>Submit a image</legend>
+                    <fieldset class="normal-input has-new-image required">
+                        <label for="form-image_title">Image title</label>
+                        <input id="form-image_title" name="image_title" type="text" maxlength="100">
+                    </fieldset>
 
-			<label>New image<input type="radio" name="image_type" value="new" checked></label>
-			<label>Use existing image<input type="radio" name="image_type" value="existing"></label>
+                    <fieldset class="normal-upload required">
+                        <label>Upload an image</label>
+                        <label class="upload-label" for="form-upload">
 
-			<fieldset>
-				<legend>New image</legend>
+                            <img id="preview-image">
+                            <svg version="1.1" id="add-symbol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                                <circle style="fill:#43B05C;" cx="25" cy="25" r="25"/>
+                                <line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="25" y1="13" x2="25" y2="38"/>
+                                <line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="37.5" y1="25" x2="12.5" y2="25"/>
+                            </svg>
 
-				<label>Image title:
-					<input name="image_title" type="text" placeholder="Enter the image title"></input>
-				</label>
+                        </label>
+                        <input id="form-upload" name="file" type="file">
+                    </fieldset>
 
-		        <label>New image:
-		            <input id="file-upload" name="file" type="file"></input>
-		        </label>
+					<fieldset class="normal-select">
+						<label for="form-slideshow">Assign a slideshow (optional)</label>
+						<select id="form-slideshow">
+						{{#each images}}
+							<option value="{{id}}" id="one">{{name}} ({{id}})</option>
+						{{/each}}
+						</select>
+					</fieldset>
 
-	        </fieldset>
-	        <fieldset>
-	        <legend>Select existing image</legend>
-	    		<label>Select existing image:
-	                <select name="existing_image_id">
-	                	{{#each images}}
-	                    	<option value="{{id}}">Image-{{id}} - {{name}}</option>
-	                	{{/each}}
-	                </select>
-	            </label>
-	        </fieldset>
+                    <fieldset class="normal-input required">
+                        <label for="form-name">Video title</label>
+                        <input id="form-name" name="name" type="text" maxlength="100">
+                    </fieldset>
 
-		</fieldset>
+                    <fieldset class="normal-input required">
+                        <label for="form-name">Video YouTube URL</label>
+                        <input id="form-name" name="name" type="text" maxlength="100">
+                    </fieldset>
 
-		<fieldset id="submit-video">
-		<legend>Submit a YouTube URL</legend>
+                    <fieldset class="normal-input required">
+                        <label for="form-name">Tweet title</label>
+                        <input id="form-name" name="name" type="text" maxlength="100">
+                    </fieldset>
 
-			<label>YouTube Title:
-				<input name="youtube_name" type="text" placeholder="Enter the YouTube title"></input>
-			</label>
+                    <fieldset class="normal-input required">
+                        <label for="form-name">Tweet direct URL</label>
+                        <input id="form-name" name="name" type="text" maxlength="100">
+                    </fieldset>                    
 
-			<label>YouTube URL:
-				<input name="youtube_url" type="text" placeholder="Enter the YouTube URL"></input>
-			</label>
+                    <fieldset class="normal-button">
+                        <input id="form-submit" value="Save changes" name="submit" class="submit-btn" type="submit">
+                        <button type="button" class="cancel-btn"><a href="#">Cancel</a></button>
+                    </fieldset>
 
-		</fieldset>
+                </form>
 
-		<fieldset id="submit-tweet">
-		<legend>Tweet URL:</legend>
+            </div>
 
-			<label>Tweet title:
-				<input name="tweet_name" type="text" placeholder="Enter the Tweet title"></input>
-			</label>	
-
-			<label>Tweet URL:
-				<input name="tweet_url" type="text" placeholder="Enter the Tweet URL"></input>
-			</label>		
-
-		</fieldset>
-		<input type="submit" value="Add new slide">
-
-	</form>
-	<a href="../../"><button>Cancel</button></a>
-
-	</section>
-
-</div>
+        </section>
+    </section>
 
 {{> dashfoot}}
