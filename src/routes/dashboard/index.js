@@ -28,7 +28,7 @@ router.post('/login/', function(req, res) {
 
 	// Check if both fields have been filled in
 	if(input.email === '' || input.password === '') {
-		res.render('dashboard/login', { error: 'Please enter a email / password'})
+		res.render('dashboard/login', { errorName: 'Please enter a email / password'})
 	}
 	else {
 
@@ -49,10 +49,10 @@ router.post('/login/', function(req, res) {
 			}).then(function(callback) {
 				// Checks if the user exists or the password matches
 				if(callback.length === 0) {
-					res.render('dashboard/login', { error: 'User does not exist', title: 'Login'})	
+					res.render('dashboard/login', { errorName: 'User does not exist', title: 'Login'})	
 				}
 				else if(callback[0].password !== encryptData(input.password)) {
-					res.render('dashboard/login', { error: 'Incorrect password', title: 'Login'})	
+					res.render('dashboard/login', { errorPass: 'Incorrect password', title: 'Login'})	
 				}
 				else {
 
@@ -78,14 +78,14 @@ router.post('/register/', function(req, res) {
 
 	// Checks if all fields are completed
 	if(input.name === '' || input.email === '' || input.pass === '' || input.confirm === '') {
-		res.render('dashboard/register', { error: 'You did not fill in all the fields', title: 'Register'})
+		res.render('dashboard/register', { errorName: 'You did not fill in all the fields', title: 'Register'})
 	}
 	else if(input.pass !== input.confirm) {
-		res.render('dashboard/register', { error: 'Your passwords did not match', title: 'Register'})
+		res.render('dashboard/register', { errorConf: 'Your passwords did not match', title: 'Register'})
 	}
 	// Only allow hva email addresses
 	else if(input.email.indexOf('@hva.nl') === -1) {
-		res.render('dashboard/register', { error: 'Only HvA members can register', title: 'Register'})
+		res.render('dashboard/register', { errorEmail: 'Only HvA members can register', title: 'Register'})
 	}
 	else {
 

@@ -66,7 +66,7 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 		var input = req.body,
 			file = req.file;
 
-			console.log(req.file);
+			console.log(input);
 
 		req.getConnection(function(err, connection) {
 
@@ -78,7 +78,7 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 							var promise = new Promise(function(resolve, reject) {
 								
-								connection.query(sqlLibrary.insertNewContentItem(), [input.image_title, file.filename, null, input.type, req.session.userid], function(err, callback) {
+								connection.query(sqlLibrary.insertNewContentItem(), [input.image_title, file.filename, input.type, req.session.userid], function(err, callback) {
 									if(err) { 
 										reject(err) 
 									}
@@ -121,7 +121,7 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 					var promise = new Promise(function(resolve, reject) {
 						
-						connection.query(sqlLibrary.insertNewContentItem(), [input.youtube_name, input.youtube_url, null, input.type, req.session.userid], function(err, callback) {
+						connection.query(sqlLibrary.insertNewContentItem(), [input.youtube_name, input.youtube_url, input.type, req.session.userid], function(err, callback) {
 							if(err) { 
 								reject(err) 
 							}
@@ -148,7 +148,7 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 					var promise = new Promise(function(resolve, reject) {
 						
-						connection.query(sqlLibrary.insertNewContentItem(), [input.tweet_name, input.tweet_url, null, input.type, req.session.userid], function(err, callback) {
+						connection.query(sqlLibrary.insertNewContentItem(), [input.tweet_name, input.tweet_url, input.type, req.session.userid], function(err, callback) {
 							if(err) { 
 								reject(err) 
 							}
@@ -191,17 +191,17 @@ router.post('/:id/slide/new', upload.single('file'), function(req, res) {
 
 				}).then(function(callback) {
 
+					reloader.send();
 					res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=new');
 
 				}).catch(function(err) {
 
+					console.log(err)
 					res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=failed');
 
 				});
 
 			}
-
-			console.log('hello world')
 
 		})
 	}
@@ -232,6 +232,7 @@ router.post('/:id/slide/:slideId', function(req, res) {
 
 			}).then(function(callback) {
 
+				reloader.send();
 				res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=edit');
 
 			}).catch(function(callback) {
@@ -264,6 +265,7 @@ router.post('/:id/slide/remove/:slideId', function(req, res) {
 
 			}).then(function(callback) {
 
+				reloader.send();
 				res.redirect('/dashboard/slideshow/edit/' + req.params.id + '?message=delete');
 
 			}).catch(function(callback) {

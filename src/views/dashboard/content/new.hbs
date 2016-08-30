@@ -11,12 +11,15 @@
             
                 <form enctype="multipart/form-data" action="/dashboard/content/new/image" method="post"> 
 
-                    <fieldset class="normal-input required">
+                    <fieldset class="normal-input required {{#if errorName}}error{{/if}}">
                         <label for="form-name">Image title</label>
                         <input id="form-name" name="name" type="text" maxlength="100">
+                        {{#if errorName}}
+                            <p class="error-message">{{errorName}}</p>
+                        {{/if}}
                     </fieldset>
 
-                    <fieldset class="normal-upload required">
+                    <fieldset class="normal-upload required {{#if errorFile}}error{{/if}}">
                         <label>Upload an image</label>
                         <label class="upload-label" for="form-upload">
 
@@ -30,6 +33,9 @@
 
                         </label>
                         <input id="form-upload" name="file" type="file">
+                        {{#if errorFile}}
+                            <p class="error-message">{{errorFile}}</p>
+                        {{/if}}
                     </fieldset>
 
                     <fieldset class="normal-button">

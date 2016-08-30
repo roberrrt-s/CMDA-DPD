@@ -101,13 +101,13 @@ router.post('/new/', function(req, res) {
 
 		// Checks for validation to see if all fields are entered.
 		if(input.name === '') {
-			res.render('dashboard/screen/new', { title: 'New', error: 'Please fill in a name' });
+			res.render('dashboard/screen/new', { title: 'New', errorName: 'Please fill in a name' });
 		}
 		else if(input.desc === '') {
-			res.render('dashboard/screen/new', { title: 'New', error: 'Please fill in a description' });
+			res.render('dashboard/screen/new', { title: 'New', errorDesc: 'Please fill in a description' });
 		}
 		else if(input.location === '') {
-			res.render('dashboard/screen/new', { title: 'New', error: 'Please fill in a location' });
+			res.render('dashboard/screen/new', { title: 'New', errorLoc: 'Please fill in a location' });
 		}
 		else {
 
@@ -228,6 +228,10 @@ router.post('/edit/:id', function(req, res) {
 		
 		var input = req.body;
 
+		if(input.name === '') {
+			res.render
+		}
+
 		req.getConnection(function(err, connection) {
 
 			var promise = new Promise(function(resolve, reject) {
@@ -242,6 +246,7 @@ router.post('/edit/:id', function(req, res) {
 				})
 			}).then(function(callback) {
 
+				reloader.send();
 				res.redirect('/dashboard/screen?message=edit');
 
 			}).catch(function() {
@@ -283,6 +288,7 @@ router.post('/delete/:id', function(req, res) {
 					}
 				})
 			}).then(function(callback) {
+				reloader.send();
 				res.redirect('/dashboard/screen?message=delete');
 			}).catch(function(callback) {
 				res.redirect('/dashboard/screen?message=failed');

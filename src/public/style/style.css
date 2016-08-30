@@ -612,6 +612,7 @@ main {
   height: auto;
   color: #1B2224;
   cursor: pointer;
+  margin: 10px;
 }
 
 #container .slide-block .slide-options {
@@ -621,6 +622,15 @@ main {
 #container .slide-block svg {
   display: block;
   height: 100px;
+  margin: auto;
+}
+
+#container .slide-block img {
+  display: block;
+  max-height: 100px;
+  max-width: 200px;
+  height: auto;
+  width: auto;
   margin: auto;
 }
 
@@ -673,4 +683,8 @@ main.login-container #content a {
 
 main.login-container #content a:hover, main.login-container #content a:focus {
   text-decoration: underline;
+}
+
+.hide-item {
+  display: none !important;
 }

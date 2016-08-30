@@ -12,7 +12,7 @@ var sqlLibrary = {
 	},
 
 	insertNewContentItem: function() {
-		return 'INSERT INTO content SET name = ?, link = ?, description = ?, type = ?, user_id = ?';
+		return 'INSERT INTO content SET name = ?, link = ?, type = ?, user_id = ?';
 	},
 
 	updateRowInContent: function() {
@@ -64,7 +64,7 @@ var sqlLibrary = {
 	},
 
 	matchContentFromSlideshow: function () {
-		return 'SELECT slideshow.id AS slideshowId, slideshow.name AS slideshowName, slideshow.description AS slideshowDesc, slide.id AS slideId, slide.slideshow_id, slide.content_id, slide.slide_order, slide.duration, content.id AS contentId, content.name, content.description, content.link, content.type, content.user_id, content.created_at FROM slideshow LEFT JOIN slide ON slideshow.id = slide.slideshow_id LEFT JOIN content ON slide.content_id = content.id WHERE slideshow.id = ? ORDER BY slide.slide_order, slide.id'
+		return 'SELECT slideshow.id AS slideshowId, slideshow.name AS slideshowName, slideshow.description AS slideshowDesc, slide.id AS slideId, slide.slideshow_id, slide.content_id, slide.slide_order, slide.duration, content.id AS contentId, content.name, content.link, content.type, content.user_id, content.created_at FROM slideshow LEFT JOIN slide ON slideshow.id = slide.slideshow_id LEFT JOIN content ON slide.content_id = content.id WHERE slideshow.id = ? ORDER BY slide.slide_order, slide.id'
 	},
 
 	insertNewSlideshowItem: function() {

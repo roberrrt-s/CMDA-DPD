@@ -10,33 +10,42 @@
 	</head>
 
 	<body>
-		<main>
+		<main class="login-container">
 
-			<div class="input-wrapper">
-				<div class="input-box">
-					{{#if error}}
-						<div class="error-msg">
-							{{error}}
-						</div>
-					{{/if}}
+			<section id="content">
+
+				<div class="content-form">
+				
+					<h1>Login to CMD-DPD</h1><a href="/dashboard/register/">No account yet? Register!</a>
+
 					<form action="/dashboard/login/" method="post">
-						<fieldset>
-							<legend>Login</legend>
-							<label>Email:
-								<input type="email" name="email"></input>
-							</label>
-							<label>Password:
-								<input type="password" name="password"></input>
-							</label>
-							<input type="submit" value="Login"></input>
+
+						<fieldset class="normal-input required {{#if errorName}}error{{/if}}">
+							<label for="form-login">Login name</label>
+							<input id="form-login" name="email" type="text" maxlength="100">
+							{{#if errorName}}
+								<p class="error-message">{{errorName}}</p>
+							{{/if}}
 						</fieldset>
+
+						<fieldset class="normal-input required {{#if errorPass}}error{{/if}}">
+							<label for="form-pass">Password</label>
+							<input id="form-pass" name="password" type="password" maxlength="100">
+							{{#if errorPass}}
+								<p class="error-message">{{errorPass}}</p>
+							{{/if}}
+						</fieldset>
+
+						<fieldset class="normal-button">
+							<input id="form-submit" value="Login" name="submit" class="submit-btn" type="submit">
+						</fieldset>
+
 					</form>
-					<p>No account yet? <a href="/dashboard/register/">register first</a></p>
+
 				</div>
-			</div>
+
+			</section>
 
 		</main>
-    </body>
-    <script src="/js/ffo.js"></script>
-    <script src="/js/checkFont.js"></script>
+   </body>
 </html>

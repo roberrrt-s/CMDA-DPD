@@ -9,18 +9,18 @@
 
             <div class="content-form">
             
-                <form enctype="multipart/form-data" action="/dashboard/content/new/image" method="post"> 
+				<form id="main-form" enctype="multipart/form-data" action="/dashboard/slideshow/edit/{{id}}/slide/new/" method="post"> 
 
-					<fieldset class="normal-radio">
+					<fieldset class="normal-radio always">
 						<label>Select the content type for this slide:</label>
-						<input id="form-radio-1" name="type" type="radio"><label for="form-radio-1">Image</label>
-						<input id="form-radio-2" name="type" type="radio"><label for="form-radio-2">Video</label>
-						<input id="form-radio-3" name="type" type="radio"><label for="form-radio-3">Tweet</label>
+						<input id="form-radio-1" value="image" name="type" type="radio"><label for="form-radio-1">Image</label>
+						<input id="form-radio-2" value="video" name="type" type="radio"><label for="form-radio-2">Video</label>
+						<input id="form-radio-3" value="tweet" name="type" type="radio"><label for="form-radio-3">Tweet</label>
 					</fieldset>
 
                     <fieldset class="normal-input has-image has-video has-tweet required">
                         <label for="form-order">Slide order</label>
-                        <input id="form-order" name="order" type="number" maxlength="100">
+                        <input id="form-order" name="order" type="number" maxlength="100" required>
                     </fieldset>
 
                     <fieldset class="normal-input has-image has-tweet required">
@@ -30,8 +30,8 @@
 
 					<fieldset class="normal-radio has-image">
 						<label>Create a new image slide</label>
-						<input id="form-radio-4" name="image_type" type="radio"><label for="form-radio-4">Upload new image</label>
-						<input id="form-radio-5" name="image_type" type="radio"><label for="form-radio-5">Use existing image</label>
+						<input id="form-radio-4" value="new" name="image_type" type="radio"><label for="form-radio-4">Upload new image</label>
+						<input id="form-radio-5" value="existing" name="image_type" type="radio"><label for="form-radio-5">Use existing image</label>
 					</fieldset>
 
                     <fieldset class="normal-input has-new-image required">
@@ -39,7 +39,7 @@
                         <input id="form-image_title" name="image_title" type="text" maxlength="100">
                     </fieldset>
 
-                    <fieldset class="normal-upload required">
+                    <fieldset class="normal-upload has-new-image required">
                         <label>Upload an image</label>
                         <label class="upload-label" for="form-upload">
 
@@ -55,36 +55,36 @@
                         <input id="form-upload" name="file" type="file">
                     </fieldset>
 
-					<fieldset class="normal-select">
-						<label for="form-slideshow">Assign a slideshow (optional)</label>
-						<select id="form-slideshow">
+					<fieldset class="normal-select has-existing-image required">
+						<label for="form-existing-image">Assign an image</label>
+						<select name="existing_image_id" id="form-existing-image">
 						{{#each images}}
-							<option value="{{id}}" id="one">{{name}} ({{id}})</option>
+							<option value="{{id}}" id="one">{{name}} (id: {{id}})</option>
 						{{/each}}
 						</select>
 					</fieldset>
 
-                    <fieldset class="normal-input required">
+                    <fieldset class="normal-input has-video required">
                         <label for="form-name">Video title</label>
-                        <input id="form-name" name="name" type="text" maxlength="100">
+                        <input id="form-name" name="youtube_name" type="text" maxlength="100">
                     </fieldset>
 
-                    <fieldset class="normal-input required">
+                    <fieldset class="normal-input has-video required">
                         <label for="form-name">Video YouTube URL</label>
-                        <input id="form-name" name="name" type="text" maxlength="100">
+                        <input id="form-name" name="youtube_url" type="text" maxlength="100">
                     </fieldset>
 
-                    <fieldset class="normal-input required">
+                    <fieldset class="normal-input has-tweet required">
                         <label for="form-name">Tweet title</label>
-                        <input id="form-name" name="name" type="text" maxlength="100">
+                        <input id="form-name" name="tweet_name" type="text" maxlength="100">
                     </fieldset>
 
-                    <fieldset class="normal-input required">
+                    <fieldset class="normal-input has-tweet required">
                         <label for="form-name">Tweet direct URL</label>
-                        <input id="form-name" name="name" type="text" maxlength="100">
+                        <input id="form-name" name="tweet_url" type="text" maxlength="100">
                     </fieldset>                    
 
-                    <fieldset class="normal-button">
+                    <fieldset class="normal-button has-image has-video has-tweet has-existing-image has-new-image">
                         <input id="form-submit" value="Save changes" name="submit" class="submit-btn" type="submit">
                         <button type="button" class="cancel-btn"><a href="#">Cancel</a></button>
                     </fieldset>

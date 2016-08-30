@@ -1,48 +1,67 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width">
-        <meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
-        <meta name="author" content="Robert Spier">
-        <link rel="stylesheet" href="/style/style.css">
-        <title>Prototype - {{title}}</title>
-    </head>
+	<head>
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Prototype for the 'Meesterproef' of the minor Web Development">
+		<meta name="author" content="Robert Spier">
+		<link rel="stylesheet" href="/style/style.css">
+		<title>Prototype - {{title}}</title>
+	</head>
 
-    <body>
-        <main>
+	<body>
+		<main class="login-container">
 
-            <div class="input-wrapper">
-                <div class="input-box">
-                    {{#if error}}
-                        <div class="error-msg">
-                            {{error}}
-                        </div>
-                    {{/if}}
+			<section id="content">
+
+				<div class="content-form">
+				
+					<h1>Register to CMD-DPD</h1><a href="/dashboard/login/">Already have an account?</a>
+
                     <form action="/dashboard/register/" method="post">
-                        <fieldset>
-                            <legend>Register</legend>
-                            <label>Name:
-                                <input type="text" name="name"></input>
-                            </label>
-                            <label>Email:
-                                <input type="email" name="email"></input>
-                            </label>
-                            <label>Password:
-                                <input type="password" name="pass"></input>
-                            </label>
-                            <label>Confirm:
-                                <input type="password" name="confirm"></input>
-                            </label>
-                            <input type="submit" value="Register"></input>
-                        </fieldset>
-                    </form>
-                    <p>Already have an account? <a href="/dashboard/login/">login here</a></p>
-                </div>
-            </div>
 
-        </main>
-    </body>
-    <script src="/js/ffo.js"></script>
-    <script src="/js/checkFont.js"></script>
+						<fieldset class="normal-input required {{#if errorName}}error{{/if}}">
+							<label for="form-login">Login name</label>
+							<input id="form-login" name="name" type="text" maxlength="100">
+							{{#if errorName}}
+								<p class="error-message">{{errorName}}</p>
+							{{/if}}
+						</fieldset>
+
+						<fieldset class="normal-input required {{#if errorEmail}}error{{/if}}">
+							<label for="form-email">Email</label>
+							<input id="form-email" name="email" type="text" maxlength="100">
+							{{#if errorEmail}}
+								<p class="error-message">{{errorEmail}}</p>
+							{{/if}}
+						</fieldset>
+
+						<fieldset class="normal-input required {{#if errorPass}}error{{/if}}">
+							<label for="form-pass">Password</label>
+							<input id="form-pass" name="pass" type="password" maxlength="100">
+							{{#if errorPass}}
+								<p class="error-message">{{errorPass}}</p>
+							{{/if}}
+						</fieldset>
+
+						<fieldset class="normal-input required {{#if errorConf}}error{{/if}}">
+							<label for="form-confirm">Confirm password</label>
+							<input id="form-confirm" name="confirm" type="password" maxlength="100">
+							{{#if errorConf}}
+								<p class="error-message">{{errorConf}}</p>
+							{{/if}}
+						</fieldset>
+
+						<fieldset class="normal-button">
+							<input id="form-submit" value="Register" name="submit" class="submit-btn" type="submit">
+						</fieldset>
+
+					</form>
+
+				</div>
+
+			</section>
+
+		</main>
+   </body>
 </html>

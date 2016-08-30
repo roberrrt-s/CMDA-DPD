@@ -4,6 +4,7 @@ var express = require('express'),
 	query = require('../../../lib/query.js'),
 	filterType = require('../../../lib/filterType.js'),
 	sqlLibrary = require('../../../lib/sqlLibrary.js'),
+	reloader = require('../../../lib/reloader.js'),
 	multer  = require('multer'),
 
 	storage = multer.diskStorage({
@@ -106,14 +107,14 @@ router.post('/new/image', upload.single('file'), function(req, res, cb) {
 			file = req.file;
 
 		if(input.name === '') {
-			res.render('dashboard/content/new', { title: 'Upload new image', error: 'Please enter a name' });
+			res.render('dashboard/content/new', { title: 'Upload new image', errorName: 'Please enter a name' });
 		}
 		else if(!file) {
-			res.render('dashboard/content/new', { title: 'Upload new image', error: 'Please upload an image' });
+			res.render('dashboard/content/new', { title: 'Upload new image', errorFile: 'Please upload an image' });
 		}
 		else if(file.mimetype.indexOf('image') === -1) {
 			fs.unlinkSync(req.file.path)
-			res.render('dashboard/content/new', { title: 'Upload new image', error: 'You can only upload images' });
+			res.render('dashboard/content/new', { title: 'Upload new image', errorFile: 'You can only upload images' });
 		}
 
 		else {
@@ -121,7 +122,7 @@ router.post('/new/image', upload.single('file'), function(req, res, cb) {
 			// If everything is fine, upload the image and insert the values in the database
 			req.getConnection(function(err, connection) {
 				var promise = new Promise(function(resolve, reject) {
-					connection.query(sqlLibrary.insertNewContentItem(), [input.name, file.filename, null, "image", req.session.userid], function(err, callback) {
+					connection.query(sqlLibrary.insertNewContentItem(), [input.name, file.filename, "image", req.session.userid], function(err, callback) {
 						if(err) { 
 							reject(err) 
 						}
@@ -133,6 +134,7 @@ router.post('/new/image', upload.single('file'), function(req, res, cb) {
 				}).then(function(callback) {
 					res.redirect('/dashboard/content/?message=new');
 				}).catch(function(callback) {
+					console.log(callback)
 					res.redirect('/dashboard/content/?message=failed');
 				})
 
@@ -198,6 +200,11 @@ router.post('/edit/:id', function(req, res) {
 	if(checkLogin(req.session, res)) {
 
 		var input = req.body;
+
+		if(input.name === '') {
+			res.render('dashboard/content/edit', { id: req.params.id, title: 'Upload new image', errorName: 'You cannot leave this field empty' });
+			return false;
+		}
 
 		req.getConnection(function(err, connection) {
 			// Insert all new data inside the database.
@@ -277,7 +284,6 @@ router.post('/delete/:id', function(req, res) {
 				})
 
 			}).catch(function(callback) {
-				console.log(callback)
 				res.redirect('/dashboard/content?message=failed');	
 			})
 
@@ -294,6 +300,7 @@ router.post('/delete/:id', function(req, res) {
 
 			}).then(function(callback) {
 
+				reloader.send();
 				res.redirect('/dashboard/content?message=delete');
 
 			}).catch(function(callback) {

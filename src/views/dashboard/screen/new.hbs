@@ -11,19 +11,28 @@
 			
         		<form action="/dashboard/screen/new" method="post"> 
 
-					<fieldset class="normal-input required">
+					<fieldset class="normal-input required {{#if errorName}}error{{/if}}">
 						<label for="form-name">Screen name</label>
 						<input id="form-name" name="name" type="text" maxlength="100">
+                        {{#if errorName}}
+                            <p class="error-message">{{errorName}}</p>
+                        {{/if}}
 					</fieldset>
 
-					<fieldset class="normal-input required">
+					<fieldset class="normal-input required{{#if errorDesc}}error{{/if}}">
 						<label for="form-desc">Screen description</label>
 						<textarea id="form-desc" name="desc" type="text" rows="4" maxlength="100"></textarea>
+                        {{#if errorDesc}}
+                            <p class="error-message">{{errorDesc}}</p>
+                        {{/if}}
 					</fieldset>
 
-					<fieldset class="normal-input required">
+					<fieldset class="normal-input required {{#if errorDesc}}error{{/if}}">
 						<label for="form-desc">Screen location</label>
 						<input id="form-desc" name="location" type="text" maxlength="100">
+                        {{#if errorLoc}}
+                            <p class="error-message">{{errorLoc}}</p>
+                        {{/if}}
 					</fieldset>
 
 					<fieldset class="normal-select">

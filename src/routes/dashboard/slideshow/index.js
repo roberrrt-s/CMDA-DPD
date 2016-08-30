@@ -268,6 +268,7 @@ router.post('/edit/:id', function(req, res) {
 				})
 			}).then(function(callback) {
 
+				reloader.send();
 				res.redirect('/dashboard/slideshow/?message=edit');
 			
 			}).catch(function(err) {
@@ -339,6 +340,7 @@ router.post('/delete/:id', function(req, res) {
 
 			}).catch(function(callback) {
 
+
 				res.redirect('/dashboard/slideshow/?message=failed');
 
 			})
@@ -357,6 +359,7 @@ router.post('/delete/:id', function(req, res) {
 
 			}).then(function(callback) {
 
+				reloader.send();
 				res.redirect('/dashboard/slideshow/?message=delete');
 
 			}).catch(function(err) {
